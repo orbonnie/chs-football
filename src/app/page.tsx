@@ -1,4 +1,4 @@
-import Intro from '@/components/Intro'
+import Hero from '@/components/Hero'
 import NextGame from '@/components/NextGame'
 import Sponsors from '@/components/Sponsors'
 
@@ -6,7 +6,7 @@ import Sponsors from '@/components/Sponsors'
 export default function HomePage() {
   return (
     <>
-      <Intro />
+      <Hero />
       <NextGame />
       <Sponsors />
     </>

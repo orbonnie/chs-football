@@ -1,5 +1,5 @@
+import Image from 'next/image'
 import MarqueeBanner from './MarqueeBanner'
-import fortress from '../../assets/imgs/fortress.jpg'
 
 
 export default function Intro() {
@@ -8,10 +8,16 @@ export default function Intro() {
 
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${fortress.src})`}}
+        className="absolute inset-0"
       >
-        {/* Deep royal blue overlay */}
+        <Image
+          src="/fortress.jpg"
+          alt="The Fortress"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Overlay */}
         <div className="absolute inset-0 bg-white/40" />
         {/* Bottom gradient fade to page bg */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-royal-900 to-transparent" />
