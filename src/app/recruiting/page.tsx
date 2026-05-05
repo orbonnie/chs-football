@@ -25,7 +25,7 @@ export default function RecruitingPage() {
             { stat: 'Region 6', label: 'Conference' },
           ].map(({ stat, label }) => (
             <div key={label} className="bg-black-500 p-10 text-center">
-              <p className="font-display text-silver-400 text-6xl">{stat}</p>
+              <p className="font-display text-silver-400 text-4xl sm:text-6xl">{stat}</p>
               <p className="text-white/40 text-xs tracking-widest uppercase mt-2">{label}</p>
             </div>
           ))}
