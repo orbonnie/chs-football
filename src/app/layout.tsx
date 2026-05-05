@@ -18,6 +18,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Centennial Knights Football',
   description: 'Home of the Centennial Knights — GHSA Class 4A, Roswell, GA',
+  icons: {
+    icon: '/icon.png',
+  },
 }
 
 export default function RootLayout({
