@@ -19,7 +19,7 @@ export default function RecruitingPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-px bg-white/5 mb-12">
+        <div className="grid grid-cols-2 gap-px bg-white/5 mb-6 md:mb-12">
           {[
             { stat: '5A', label: 'Classification' },
             { stat: 'Region 6', label: 'Conference' },
