@@ -30,7 +30,7 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
           placeholder="Search by name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 bg-white text-royal-900 placeholder-royal-900/40 rounded-2xl px-6 py-4 text-sm outline-none"
+          className="flex-1 bg-white text-black-500 placeholder-royal-900/40 rounded-2xl px-6 py-4 text-sm outline-none"
         />
         <select
           value={classYear}
@@ -50,7 +50,7 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
         >
           <option value="">All Positions</option>
           <option value="Quarterback">QB</option>
-          <option value="Running Back"></option>
+          <option value="Running Back">RB</option>
           <option value="Wide Receiver">WR</option>
           <option value="Tight End">TE</option>
           <option value="Offensive Line">OL</option>
