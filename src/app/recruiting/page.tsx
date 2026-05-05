@@ -19,13 +19,13 @@ export default function RecruitingPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-px bg-white/5 mb-6 md:mb-12">
+        <div className="grid grid-cols-2 gap-px bg-white/5 mb-6 md:mb-12 overflow-hidden rounded-lg">
           {[
             { stat: '5A', label: 'Classification' },
             { stat: 'Region 6', label: 'Conference' },
           ].map(({ stat, label }) => (
-            <div key={label} className="bg-black-500 p-10 text-center">
-              <p className="font-display text-silver-400 text-4xl sm:text-6xl">{stat}</p>
+            <div key={label} className="bg-black-500 p-8 md:p-10 text-center">
+              <p className="font-display text-silver-400 text-4xl sm:text-6xl whitespace-nowrap">{stat}</p>
               <p className="text-white/40 text-xs tracking-widest uppercase mt-2">{label}</p>
             </div>
           ))}
