@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: 'Parent Playbook | Centennial Knights Football',
@@ -220,12 +221,15 @@ export default function ParentsPage() {
             This agreement is required for every family and reflects our shared responsibility to uphold
             the standards that define Centennial Knights Football.
           </p>
-          <a
-            href="#"
+
+          <Link
+            href="/agreement"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-white text-royal-600 font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-silver-300 transition-colors"
           >
             Complete the Agreement
-          </a>
+          </Link>
         </div>
       </section>
     </div>
