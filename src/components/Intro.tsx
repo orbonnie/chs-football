@@ -3,7 +3,6 @@ import fortress from '../../assets/imgs/fortress.jpg'
 
 
 export default function Intro() {
-  console.log('fortress:', fortress)
   return (
     <section className="relative min-h-screen flex flex-col">
 
