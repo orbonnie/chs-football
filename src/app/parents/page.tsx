@@ -21,7 +21,7 @@ const eliteParentActions = [
   'Promote healthy habits, including proper sleep, nutrition, and hydration.',
   'Reinforce positive attitudes and encouragement. Model the behavior you want to see on the field and in life.',
   'Communicate proactively with coaches regarding absences, scheduling conflicts, or emergencies.',
-  'Support the Centennial Knights Touchdown Club and volunteer through the Point App.',
+  'Support the Centennial Knights through fundraising and volunteering.',
 ]
 
 const faqs = [
