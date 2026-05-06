@@ -30,9 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${bebasNeue.variable} ${inter.variable} bg-royal-900 text-white font-body antialiased`}>
+      <body className={`${bebasNeue.variable} ${inter.variable} bg-black-500 text-white font-body antialiased min-h-screen flex flex-col`}>
         <Navbar />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

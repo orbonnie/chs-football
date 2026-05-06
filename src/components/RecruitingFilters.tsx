@@ -10,12 +10,15 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
   const [position, setPosition] = useState('')
 
   const filtered = useMemo(() => {
+
     return players.filter((p) => {
       const fullName = `${p.firstName} ${p.lastName}`.toLowerCase()
       const matchesSearch = fullName.includes(search.toLowerCase())
-      const matchesClass = classYear ? p.classYear === Number(classYear) : true
+      const matchesClass = classYear ? p.classYear === classYear : true
       const matchesPosition = position
-        ? p.position.toLowerCase().includes(position.toLowerCase())
+        ? p.position.some((pos) =>
+            pos.toLowerCase().includes(position.toLowerCase())
+          )
         : true
       return matchesSearch && matchesClass && matchesPosition
     })
@@ -64,7 +67,7 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
 
       {/* Player grid */}
       {filtered.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
           {filtered.map((player) => (
             <PlayerCard key={`${player.number}-${player.lastName}`} player={player} />
           ))}
