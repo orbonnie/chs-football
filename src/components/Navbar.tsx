@@ -59,7 +59,7 @@ export default function Navbar() {
                 e.stopPropagation()
                 setRegisterOpen(!registerOpen)
               }}
-              className="bg-royal-600 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 hover:bg-royal-500 transition-colors flex items-center gap-2"
+              className="bg-royal-600 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 hover:bg-royal-500 transition-colors flex items-center gap-2 rounded-md"
             >
               Register
               <svg
@@ -72,7 +72,7 @@ export default function Navbar() {
               </svg>
             </button>
             {registerOpen && (
-              <div className="absolute right-0 top-full mt-2 w-48 bg-white shadow-xl flex flex-col z-[100]">
+              <div className="absolute right-0 top-full mt-2 w-48 bg-white shadow-xl flex flex-col z-[100] rounded-md">
                 {registerLinks.map((link) => (
                   <a
                     key={link.href}
@@ -80,7 +80,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setRegisterOpen(false)}
-                    className="text-royal-900 text-xs font-bold tracking-widest uppercase px-5 py-4 hover:bg-royal-600 hover:text-white transition-colors border-b border-royal-900/10 last:border-0"
+                    className="bg-white text-royal-600 text-xs font-bold tracking-widest uppercase px-5 py-4 rounded-md hover:bg-silver-500 transition-colors border-b border-royal-900/10 last:border-0"
                   >
                     {link.label}
                   </a>
@@ -122,11 +122,11 @@ export default function Navbar() {
                 e.stopPropagation()
                 setRegisterOpen(!registerOpen)
               }}
-              className="bg-royal-600 text-white text-sm font-bold tracking-widest uppercase px-4 py-3 text-center hover:bg-royal-500 transition-colors"
+              className="bg-royal-600 text-white text-sm font-bold tracking-widest uppercase px-4 py-3 flex items-center justify-center gap-2 text-center hover:bg-royal-500 transition-colors rounded-md"
             >
               Register
               <svg
-                className={`w-3 h-3 transition-transform ${registerOpen ? 'rotate-180' : ''}`}
+                className={`w-3 h-3 shrink-0 transition-transform ${registerOpen ? 'rotate-180' : ''}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -144,7 +144,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {setRegisterOpen(!registerOpen)}}
-                    className="bg-white text-royal-600 text-sm font-bold tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-500 transition-colors"
+                    className="bg-white text-royal-600 text-sm font-bold tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-500 transition-colors rounded-md"
                   >
                     {link.label}
                   </a>
