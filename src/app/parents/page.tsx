@@ -223,10 +223,10 @@ export default function ParentsPage() {
           </p>
 
           <a
-            href="/agreement"
+            href="/contract"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-white text-royal-600 font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-silver-300 transition-colors"
+            className="inline-block bg-white text-royal-600 font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-silver-300 transition-colors rounded-lg"
           >
             Complete the Agreement
           </a>
