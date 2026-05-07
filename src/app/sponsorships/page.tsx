@@ -72,7 +72,7 @@ export default function SponsorshipsPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
           {tiers.map((tier) => (
-            <div key={tier.name} className={`bg-royal-600 p-8 border-t-2 ${tier.color} flex flex-col`}>
+            <div key={tier.name} className={`bg-royal-600 p-8 border-t-2 ${tier.color} flex flex-col rounded-lg`}>
               <p className={`font-display text-3xl tracking-widest ${tier.labelColor} mb-1`}>{tier.name}</p>
               <p className="text-white font-display text-xl tracking-wider mb-6">{tier.price}</p>
               <ul className="flex flex-col gap-3 flex-1">
@@ -85,7 +85,7 @@ export default function SponsorshipsPage() {
               </ul>
               <a
                 href="mailto:centennialfootballpartners@gmail.com"
-                className="mt-8 border bg-black-500 border-silver-500/40 text-silver-400 text-xs tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-700 hover:text-black-500 transition-colors"
+                className="mt-8 border bg-black-500 border-silver-500/40 text-silver-400 text-xs tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-700 hover:text-black-500 transition-colors rounded-md"
               >
                 Get Started
               </a>
@@ -101,7 +101,7 @@ export default function SponsorshipsPage() {
           </p>
           <a
             href="mailto:centennialfootballpartners@gmail.com"
-            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-royal-600 transition-colors inline-block"
+            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-royal-600 transition-colors inline-block rounded-md"
           >
             Contact Us
           </a>
