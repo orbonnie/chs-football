@@ -35,6 +35,7 @@ const registerLinks = [
   },
 ];
 
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function Navbar() {
   const registerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
 
       if (sponsorsRef.current && !sponsorsRef.current.contains(target)) {
@@ -56,12 +57,27 @@ export default function Navbar() {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    const handleResize = () => {
+      const isDesktop = window.matchMedia("(min-width: 768px)").matches
+
+      if (isDesktop) {
+        setSponsorsOpen(false);
+        setRegisterOpen(false);
+        document.addEventListener("click", handleClickOutside)
+      } else {
+        document.removeEventListener("click", handleClickOutside)
+      }
+    }
+
+    handleResize()
+
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside)
+      window.removeEventListener("resize", handleResize)
     };
-  });
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black-500/90 backdrop-blur-sm border-b border-white/10">
