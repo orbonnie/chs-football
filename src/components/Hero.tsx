@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Ticket, Play } from "lucide-react";
 import MarqueeBanner from "./MarqueeBanner";
 
 export default function Intro() {
@@ -40,11 +41,11 @@ export default function Intro() {
           FORTRESS
         </h2>
         <p
-          className="font-display font-semibold text-royal-600 text-2xl tracking-[0.4em] mt-4 animate-fade-up opacity-0"
+          className="font-display font-semibold text-royal-600 text-2xl tracking-[0.3em] mt-4 animate-fade-up opacity-0"
           style={{
             animationDelay: "400ms",
             animationFillMode: "forwards",
-            }}
+          }}
         >
           CENTENNIAL HIGH SCHOOL · ROSWELL, GA
         </p>
@@ -53,7 +54,25 @@ export default function Intro() {
           className="mt-12 flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0"
           style={{ animationDelay: "500ms", animationFillMode: "forwards" }}
         >
-          <div className="h-[120px] sm:h-[64px]" />
+          <a
+            href="https://gofan.co/app/school/GA4885"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-royal-600 hover:bg-royal-500 text-white font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-3"
+          >
+            <Ticket className="w-7 h-7" />
+            Buy Tickets
+          </a>
+
+          <a
+            href="https://www.nfhsnetwork.com/schools/f53e94de87"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-black-500/80 hover:bg-black-500 text-white border border-white/20 font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-3"
+          >
+            <Play className="w-7 h-7 fill-current" />
+            Watch Live
+          </a>
         </div>
       </div>
 
