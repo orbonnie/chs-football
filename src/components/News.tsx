@@ -39,7 +39,7 @@ export default function News() {
 
     const interval = setInterval(() => {
       next()
-    }, 3000)
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [paused])
@@ -80,9 +80,30 @@ export default function News() {
         {/* CAROUSEL */}
         <div
           className="relative overflow-hidden rounded-3xl bg-white border border-black/5 shadow-sm"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          // onMouseEnter={() => setPaused(true)}
+          // onMouseLeave={() => setPaused(false)}
         >
+
+          <button
+            onClick={() => setPaused((prev) => !prev)}
+            className="absolute top-4 right-4 z-40
+                      bg-black-500/60 hover:bg-black-500/80
+                      text-white rounded-full
+                      w-12 h-12 flex items-center justify-center
+                      transition"
+            aria-label={paused ? "Play carousel" : "Pause carousel"}
+          >
+            {paused ? (
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
+                <rect x="6" y="5" width="4" height="14" />
+                <rect x="14" y="5" width="4" height="14" />
+              </svg>
+            )}
+          </button>
 
           {/* TRACK */}
           <div
@@ -136,9 +157,11 @@ export default function News() {
           {/* LEFT BUTTON */}
           <button
             onClick={prev}
-            className="absolute left-16 top-1/2 -translate-y-1/2 z-30
-                       w-32 h-32
-                       text-black-500/60 transition"
+            className="absolute left-4 sm:left-16 top-1/2 -translate-y-1/2 z-30
+                      flex items-center justify-center
+                      text-black-500/90
+                      transition-all duration-200
+                      hover:scale-110"
             aria-label="Previous story"
           >
             <ChevronLeft className="w-10 h-10" />
@@ -147,9 +170,11 @@ export default function News() {
           {/* RIGHT BUTTON */}
           <button
             onClick={next}
-            className="absolute right-12 top-1/2 -translate-y-1/2 translate-x-1/2 z-30
-                       w-32 h-32
-                       text-black-500/60 transition"
+            className="absolute right-4 sm:right-16 top-1/2 -translate-y-1/2 z-30
+                      flex items-center justify-center
+                      text-black-500/90
+                      transition-all duration-200
+                      hover:scale-110"
             aria-label="Next story"
           >
             <ChevronRight className="w-10 h-10" />
