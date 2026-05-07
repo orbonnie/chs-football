@@ -42,7 +42,7 @@ export default function NextGame() {
         <div className="flex flex-col items-center gap-3">
           <a
             href="/schedule"
-            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-8 py-4 hover:bg-royal-500 transition-colors"
+            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-8 py-4 hover:bg-royal-500 transition-colors rounded-lg"
           >
             Full Schedule
           </a>

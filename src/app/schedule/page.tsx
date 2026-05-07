@@ -5,34 +5,6 @@ export const metadata: Metadata = {
   title: 'Schedule | Centennial Knights Football',
 }
 
-// const varsity = [
-//   { date: 'May 8', opponent: 'Black and Blue Scrimmage', time: '7:30 PM', note: '', location: 'vs', result: null },
-//   { date: 'May 15', opponent: 'Chamblee Scrimmage', time: '7:30 PM', note: '', location: 'vs', result: null },
-//   { date: 'Aug 20', opponent: 'Dunwoody', time: '7:30 PM', note: 'Corky Kell @Blessed Trinity', location: '@', result: null },
-//   { date: 'Aug 28', opponent: 'Johns Creek', time: '7:30 PM', note: 'Veteran Memorial Bowl', location: 'vs', result: null },
-//   { date: 'Sep 4', opponent: 'Alpharetta', time: '7:30 PM', note: 'Senior Night', location: 'vs', result: null },
-//   { date: 'Sep 11', opponent: 'South Forsyth', time: '7:30 PM', note: '', location: '@', result: null },
-//   { date: 'Sep 18', opponent: 'Cambridge', time: '7:30 PM', note: 'Jr. Knight Night', location: 'vs', result: null },
-//   { date: 'Sep 25', opponent: '', time: '', note: '', location: 'BYE', result: null },
-//   { date: 'Oct 2', opponent: 'Blessed Trinity', time: '7:30 PM', note: '', location: '@', result: null },
-//   { date: 'Oct 9', opponent: 'St. Pius', time: '7:30 PM', note: '', location: '@', result: null },
-//   { date: 'Oct 16', opponent: '', time: '', note: '', location: 'BYE', result: null },
-//   { date: 'Oct 23', opponent: 'Sprayberry', time: '7:30 PM', note: 'Homecoming' , location: 'vs', result: null },
-//   { date: 'Oct 30', opponent: 'Marist', time: '7:30 PM', note: '', location: '@', result: null },
-//   { date: 'Nov 6', opponent: 'Chattahoochee', time: '7:30 PM', note: '', location: 'vs', result: null },
-// ]
-
-// const jv = [
-//   { date: 'Sept 3', opponent: 'Alpharetta', time: '6:00 PM', note: '', location: '@', result: null },
-//   { date: 'Sept 10', opponent: 'Northview', time: '6:00 PM', note: '', location: 'vs', result: null },
-//   { date: 'Sep 17', opponent: 'South Forsyth', time: '6:00 PM', note: '', location: '@', result: null },
-//   { date: 'Sep 24', opponent: '', time: '', note: '', location: 'BYE', result: null },
-//   { date: 'Oct 1', opponent: 'North Springs', time: '6:00 PM', note: '', location: 'vs', result: null },
-//   { date: 'Oct 8', opponent: 'Johns Creek', time: '6:00 PM', note: '', location: '@', result: null },
-//   { date: 'Oct 15', opponent: 'Riverwood', time: '6:00 PM', note: '', location: 'vs', result: null },
-//   { date: 'Oct 28', opponent: 'Chattahoochee', time: '6:00 PM', note: '', location: '@', result: null },
-// ]
-
 type Game = { date: string; location: string; opponent: string; time: string; note: string }
 
 function gameTextColor(location: string) {

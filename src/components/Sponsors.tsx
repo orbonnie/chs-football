@@ -1,53 +1,12 @@
 import Image from "next/image";
 
-type Sponsor = {
+import { sponsors } from "@/data/sponsors"
+
+export type Sponsor = {
   name: string;
   href: string;
   logo?: string;
 };
-
-const sponsors: Sponsor[] = [
-  {
-    name: "Zama Mexican Cuisine",
-    href: "https://www.zamamex.com/",
-    logo: "zama",
-  },
-  {
-    name: "Play It Again Sports",
-    href: "https://playitagainsports.com/locations/roswell-ga/",
-    logo: "pia-sports"
-  },
-  {
-    name: "The Salt Center",
-    href: "https://www.thesaltcenter.com/",
-    logo: "salt-2.jpg"
-  },
-  {
-    name: "McAllister's Deli",
-    href: "https://www.mcalistersdeli.com/",
-    logo: "McAlisters"
-  },
-  {
-    name: "Community Cleaners",
-    href: "https://ourcommunitycleaners.com/",
-    logo: "community"
-  },
-  {
-    name: "TE Certified",
-    href: "https://www.tecertifiedelectricians.com/",
-    logo: "te-cert"
-  },
-  {
-    name: "Mibab Orthodontics",
-    href: "https://www.mibabortho.com/",
-    logo: "mibab-ortho-3"
-  },
-  {
-    name: "New South Residential",
-    href: "https://www.newsouthatl.com/",
-    logo: "nsr-3"
-  },
-];
 
 const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
@@ -57,7 +16,7 @@ const cloudinaryUrl = (path: string) =>
 
 export default function Sponsors() {
   return (
-    <section className="bg-silver-300 py-20 px-6">
+    <section className="bg-silver-300 pt-10 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* HEADER */}
         <div className="text-center mb-14">
@@ -100,7 +59,7 @@ export default function Sponsors() {
         <div className="text-center mt-12">
           <a
             href="/sponsorships"
-            className="bg-silver-400 border border-black-500 text-black-500 font-bold text-sm tracking-widest uppercase px-8 py-3 hover:border-royal-600 hover:text-royal-600 transition-colors inline-block rounded-md"
+            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-8 py-3 hover:border-royal-500 transition-colors inline-block rounded-lg"
           >
             Become a Sponsor
           </a>
