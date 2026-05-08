@@ -38,13 +38,13 @@ function VarsityRow({ game }: { game: Game }) {
         <div>
           <span className={`font-display text-sm tracking-wider block ${textColor}`}>{game.date}</span>
           <span className={`font-display text-xl tracking-wider block ${textColor}`}>
-            {isBye ? 'BYE WEEK' : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
+            {isBye ? 'BYE WEEK' : game.location === "scrimmage" ? `${game.opponent.toUpperCase()} ${game.location.toUpperCase()}` : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
           </span>
           {game.note && <span className="text-xs tracking-widest uppercase text-royal-600 mt-0.5 block">{game.note}</span>}
         </div>
         <div>
           {!isBye && <span className={`font-display text-sm tracking-wider shrink-0 ml-4 ${textColor}`}>{game.time}</span>}
-          <a
+          {!isBye && <a
             href={game.recording || undefined}
             target="_blank"
             rel="noopener noreferrer"
@@ -56,7 +56,7 @@ function VarsityRow({ game }: { game: Game }) {
             aria-label="Watch recording"
           >
             <Play className={`w-3.5 h-3.5 fill-current`} />
-          </a>
+          </a>}
         </div>
       </div>
 
@@ -64,14 +64,15 @@ function VarsityRow({ game }: { game: Game }) {
       <div className={`hidden md:grid ${colGrid}`}>
         <span className={`font-display text-lg tracking-wider text-left ${textColor}`}>{game.date}</span>
         <span className={`font-display text-2xl tracking-wider ${textColor}`}>
-          {isBye ? 'BYE WEEK' : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
+          {isBye ? 'BYE WEEK' : game.location === "scrimmage" ? `${game.opponent.toUpperCase()} ${game.location.toUpperCase()}` : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
         </span>
         <span className={`text-xs tracking-widest uppercase text-royal-600 bg-royal-600/10 px-2 py-1 rounded text-center truncate w-fit whitespace-pre-line ${!game.note ? 'invisible' : ''}`}>
           {game.note || ''}
         </span>
         <span className={`text-sm tracking-wider text-center ${isBye ? 'invisible' : textColor}`}>{game.time}</span>
-        <span className={`text-sm tracking-wider text-center ${textColor}`}>{game.result || '—'}</span>
-        <a
+        {!isBye && <span className={`text-sm tracking-wider text-center ${textColor}`}>{game.result || '—'}</span>}
+
+        {!isBye && <a
           href={game.recording || undefined}
           target="_blank"
           rel="noopener noreferrer"
@@ -83,7 +84,7 @@ function VarsityRow({ game }: { game: Game }) {
           aria-label="Watch recording"
         >
           <Play className={`w-3.5 h-3.5 fill-current`} />
-        </a>
+        </a>}
       </div>
     </div>
   )
@@ -105,10 +106,10 @@ function JVRow({ game }: { game: Game }) {
       <span className={`text-sm tracking-wider text-right ${isBye ? 'invisible' : textColor}`}>
         {game.time}
       </span>
-      <span className={`text-sm tracking-wider text-right ${textColor}`}>
+      {!isBye && <span className={`text-sm tracking-wider text-right ${textColor}`}>
         {game.result || '—'}
-      </span>
-      <a
+      </span>}
+      {!isBye && <a
         href={game.recording || undefined}
         target="_blank"
         rel="noopener noreferrer"
@@ -120,7 +121,7 @@ function JVRow({ game }: { game: Game }) {
         aria-label="Watch recording"
       >
         <Play className="w-3 h-3 fill-current" />
-      </a>
+      </a>}
     </div>
   )
 }
