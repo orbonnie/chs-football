@@ -137,7 +137,7 @@ export default function SchedulePage() {
         </div>
 
         {/* Varsity */}
-        <div className="bg-silver-00 rounded-2xl overflow-hidden mb-6">
+        <div className="bg-silver-00 rounded-2xl overflow-hidden mb-14">
           {/* Varsity header */}
           <div className="bg-black-500 px-6 py-5 flex items-end justify-between">
             <div>
@@ -164,7 +164,7 @@ export default function SchedulePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           {/* JV */}
-          <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5">
+          <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5 mb-8">
             <div className="bg-black-500 px-6 py-4">
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">JV</h2>
             </div>
@@ -172,7 +172,7 @@ export default function SchedulePage() {
           </div>
 
           {/* Freshman */}
-          <div className="bg-silver-300 rounded-2xl overflow-hidden">
+          <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5 mb-8">
             <div className="bg-black-500 px-6 py-4">
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">FRESHMAN</h2>
             </div>
@@ -181,7 +181,7 @@ export default function SchedulePage() {
 
         </div>
         {/* Playoffs footer */}
-        <div className="bg-royal-600 mt-12 px-6 py-4 text-center rounded">
+        <div className="bg-royal-600 mt-6 px-6 py-4 text-center rounded">
           <p className="font-display text-white text-sm tracking-[0.4em]">GHSA STATE PLAYOFFS</p>
         </div>
 
