@@ -38,13 +38,13 @@ function VarsityRow({ game }: { game: Game }) {
         <div>
           <span className={`font-display text-sm tracking-wider block ${textColor}`}>{game.date}</span>
           <span className={`font-display text-xl tracking-wider block ${textColor}`}>
-            {isBye ? 'BYE WEEK' : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
+            {isBye ? 'BYE WEEK' : game.location === "scrimmage" ? `${game.opponent.toUpperCase()} ${game.location.toUpperCase()}` : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
           </span>
           {game.note && <span className="text-xs tracking-widest uppercase text-royal-600 mt-0.5 block">{game.note}</span>}
         </div>
         <div>
           {!isBye && <span className={`font-display text-sm tracking-wider shrink-0 ml-4 ${textColor}`}>{game.time}</span>}
-          <a
+          {!isBye && <a
             href={game.recording || undefined}
             target="_blank"
             rel="noopener noreferrer"
@@ -56,7 +56,7 @@ function VarsityRow({ game }: { game: Game }) {
             aria-label="Watch recording"
           >
             <Play className={`w-3.5 h-3.5 fill-current`} />
-          </a>
+          </a>}
         </div>
       </div>
 
@@ -64,14 +64,15 @@ function VarsityRow({ game }: { game: Game }) {
       <div className={`hidden md:grid ${colGrid}`}>
         <span className={`font-display text-lg tracking-wider text-left ${textColor}`}>{game.date}</span>
         <span className={`font-display text-2xl tracking-wider ${textColor}`}>
-          {isBye ? 'BYE WEEK' : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
+          {isBye ? 'BYE WEEK' : game.location === "scrimmage" ? `${game.opponent.toUpperCase()} ${game.location.toUpperCase()}` : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
         </span>
         <span className={`text-xs tracking-widest uppercase text-royal-600 bg-royal-600/10 px-2 py-1 rounded text-center truncate w-fit whitespace-pre-line ${!game.note ? 'invisible' : ''}`}>
           {game.note || ''}
         </span>
         <span className={`text-sm tracking-wider text-center ${isBye ? 'invisible' : textColor}`}>{game.time}</span>
-        <span className={`text-sm tracking-wider text-center ${textColor}`}>{game.result || '—'}</span>
-        <a
+        {!isBye && <span className={`text-sm tracking-wider text-center ${textColor}`}>{game.result || '—'}</span>}
+
+        {!isBye && <a
           href={game.recording || undefined}
           target="_blank"
           rel="noopener noreferrer"
@@ -83,7 +84,7 @@ function VarsityRow({ game }: { game: Game }) {
           aria-label="Watch recording"
         >
           <Play className={`w-3.5 h-3.5 fill-current`} />
-        </a>
+        </a>}
       </div>
     </div>
   )
@@ -105,10 +106,10 @@ function JVRow({ game }: { game: Game }) {
       <span className={`text-sm tracking-wider text-right ${isBye ? 'invisible' : textColor}`}>
         {game.time}
       </span>
-      <span className={`text-sm tracking-wider text-right ${textColor}`}>
+      {!isBye && <span className={`text-sm tracking-wider text-right ${textColor}`}>
         {game.result || '—'}
-      </span>
-      <a
+      </span>}
+      {!isBye && <a
         href={game.recording || undefined}
         target="_blank"
         rel="noopener noreferrer"
@@ -120,7 +121,7 @@ function JVRow({ game }: { game: Game }) {
         aria-label="Watch recording"
       >
         <Play className="w-3 h-3 fill-current" />
-      </a>
+      </a>}
     </div>
   )
 }
@@ -136,7 +137,7 @@ export default function SchedulePage() {
         </div>
 
         {/* Varsity */}
-        <div className="bg-silver-00 rounded-2xl overflow-hidden mb-6">
+        <div className="bg-silver-00 rounded-2xl overflow-hidden mb-14">
           {/* Varsity header */}
           <div className="bg-black-500 px-6 py-5 flex items-end justify-between">
             <div>
@@ -163,7 +164,7 @@ export default function SchedulePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           {/* JV */}
-          <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5">
+          <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5 mb-8">
             <div className="bg-black-500 px-6 py-4">
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">JV</h2>
             </div>
@@ -171,7 +172,7 @@ export default function SchedulePage() {
           </div>
 
           {/* Freshman */}
-          <div className="bg-silver-300 rounded-2xl overflow-hidden">
+          <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5 mb-8">
             <div className="bg-black-500 px-6 py-4">
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">FRESHMAN</h2>
             </div>
@@ -180,7 +181,7 @@ export default function SchedulePage() {
 
         </div>
         {/* Playoffs footer */}
-        <div className="bg-royal-600 mt-12 px-6 py-4 text-center rounded">
+        <div className="bg-royal-600 mt-6 px-6 py-4 text-center rounded">
           <p className="font-display text-white text-sm tracking-[0.4em]">GHSA STATE PLAYOFFS</p>
         </div>
 
