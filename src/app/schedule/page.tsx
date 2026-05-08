@@ -75,13 +75,13 @@ export default function SchedulePage() {
             </div>
             {/* Color key */}
             <div className="flex items-center gap-6 pb-1">
+              <span className="bg-white px-1 rounded-lg">
+                <span className="font-display text-black-500 text-sm tracking-widest">HOME</span>
+              </span>
+              <span className="text-white/70">/</span>
               <span className="font-display text-royal-400 text-sm tracking-widest">vs</span>
               <span className="text-white/70">/</span>
               <span className="font-display text-silver-500 text-sm tracking-widest">BYE</span>
-              <span className="text-white/70">/</span>
-              <span className="bg-white px-1">
-                <span className="font-display text-black-500 text-sm tracking-widest">HOME</span>
-              </span>
             </div>
           </div>
 
@@ -96,13 +96,13 @@ export default function SchedulePage() {
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">JV</h2>
             </div>
             <div className="flex items-center gap-4 pb-0.5">
+              <span className="bg-white px-1 rounded-lg">
+                <span className="font-display text-black-500 text-xs tracking-widest">HOME</span>
+              </span>
+              <span className="text-white/20">/</span>
               <span className="font-display text-royal-400 text-xs tracking-widest">vs</span>
               <span className="text-white/20">/</span>
               <span className="font-display text-silver-500 text-xs tracking-widest">BYE</span>
-              <span className="text-white/20">/</span>
-              <span className="bg-white px-1">
-                <span className="font-display text-black-500 text-xs tracking-widest">HOME</span>
-              </span>
             </div>
           </div>
           {jv.map((game, i) => <JVRow key={i} game={game} />)}
