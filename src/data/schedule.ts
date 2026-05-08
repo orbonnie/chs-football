@@ -53,6 +53,12 @@ export function getNextGame(): Game | null {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   return (
-    games.find(g => g.team === 'varsity' && g.location !== 'BYE' && new Date(g.isoDate) >= today) ?? null
+    games.find(g => {
+      if(g.location === 'BYE') return false
+
+      const [year, month, day] = g.isoDate.split('-').map(Number)
+      const gameDate = new Date(year, month - 1, day) // Format to 0-indexed months
+      return gameDate >= today
+    }) ?? null
   )
 }
