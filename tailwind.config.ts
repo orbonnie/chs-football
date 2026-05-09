@@ -24,7 +24,7 @@ const config: Config = {
           700: '#737373',
         },
         black: {
-          500: '#191919',
+          500: 'rgb(25, 25, 25)',
         }
       },
       fontFamily: {
