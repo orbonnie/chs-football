@@ -19,6 +19,7 @@ const navLinks = [
     children: [
       { label: "Our Sponsors", href: "/sponsors" },
       { label: "Become a Sponsor", href: "/sponsorships" },
+      { label: "Banner Fundraising", href: "/banners" },
     ],
   },
   { label: "Parents", href: "/parents" },
@@ -27,7 +28,7 @@ const navLinks = [
 const registerLinks = [
   {
     label: "Team Registration",
-    href: "https://registration.teamsnap.com/form/48104",
+    href: "/registration",
   },
   {
     label: "Submit Forms",
@@ -82,7 +83,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black-500/90 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-start gap-8">
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 w-full pr-4">
           {navLinks.map((link) => {
             if ("children" in link) {
               return (
@@ -180,7 +181,17 @@ export default function Navbar() {
               </div>
             )}
           </div>
+          {/* Junior Knights */}
+          <a
+            href="/jrk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto bg-white text-black-500 text-xs font-bold tracking-widest uppercase px-4 py-2 hover:bg-silver-300 transition-colors rounded-md"
+          >
+            JR Knights
+          </a>
         </nav>
+
         {/* Mobile hamburger */}
         <button
           className="md:hidden flex flex-col gap-1.5 p-2"
@@ -300,6 +311,14 @@ export default function Navbar() {
                 ))}
               </>
             )}
+            {/* Junior Knights */}
+            <a href="/jrk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-black-500 text-sm font-bold tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-300 transition-colors rounded-md"
+            >
+              JR Knights
+            </a>
           </div>
         </div>
       )}
