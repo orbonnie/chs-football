@@ -19,6 +19,7 @@ const navLinks = [
     children: [
       { label: "Our Sponsors", href: "/sponsors" },
       { label: "Become a Sponsor", href: "/sponsorships" },
+      { label: "Banner Fundraising", href: "/banners" },
     ],
   },
   { label: "Parents", href: "/parents" },
@@ -27,7 +28,7 @@ const navLinks = [
 const registerLinks = [
   {
     label: "Team Registration",
-    href: "https://registration.teamsnap.com/form/48104",
+    href: "/registration",
   },
   {
     label: "Submit Forms",
@@ -58,7 +59,7 @@ export default function Navbar() {
     }
 
     const handleResize = () => {
-      const isDesktop = window.matchMedia("(min-width: 768px)").matches
+      const isDesktop = window.matchMedia("(min-width: 1024px)").matches
 
       if (isDesktop) {
         setSponsorsOpen(false);
@@ -81,8 +82,30 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black-500/90 backdrop-blur-sm border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-start gap-8">
-        <nav className="hidden md:flex items-center gap-8">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-start gap-8 relative">
+
+        {/* Mobile logo — centered, only on mobile */}
+        {/* <Link href="/" className="lg:hidden absolute left-1/2 -translate-x-1/2">
+          <img src="/logo.png" alt="Centennial Knights" className="h-16 w-auto" />
+        </Link> */}
+
+        {/* Mobile logo + hamburger */}
+        <div className="lg:hidden flex items-center gap-3">
+          <Link href="/">
+            <img src="/logo.png" alt="Centennial Knights" className="h-12 w-auto" />
+          </Link>
+          <button
+            className="flex flex-col gap-1.5 p-2"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-6 h-0.5 bg-white transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-white transition-opacity ${open ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-white transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
+        </div>
+
+        <nav className="hidden lg:flex items-center gap-8 w-full pr-4">
           {navLinks.map((link) => {
             if ("children" in link) {
               return (
@@ -180,10 +203,20 @@ export default function Navbar() {
               </div>
             )}
           </div>
+          {/* Junior Knights */}
+          <a
+            href="/jrk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto bg-white text-black-500 text-xs font-bold tracking-widest uppercase px-4 py-2 hover:bg-silver-300 transition-colors rounded-md"
+          >
+            JR Knights
+          </a>
         </nav>
+
         {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
+        {/* <button
+          className="lg:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -196,12 +229,12 @@ export default function Navbar() {
           <span
             className={`block w-6 h-0.5 bg-white transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`}
           />
-        </button>
+        </button> */}
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-black-500 border-t border-white/10 px-6 py-6 flex flex-col gap-6">
+        <div className="lg:hidden absolute top-16 left-0 w-full md:w-80 bg-black-500/95 backdrop-blur-sm border border-white/10 rounded-br-2xl px-6 py-6 flex flex-col gap-6 z-50 shadow-2xl">
           {navLinks.map((link) => {
             if ("children" in link) {
               return (
@@ -300,6 +333,14 @@ export default function Navbar() {
                 ))}
               </>
             )}
+            {/* Junior Knights */}
+            <a href="/jrk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-black-500 text-sm font-bold tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-300 transition-colors rounded-md"
+            >
+              JR Knights
+            </a>
           </div>
         </div>
       )}
