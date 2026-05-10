@@ -17,16 +17,16 @@ export default async function PlayerPage({ params }: Props) {
   if (!player) return notFound()
 
   return (
-    <div className="bg-black-500 text-white pt-24 pb-20">
+    <div className="text-white pb-20">
 
       {/* HERO */}
-      <section className="border-b border-white/10">
+      <section className="border-b bg-black-500 border-white/10 pt-20">
         <div className="max-w-6xl mx-auto px-6 py-10">
 
           <div className="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
 
             {/* PHOTO */}
-            <div className="relative w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden bg-royal-700 border border-white/10">
+            <div className="relative w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden bg-royal-600 border border-white/10">
 
               {!player.photo ? (
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -54,7 +54,7 @@ export default async function PlayerPage({ params }: Props) {
             {/* INFO */}
             <div className="flex-1 w-full">
 
-              <p className="text-silver-400 tracking-[0.3em] uppercase text-sm">
+              <p className="text-silver-400 tracking-[0.2em] uppercase text-sm">
                 Centennial Knights Football
               </p>
 
@@ -99,7 +99,7 @@ export default async function PlayerPage({ params }: Props) {
 
       {/* OFFERS */}
       {player.offers && player.offers.length > 0 && (
-        <section className="bg-silver-500/95 max-w-6xl mx-auto px-6 py-12 border-b border-black-500/50">
+        <section className="bg-silver-400 max-w-6xl mx-auto px-6 py-12 border-b border-black-500/50">
 
           <h2 className="font-display text-4xl text-black-500 tracking-widest mb-6">
             OFFERS
@@ -182,10 +182,9 @@ export default async function PlayerPage({ params }: Props) {
 
       {/* HIGHLIGHTS (HUDL) */}
         {player.hudlUrl && (
-          <section className="bg-silver-400 max-w-6xl mx-auto px-6 py-12">
+          <section className="bg-black-500 max-w-6xl mx-auto px-6 py-12">
             <h2
-              className="font-display text-royal-500 text-4xl tracking-widest mb-6"
-              style={{ WebkitTextStroke: '0.5px rgba(0,0,0,0.2)' }}
+              className="font-display text-silver-400 text-4xl tracking-widest mb-6"
             >
               HIGHLIGHTS
             </h2>
