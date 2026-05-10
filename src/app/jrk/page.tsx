@@ -97,12 +97,12 @@ export default function JrkLandingPage() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="bg-white/10 hover:bg-white/15 border border-white/10 hover:border-royal-600/50 rounded-2xl px-6 py-5 text-center transition-all duration-200 group"
+                className="bg-silver-400 hover:bg-white border border-white/10 hover:border-royal-600/50 rounded-2xl px-6 py-5 text-center transition-all duration-200 group"
               >
-                <p className="font-display text-black-500 text-2xl tracking-widest group-hover:text-white transition-colors">
+                <p className="font-display text-black-500 text-2xl tracking-widest group-hover:font-bold transition-colors">
                   {link.label.toUpperCase()}
                 </p>
-                <p className="text-white text-xs font-semibold mt-1 tracking-wide ">
+                <p className="text-black-500/80 text-xs font-semibold mt-1 tracking-wide ">
                   {link.description}
                 </p>
               </Link>
@@ -113,7 +113,7 @@ export default function JrkLandingPage() {
         {/* Scroll indicator */}
         <div className="relative z-10 mt-12 mb-10 flex flex-col items-center gap-2 text-silver-500">
           <svg
-            className="w-5 h-5 animate-bounce"
+            className="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

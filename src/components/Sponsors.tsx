@@ -36,7 +36,7 @@ export default function Sponsors() {
               href={sponsor.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-royal-600 relative flex items-center justify-center group hover:bg-royal-500 transition-colors overflow-hidden aspect-[3/2]"
+              className="bg-royal-600 relative flex items-center justify-center group hover:bg-royal-500 transition-colors overflow-hidden aspect-[3/2] rounded-md"
             >
               {sponsor.logo ? (
                 <Image

@@ -274,12 +274,6 @@ export default function SchedulePage() {
             ))}
           </div>
         </div>
-        {/* Playoffs footer */}
-        <div className="bg-royal-600 mt-6 px-6 py-4 text-center rounded">
-          <p className="font-display text-white text-sm tracking-[0.4em]">
-            GHSA STATE PLAYOFFS
-          </p>
-        </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export default function RecruitingPage() {
     <div className="min-h-screen bg-silver-300 pt-24 pb-20 px-6">
       <div className="max-w-4xl mx-auto">
 
-        <div className="bg-royal-600 -mx-6 px-6 py-10 mb-12">
+        <div className="bg-royal-600 -mx-6 px-6 py-10 mb-12 rounded-md">
           <div className="max-w-4xl mx-auto">
             <h1 className="font-display text-white text-6xl tracking-widest text-center">
               KNIGHTS RECRUITING PORTAL

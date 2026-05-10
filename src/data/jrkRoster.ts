@@ -7,7 +7,6 @@ export type JrkPlayer = {
 
 export const players: JrkPlayer[] = [
     // 6TH GRADE
-  { grade: '6th', number: 1, name: 'Tyler Davis', position: 'LB' },
 
   // 7TH GRADE
   { grade: '7th', number: 6, name: 'Arlo Owens', position: 'QB' },
@@ -41,8 +40,6 @@ export const players: JrkPlayer[] = [
   { grade: '7th', number: 1, name: 'Tynique Swinton', position: 'OL/DL' },
 
   // 8TH GRADE
-  { grade: '8th', number: 1, name: 'John Smith', position: 'QB' },
-  { grade: '8th', number: 2, name: 'Mike Johnson', position: 'WR' },
 ]
 
 export const eighthRoster = players.filter(p => p.grade === '8th')
