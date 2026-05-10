@@ -5,7 +5,8 @@ export const metadata: Metadata = {
 };
 
 const TEAMSNAP_URL = "https://registration.teamsnap.com/form/48104";
-const K5_REG_URL = "https://app.amilia.com/store/en/city-of-roswell/shop/programs/128058?subCategoryIds=6626396";
+const K5_REG_URL =
+  "https://app.amilia.com/store/en/city-of-roswell/shop/programs/128058?subCategoryIds=6626396";
 
 const fees = [
   {
@@ -49,7 +50,7 @@ export default function RegisterPage() {
           <p className="font-display text-royal-600 text-3xl tracking-[0.4em]">
             2026
           </p>
-          <h1 className="font-display text-black-500 text-7xl tracking-widest">
+          <h1 className="font-display text-black-500 text-5xl sm:text-7xl tracking-widest">
             REGISTRATION
           </h1>
         </div>
@@ -106,23 +107,18 @@ export default function RegisterPage() {
           <h2 className="font-display text-black-500 text-3xl tracking-widest mb-2">
             FUNDRAISING
           </h2>
-            <p className="text-gray-700 mb-10 leading-relaxed">
-              We offer
-              fundraising oppurtunities through banner sales and SnapRaise to
-              offset player fees.
-              Check out our{" "}
-            <a
-              href="/banners"
-              className="text-royal-600 font-bold"
-            >
+          <p className="text-gray-700 mb-10 leading-relaxed">
+            We offer fundraising oppurtunities through banner sales and
+            SnapRaise to offset player fees. Check out our{" "}
+            <a href="/banners" className="text-royal-600 font-bold">
               Banners Page
             </a>{" "}
             for more information.
-            </p>
+          </p>
 
           {/* Fee table */}
           <div className="rounded-xl overflow-hidden border border-gray-200">
-            <div className="grid grid-cols-[1fr_6rem_6rem_6rem] bg-black-500 px-5 py-3 text-white font-display text-xs tracking-widest uppercase">
+            <div className="hidden sm:grid grid-cols-[1fr_6rem_6rem_6rem] bg-black-500 px-5 py-3 text-white font-display text-xs tracking-widest uppercase">
               <span></span>
               <span className="text-center">9th–12th</span>
               <span className="text-center">Middle School</span>
@@ -131,20 +127,54 @@ export default function RegisterPage() {
             {fees.map((row, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-[1fr_6rem_6rem_6rem] px-5 py-4 border-b border-gray-100 last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
+                className={`border-b border-gray-100 last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
               >
-                <span className="text-sm font-semibold text-gray-700 pr-4">
-                  {row.label}
-                </span>
-                <span className="text-sm text-center text-gray-700">
-                  {row.elementary}
-                </span>
-                <span className="text-sm text-center text-gray-700">
-                  {row.middle}
-                </span>
-                <span className="text-sm text-center text-gray-700">
-                  {row.highSchool}
-                </span>
+                {/* Mobile */}
+                <div className="sm:hidden px-5 py-4 space-y-2">
+                  <p className="text-sm font-semibold text-gray-700">
+                    {row.label}
+                  </p>
+                  <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
+                    <div className="text-center">
+                      <p className="font-display text-gray-400 tracking-widest uppercase mb-0.5">
+                        9th–12th
+                      </p>
+                      <p className="font-bold text-gray-700">
+                        {row.highSchool}
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <p className="font-display text-gray-400 tracking-widest uppercase mb-0.5">
+                        Middle
+                      </p>
+                      <p className="font-bold text-gray-700">{row.middle}</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="font-display text-gray-400 tracking-widest uppercase mb-0.5">
+                        K-5th
+                      </p>
+                      <p className="font-bold text-gray-700">
+                        {row.elementary}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop */}
+                <div className="hidden sm:grid grid-cols-[1fr_6rem_6rem_6rem] px-5 py-4">
+                  <span className="text-sm font-semibold text-gray-700 pr-4">
+                    {row.label}
+                  </span>
+                  <span className="text-sm text-center text-gray-700">
+                    {row.highSchool}
+                  </span>
+                  <span className="text-sm text-center text-gray-700">
+                    {row.middle}
+                  </span>
+                  <span className="text-sm text-center text-gray-700">
+                    {row.elementary}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
