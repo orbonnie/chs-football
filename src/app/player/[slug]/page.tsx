@@ -97,8 +97,30 @@ export default async function PlayerPage({ params }: Props) {
         </div>
       </section>
 
+      {/* OFFERS */}
+      {player.offers && player.offers.length > 0 && (
+        <section className="bg-silver-500/95 max-w-6xl mx-auto px-6 py-12 border-b border-black-500/50">
+
+          <h2 className="font-display text-4xl text-black-500 tracking-widest mb-6">
+            OFFERS
+          </h2>
+
+          <div className="flex flex-wrap gap-4">
+
+            {player.offers.map((offer) => (
+              <div
+                key={offer}
+                className="bg-royal-600 px-6 py-4 rounded-lg font-semibold tracking-wide border border-black-500/20"
+              >
+                {offer}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* FOOTBALL STATS */}
-      <section className="bg-white max-w-6xl mx-auto px-6 py-12">
+      <section className="bg-white max-w-6xl mx-auto px-6 py-8 border-b border-x-black-500/50">
 
         <h2 className="font-display text-black-500 text-3xl tracking-widest mb-6">
           FOOTBALL STATS
@@ -127,7 +149,7 @@ export default async function PlayerPage({ params }: Props) {
 
       {/* ATHLETIC METRICS */}
       {player.weightRoomStats && (
-        <section className="bg-white max-w-6xl mx-auto px-6 pb-12">
+        <section className="bg-white max-w-6xl mx-auto px-6 py-8 border-b border-black-500/30">
 
           <h2 className="font-display text-black-500 text-3xl tracking-widest mb-6">
             ATHLETIC METRICS
@@ -158,32 +180,13 @@ export default async function PlayerPage({ params }: Props) {
         </section>
       )}
 
-      {/* OFFERS */}
-      {player.offers && player.offers.length > 0 && (
-        <section className="max-w-6xl mx-auto px-6 py-12">
-
-          <h2 className="font-display text-4xl tracking-widest mb-6">
-            OFFERS
-          </h2>
-
-          <div className="flex flex-wrap gap-4">
-
-            {player.offers.map((offer) => (
-              <div
-                key={offer}
-                className="bg-royal-600 px-6 py-4 rounded-2xl font-semibold tracking-wide"
-              >
-                {offer}
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* HIGHLIGHTS (HUDL) */}
         {player.hudlUrl && (
-          <section className="bg-silver-500 max-w-6xl mx-auto px-6 py-12">
-            <h2 className="font-display text-royal-600 text-4xl tracking-widest mb-6">
+          <section className="bg-silver-400 max-w-6xl mx-auto px-6 py-12">
+            <h2
+              className="font-display text-royal-500 text-4xl tracking-widest mb-6"
+              style={{ WebkitTextStroke: '0.5px rgba(0,0,0,0.2)' }}
+            >
               HIGHLIGHTS
             </h2>
             <div className="max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden border border-white/10 bg-black">

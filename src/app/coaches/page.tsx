@@ -40,7 +40,7 @@ export default function CoachesPage() {
         </div>
 
         {/* Head Coach — featured */}
-        <div className="bg-white rounded-2xl overflow-hidden mb-10 flex flex-col md:flex-row">
+        <div className="bg-white rounded-xl overflow-hidden mb-10 flex flex-col md:flex-row">
 
           {/* Photo */}
           <div className="relative w-full md:w-80 shrink-0 aspect-[4/3] md:aspect-auto bg-royal-600">
@@ -62,18 +62,18 @@ export default function CoachesPage() {
 
           {/* Info */}
           <div className="flex flex-col justify-center px-8 py-10">
-            <p className="font-display text-royal-600 text-base tracking-[0.3em] mb-1">
+            <p className="font-display text-royal-600 text-2xl tracking-[0.3em] mb-1">
               {headCoach.title.toUpperCase()}
             </p>
             <h2 className="font-display text-black-500 text-5xl tracking-wider leading-none mb-6">
               {headCoach.name.toUpperCase()}
             </h2>
-            <p className="text-royal-900/60 text-sm leading-relaxed max-w-xl mb-8">
+            <p className="text-black-500/90 text-sm leading-relaxed max-w-xl mb-8">
               {headCoach.bio}
             </p>
             <a
               href={`mailto:${headCoach.email}`}
-              className="inline-block self-start bg-royal-600 hover:bg-royal-500 text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-xl transition-colors"
+              className="inline-block self-start bg-royal-600 hover:bg-black-500 text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-md transition-colors"
             >
               Contact
             </a>
@@ -82,15 +82,15 @@ export default function CoachesPage() {
 
         {/* Staff grid */}
         <div className="mb-6">
-          <p className="font-display text-silver-400 text-base tracking-[0.3em]">VARSITY STAFF</p>
+          <p className="font-display text-black-500 text-xl tracking-[0.3em]">VARSITY STAFF</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-white/5">
           {staff.map((coach, i) => (
-            <div key={i} className="bg-black-500 hover:bg-royal-800 transition-colors group">
+            <div key={i} className="bg-black-500 hover:bg-black-500/95 transition-colors group rounded-xl overflow-hidden">
 
               {/* Photo */}
-              <div className="relative aspect-[3/4] bg-royal-800">
+              <div className="relative aspect-[3/4] bg-royal-600">
                 {coach.photo ? (
                   <Image
                     src={coach.photo}
@@ -99,7 +99,7 @@ export default function CoachesPage() {
                     className="object-cover object-top"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-royal-700">
+                  <div className="absolute inset-0 flex items-center justify-center bg-royal-600">
                     <span className="font-display text-white/20 text-5xl tracking-widest">
                       {initials(coach.name)}
                     </span>

@@ -58,7 +58,7 @@ export default function BannersPage() {
       <div className="max-w-4xl mx-auto">
         {/* Hero */}
         <div className="mb-4">
-          <p className="font-display text-royal-600 text-md tracking-[0.4em] uppercase mb-2">
+          <p className="font-display text-royal-600 text-3xl tracking-[0.4em] uppercase mb-2">
             Fundraising
           </p>
           <h1 className="font-display text-black-500 text-7xl md:text-8xl tracking-widest leading-none">
@@ -92,7 +92,7 @@ export default function BannersPage() {
               className="bg-royal-600 rounded-2xl px-8 py-8 flex flex-col gap-6"
             >
               <div>
-                <p className="font-display text-white/60 text-xs tracking-widest uppercase mb-2">
+                <p className="font-display text-white/60 text-lg tracking-widest uppercase mb-2">
                   Banner Size
                 </p>
                 <p className="font-display text-white text-5xl tracking-widest">

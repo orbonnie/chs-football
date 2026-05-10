@@ -18,7 +18,7 @@ const colGrid = "grid grid-cols-[7rem_1fr_5rem_5rem] items-center gap-x-4"
 
 function GradeHeaders() {
   return (
-    <div className={`hidden md:grid ${colGrid} px-6 py-2 border-b border-gray-200 bg-gray-50 font-display text-xs tracking-widest uppercase text-gray-400`}>
+    <div className={`hidden md:grid ${colGrid} bg-silver-400 px-6 py-2 border-b border-gray-400 font-display text-sm tracking-widest uppercase text-gray-700`}>
       <span>Date</span>
       <span>Opponent</span>
       <span className="text-center">Time</span>
@@ -31,7 +31,7 @@ function GameRow({ game }: { game: JrkGame }) {
   const isBye = game.location === "BYE"
   const textColor = gameTextColor(game.location)
   return (
-    <div className="px-6 py-4 border-b border-gray-200 last:border-0">
+    <div className="px-6 py-4 border-b border-gray-400 last:border-0">
       {/* Mobile */}
       <div className="flex items-start justify-between md:hidden">
         <div>
@@ -77,26 +77,28 @@ export default function JrkSchedulePage() {
   const active = grades.find(g => g.id === activeGrade)!
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-20 px-6">
+    <div className="min-h-screen pt-24 pb-20 px-6">
       <div className="max-w-4xl mx-auto">
 
         {/* Hero */}
         <div className="mb-10">
-          <p className="font-display text-royal-600 text-3xl tracking-[0.4em]">2026</p>
+          <p className="font-display text-silver-700 text-3xl tracking-widest mt-1 flex items-center gap-6">
+            <span className="font-display text-royal-600 text-3xl tracking-[0.2em]">2026</span>
+            JR KNIGHTS
+          </p>
           <h1 className="font-display text-black-500 text-7xl tracking-widest">SCHEDULE</h1>
-          <p className="font-display text-silver-500 text-xl tracking-widest mt-1">JR. KNIGHTS</p>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-8 border-b border-gray-200">
+        <div className="flex gap-2">
           {grades.map((grade) => (
             <button
               key={grade.id}
               onClick={() => setActiveGrade(grade.id)}
-              className={`font-display tracking-widest uppercase text-sm px-6 py-3 rounded-t-xl transition-all duration-200 border-b-2 -mb-px ${
+              className={`font-display tracking-widest uppercase text-sm px-6 py-3 rounded-t-xl transition-all duration-200 -mb-px ${
                 activeGrade === grade.id
-                  ? "bg-black-500 text-white border-black-500"
-                  : "bg-gray-50 text-gray-500 border-transparent hover:bg-gray-100"
+                  ? "bg-royal-600 text-white border-black-50"
+                  : "bg-black-500 text-white border border-black-500/50 hover:bg-gray-500"
               }`}
             >
               {grade.label}
@@ -105,19 +107,19 @@ export default function JrkSchedulePage() {
         </div>
 
         {/* Active grade */}
-        <div className="rounded-2xl overflow-hidden border border-gray-200">
-          <div className="bg-black-500 px-6 py-5 flex items-center justify-between">
+        <div className="rounded-2xl rounded-tl-none overflow-hidden border border-gray-400">
+          <div className="bg-royal-600 px-6 py-5 flex items-center justify-between">
             <h2 className="font-display text-white text-3xl tracking-widest leading-none">
               {active.label.toUpperCase()}
             </h2>
-            <div className="flex items-center gap-3 sm:gap-6 pb-1">
-              <span className="font-display text-royal-400 text-xs tracking-widest">HOME</span>
-              <span className="text-white/70">/</span>
-              <span className="bg-white px-1 rounded-md">
-                <span className="font-display text-black-500 text-xs tracking-widest">AWAY</span>
-              </span>
-              <span className="text-white/70">/</span>
-              <span className="font-display text-silver-500 text-xs tracking-widest">BYE</span>
+            <div className="bg-white/90 px-3 py-1 rounded-lg flex items-center gap-3 sm:gap-6">
+
+              <span className="font-display text-royal-600 text-md tracking-widest">HOME</span>
+
+              <span className="text-black-500">/</span>
+              <span className="font-display text-black-500 text-md tracking-widest">AWAY</span>
+              <span className="text-black-500/70">/</span>
+              <span className="font-display text-silver-700 text-md tracking-widest">BYE</span>
             </div>
           </div>
           <GradeHeaders />
