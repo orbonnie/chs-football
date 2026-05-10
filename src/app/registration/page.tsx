@@ -102,14 +102,14 @@ export default function RegisterPage() {
             </span>
           </p>
 
-          {/* Banners */}
-          <div className="bg-royal-600/10 border border-royal-600/30 rounded-xl px-5 py-4 mb-6">
-            <p className="text-royal-600 text-sm leading-relaxed">
-              <span className="font-bold">Fundraising:</span> We offer
+          {/* Fundraising */}
+          <h2 className="font-display text-black-500 text-3xl tracking-widest mb-2">
+            FUNDRAISING
+          </h2>
+            <p className="text-gray-700 mb-10 leading-relaxed">
+              We offer
               fundraising oppurtunities through banner sales and SnapRaise to
               offset player fees.
-            </p>
-            <p className="text-royal-600 text-sm leading-relaxed mt-3">
               Check out our{" "}
             <a
               href="/banners"
@@ -119,15 +119,14 @@ export default function RegisterPage() {
             </a>{" "}
             for more information.
             </p>
-          </div>
 
           {/* Fee table */}
           <div className="rounded-xl overflow-hidden border border-gray-200">
             <div className="grid grid-cols-[1fr_6rem_6rem_6rem] bg-black-500 px-5 py-3 text-white font-display text-xs tracking-widest uppercase">
               <span></span>
-              <span className="text-center">K-5th</span>
-              <span className="text-center">Middle School</span>
               <span className="text-center">9th–12th</span>
+              <span className="text-center">Middle School</span>
+              <span className="text-center">K-5th</span>
             </div>
             {fees.map((row, i) => (
               <div
