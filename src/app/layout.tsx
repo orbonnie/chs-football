@@ -29,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${bebasNeue.variable} ${inter.variable} bg-black-500 text-white font-body antialiased min-h-screen flex flex-col`}>
+    <html lang="en" data-scroll-behavior="smooth">
+      <body className={`${bebasNeue.variable} ${inter.variable} bg-white text-white font-body antialiased min-h-screen flex flex-col`}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

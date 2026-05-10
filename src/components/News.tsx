@@ -4,10 +4,10 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { news } from "@/data/news"
+import { news as defaultNews } from "@/data/news"
 
-export default function News() {
-  const slides = [...news, news[0]]
+export default function News({ data = defaultNews }: { data?: typeof defaultNews }) {
+  const slides = [...data, data[0]]
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const [transitionEnabled, setTransitionEnabled] = useState(true)
@@ -19,7 +19,7 @@ export default function News() {
   const prev = () => {
     if (index === 0) {
       setTransitionEnabled(false)
-      setIndex(news.length - 1)
+      setIndex(data.length - 1)
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -39,14 +39,14 @@ export default function News() {
 
     const interval = setInterval(() => {
       next()
-    }, 5000)
+    }, 6000)
 
     return () => clearInterval(interval)
   }, [paused])
 
     // seamless reset after cloned first slide
     useEffect(() => {
-      if (index === news.length) {
+      if (index === data.length) {
         const timeout = setTimeout(() => {
           setTransitionEnabled(false)
           setIndex(0)
@@ -60,15 +60,15 @@ export default function News() {
 
         return () => clearTimeout(timeout)
       }
-    }, [index, news.length])
+    }, [index, data.length])
 
   return (
     <section className="bg-silver-300 pt-20 pb-8 px-6">
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="text-center mb-14">
-          <p className="font-display text-royal-600 text-lg tracking-[0.4em] mb-2">
+        <div className="text-center mb-8">
+          <p className="font-display text-black-500 text-xl tracking-[0.4em] mb-2">
             LATEST
           </p>
 
@@ -86,10 +86,10 @@ export default function News() {
 
           <button
             onClick={() => setPaused((prev) => !prev)}
-            className="absolute top-4 right-4 z-40
+            className="absolute top-3 sm:top-6 left-3 sm:left-6 z-40
                       bg-black-500/60 hover:bg-black-500/80
                       text-white rounded-full
-                      w-12 h-12 flex items-center justify-center
+                      w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center
                       transition"
             aria-label={paused ? "Play carousel" : "Pause carousel"}
           >
@@ -130,6 +130,7 @@ export default function News() {
                     src={item.image}
                     alt={item.title}
                     fill
+                    sizes="75vw"
                     className="object-contain"
                     priority={i === 0}
                   />
@@ -183,7 +184,7 @@ export default function News() {
 
         {/* DOTS */}
         <div className="flex justify-center gap-3 mt-6">
-          {news.map((_, i) => (
+          {data.map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
