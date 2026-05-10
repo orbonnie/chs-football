@@ -46,10 +46,10 @@ export type Player = {
 
 export default function PlayerCard({ player }: { player: Player }) {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden flex flex-col border border-royal-800/20">
+    <div className="bg-white rounded-2xl overflow-hidden flex flex-col border border-royal-600/20">
 
       {/* Photo with jersey number badge */}
-      <div className="relative aspect-[6/7] bg-royal-700">
+      <div className="relative aspect-[6/7] bg-royal-600">
         {!player.photo ? (
           <div className="absolute inset-0 flex items-center justify-center bg-royal-600">
             <span className="text-white text-7xl font-bold">
