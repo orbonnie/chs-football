@@ -44,12 +44,17 @@ export default function Sponsors() {
                   alt={sponsor.name}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="object-contain opacity-90 group-hover:opacity-100 transition"
+                  className="object-contain opacity-90 group-hover:opacity-100 transition h-3/4"
                 />
               ) : (
-                <span className="text-white/30 text-sm tracking-wider">
-                  {sponsor.name}
-                </span>
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3/4 bg-white flex items-center justify-center px-4">
+                  <span
+                    className="font-display text-black-500 text-xl font-black tracking-widest text-center uppercase leading-none w-full  group-hover:text-royal-500"
+                    style={{ fontSize: 'clamp(0.75rem, 4vw, 1.5rem)' }}
+                  >
+                    {sponsor.name}
+                  </span>
+                </div>
               )}
             </a>
           ))}
