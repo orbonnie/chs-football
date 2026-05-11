@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
 
 const CALENDARS = [
   {
@@ -36,21 +35,6 @@ const CALENDARS = [
     color: '#EAB308'
   },
 ]
-
-const variants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? -300 : 300,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction > 0 ? 300 : -300,
-    opacity: 0,
-  }),
-}
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY
 
@@ -187,7 +171,6 @@ export default function Calendar() {
   const [view, setView] = useState<View>('agenda')
   const [viewOpen, setViewOpen] = useState(false)
   const [calendarOpen, setCalendarOpen] = useState(false)
-  const [direction, setDirection] = useState(0)
 
   const viewRef = useRef<HTMLDivElement>(null)
   const calendarFilterRef = useRef<HTMLDivElement>(null)
@@ -264,14 +247,8 @@ export default function Calendar() {
 
   const selectedEvents = selectedDate ? (eventsByDate[selectedDate] || []) : []
 
-  const prev = () => {
-    setDirection(1)
-    setCurrentDate(new Date(year, month - 1, 1))
-  }
-  const next = () => {
-    setDirection(-1)
-    setCurrentDate(new Date(year, month + 1, 1))
-  }
+  const prev = () => setCurrentDate(new Date(year, month - 1, 1))
+  const next = () => setCurrentDate(new Date(year, month + 1, 1))
 
   const today = new Date()
   const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
@@ -394,57 +371,39 @@ export default function Calendar() {
               <p className="text-gray-400 text-sm">{error}</p>
             </div>
           ) : view === 'month' ? (
-            <div className="relative overflow-hidden">
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={`${year}-${month}`}
-                  custom={direction}
-                  variants={variants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.25 }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  onDragEnd={(e, info) => {
-                    if (info.offset.x < -80) next()
-                    else if (info.offset.x > 80) prev()
-                  }}
-                  className="grid grid-cols-7 auto-rows-80 sm:auto-rows-[100px] bg-white">
-                  {Array.from({ length: firstDay }).map((_, i) => (
-                    <div key={`empty-${i}`} className="border-b border-r border-gray-100 bg-gray-50/50 h-full p-1 flex flex-col" />
-                  ))}
-                  {Array.from({ length: daysInMonth }).map((_, i) => {
-                    const day = i + 1
-                    const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-                    const dayEvents = eventsByDate[dateKey] || []
-                    const isToday = dateKey === todayKey
-                    const isSelected = dateKey === selectedDate
+            <div className="grid grid-cols-7 auto-rows-80 sm:auto-rows-[100px] bg-white">
+              {Array.from({ length: firstDay }).map((_, i) => (
+                <div key={`empty-${i}`} className="border-b border-r border-gray-100 bg-gray-50/50 h-full p-1 flex flex-col" />
+              ))}
+              {Array.from({ length: daysInMonth }).map((_, i) => {
+                const day = i + 1
+                const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+                const dayEvents = eventsByDate[dateKey] || []
+                const isToday = dateKey === todayKey
+                const isSelected = dateKey === selectedDate
 
-                    return (
-                      <div
-                        key={day}
-                        onClick={() => setSelectedDate(isSelected ? null : dateKey)}
-                        className={`border-b border-r border-gray-100 min-h-[4rem] p-1.5 cursor-pointer transition-colors ${isSelected ? 'bg-royal-600/10' : 'hover:bg-gray-50'}`}
-                      >
-                        <div className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-display mb-1 ${isToday ? 'bg-royal-600 text-white' : 'text-gray-700'}`}>
-                          {day}
+                return (
+                  <div
+                    key={day}
+                    onClick={() => setSelectedDate(isSelected ? null : dateKey)}
+                    className={`border-b border-r border-gray-100 min-h-[4rem] p-1.5 cursor-pointer transition-colors ${isSelected ? 'bg-royal-600/10' : 'hover:bg-gray-50'}`}
+                  >
+                    <div className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-display mb-1 ${isToday ? 'bg-royal-600 text-white' : 'text-gray-700'}`}>
+                      {day}
+                    </div>
+                    <div className="space-y-0.5 overflow-hidden flex-1">
+                      {dayEvents.slice(0, 2).map(event => (
+                        <div key={event.id} className="text-xs text-white px-0.5 py-0.5 rounded truncate" style={{ backgroundColor: event.calendarColor }}>
+                          {event.summary}
                         </div>
-                        <div className="space-y-0.5 overflow-hidden flex-1">
-                          {dayEvents.slice(0, 2).map(event => (
-                            <div key={event.id} className="text-xs text-white px-0.5 py-0.5 rounded truncate" style={{ backgroundColor: event.calendarColor }}>
-                              {event.summary}
-                            </div>
-                          ))}
-                          {dayEvents.length > 2 && (
-                            <div className="text-xs text-gray-500 font-bold">+{dayEvents.length - 2} more</div>
-                          )}
-                        </div>
-                      </div>
-                    )
-                  })}
-                </motion.div>
-              </AnimatePresence>
+                      ))}
+                      {dayEvents.length > 2 && (
+                        <div className="text-xs text-gray-500 font-bold">+{dayEvents.length - 2} more</div>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           ) : (
             <AgendaView currentDate={currentDate} eventsByDate={eventsByDate} todayKey={todayKey} />
