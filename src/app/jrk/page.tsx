@@ -88,7 +88,7 @@ export default function JrkLandingPage() {
 
           <p className="text-silver-400 text-lg font-bold max-w-xl mx-auto leading-relaxed mb-12">
             The official youth feeder program for Centennial High School
-            Football — developing Knights from kindergarten through 8th grade.
+            Football by developing Knights from kindergarten through 8th grade.
           </p>
 
           {/* Quick links */}

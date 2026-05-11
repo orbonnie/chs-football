@@ -128,7 +128,7 @@ export default function ParentsPage() {
             <p className="text-white/90 leading-relaxed">
               Our program is committed to developing young men who pursue excellence in the classroom
               with the same effort and discipline they bring to the field. Academic success is not just
-              a requirement for participation — it is a foundational part of who we are.
+              a requirement for participation, it is a foundational part of who we are.
             </p>
             <p className="text-white/90 leading-relaxed">
               We expect every player to prioritize the "student" role by managing time wisely,
