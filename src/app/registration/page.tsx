@@ -8,20 +8,38 @@ const TEAMSNAP_URL = "https://registration.teamsnap.com/form/48104";
 const K5_REG_URL =
   "https://app.amilia.com/store/en/city-of-roswell/shop/programs/128058?subCategoryIds=6626396";
 
+// const fees = [
+//   {
+//     label: "Registration Fee",
+//     elementary: "$360",
+//     middle: "$150",
+//     highSchool: "$150",
+//   },
+//   {
+//     label: "Player Dues",
+//     elementary: "$0",
+//     middle: "$650",
+//     highSchool: "$850",
+//   },
+// ];
+
 const fees = [
   {
-    label: "Registration Fee",
-    elementary: "$360",
-    middle: "$150",
-    highSchool: "$150",
+    program: 'High School',
+    registration: '$150',
+    dues: '$850',
   },
   {
-    label: "Player Dues",
-    elementary: "$0",
-    middle: "$650",
-    highSchool: "$850",
+    program: 'Middle School',
+    registration: '$150',
+    dues: '$500',
   },
-];
+  {
+    program: 'K–5th',
+    registration: '$360',
+    dues: '$0',
+  },
+]
 
 const programs = [
   {
@@ -118,63 +136,16 @@ export default function RegisterPage() {
 
           {/* Fee table */}
           <div className="rounded-lg overflow-hidden border border-gray-400">
-            <div className="hidden sm:grid grid-cols-[1fr_6rem_6rem_6rem] bg-black-500 px-5 py-3 text-white font-display text-xs tracking-widest uppercase">
-              <span></span>
-              <span className="text-center">9th–12th</span>
-              <span className="text-center">Middle School</span>
-              <span className="text-center">K-5th</span>
+              <div className="grid grid-cols-4 bg-black-500 px-6 py-3 font-display text-sm tracking-widest uppercase text-white">
+              <span>Program</span>
+              <span className="text-center">Registration Fee</span>
+              <span className="text-right">Players Dues</span>
             </div>
-            {fees.map((row, i) => (
-              <div
-                key={i}
-                className={`border-b border-gray-300 last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
-              >
-                {/* Mobile */}
-                <div className="sm:hidden px-5 py-4 space-y-2">
-                  <p className="text-sm font-semibold text-gray-700">
-                    {row.label}
-                  </p>
-                  <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
-                    <div className="text-center">
-                      <p className="font-display text-gray-400 tracking-widest uppercase mb-0.5">
-                        9th–12th
-                      </p>
-                      <p className="font-bold text-gray-700">
-                        {row.highSchool}
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <p className="font-display text-gray-400 tracking-widest uppercase mb-0.5">
-                        Middle
-                      </p>
-                      <p className="font-bold text-gray-700">{row.middle}</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="font-display text-gray-400 tracking-widest uppercase mb-0.5">
-                        K-5th
-                      </p>
-                      <p className="font-bold text-gray-700">
-                        {row.elementary}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Desktop */}
-                <div className="hidden sm:grid grid-cols-[1fr_6rem_6rem_6rem] px-5 py-4">
-                  <span className="text-sm font-semibold text-gray-700 pr-4">
-                    {row.label}
-                  </span>
-                  <span className="text-sm text-center text-gray-700">
-                    {row.highSchool}
-                  </span>
-                  <span className="text-sm text-center text-gray-700">
-                    {row.middle}
-                  </span>
-                  <span className="text-sm text-center text-gray-700">
-                    {row.elementary}
-                  </span>
-                </div>
+            {fees.map((fee, i) => (
+              <div key={i} className={`grid grid-cols-4 px-6 py-4 border-t border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+                <span className="font-display text-royal-600 text-md tracking-wider">{fee.program}</span>
+                <span className="text-gray-700 text-md text-center">{fee.registration}</span>
+                <span className="text-gray-700 text-md text-right">{fee.dues}</span>
               </div>
             ))}
           </div>
