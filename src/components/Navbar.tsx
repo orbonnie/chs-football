@@ -53,6 +53,10 @@ const JrkLinks = [
     href: "/jrk/schedule",
   },
   {
+    label: "Roster",
+    href: "/jrk/roster",
+  },
+  {
     label: "Register",
     href: "/jrk/info",
   },
@@ -68,20 +72,36 @@ export default function Navbar() {
   const sponsorsRef = useRef<HTMLDivElement>(null);
   const registerRef = useRef<HTMLDivElement>(null);
   const jrkRef = useRef<HTMLDivElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
+
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const isDesktop = window.matchMedia("(min-width: 1024px)").matches
       const target = event.target as Node;
 
-      if (sponsorsRef.current && !sponsorsRef.current.contains(target)) {
-        setSponsorsOpen(false);
+      if (isDesktop) {
+        if (sponsorsRef.current && !sponsorsRef.current.contains(target)) {
+          setSponsorsOpen(false);
+        }
+
+        if (registerRef.current && !registerRef.current.contains(target)) {
+          setRegisterOpen(false);
+        }
+
+        if (jrkRef.current && !jrkRef.current.contains(target)) {
+          setJrkOpen(false)
+        }
       }
 
-      if (registerRef.current && !registerRef.current.contains(target)) {
-        setRegisterOpen(false);
-      }
-
-      if (jrkRef.current && !jrkRef.current.contains(target)) {
+      if (
+        menuRef.current && !menuRef.current.contains(target) &&
+        hamburgerRef.current && !hamburgerRef.current.contains(target)) {
+        setOpen(false)
+        setSponsorsOpen(false)
+        setRegisterOpen(false)
         setJrkOpen(false)
       }
     }
@@ -92,14 +112,11 @@ export default function Navbar() {
       if (isDesktop) {
         setSponsorsOpen(false);
         setRegisterOpen(false);
-        document.addEventListener("click", handleClickOutside)
-      } else {
-        document.removeEventListener("click", handleClickOutside)
+        setJrkOpen(false);
       }
     }
 
-    handleResize()
-
+    document.addEventListener("click", handleClickOutside)
     window.addEventListener("resize", handleResize)
 
     return () => {
@@ -123,6 +140,7 @@ export default function Navbar() {
             <img src="/logo.png" alt="Centennial Knights" className="h-12 w-auto" />
           </Link>
           <button
+            ref={hamburgerRef}
             className="flex flex-col gap-1.5 p-2"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
@@ -170,7 +188,7 @@ export default function Navbar() {
                           key={child.href}
                           href={child.href}
                           onClick={() => setSponsorsOpen(false)}
-                          className="bg-white text-black-500 tracking-widest text-xs font-bold uppercase px-5 py-4 hover:bg-silver-500 transition-colors border-b border-royal-900/10 last:border-0"
+                          className="bg-white text-black-500 tracking-widest text-xs font-bold uppercase px-5 py-4 hover:bg-silver-400/80 transition-colors border-b border-black-500/10 last:border-0"
                         >
                           {child.label}
                         </Link>
@@ -198,7 +216,7 @@ export default function Navbar() {
                 e.stopPropagation();
                 setRegisterOpen(!registerOpen);
               }}
-              className="bg-royal-600 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 hover:bg-royal-500 transition-colors flex items-center gap-2 rounded-md"
+              className="bg-royal-600 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 hover:text-royal-600 hover:bg-white transition-colors flex items-center gap-2 rounded-md"
             >
               Register
               <svg
@@ -224,7 +242,7 @@ export default function Navbar() {
                     target={link.newTab ? "_blank" : undefined}
                     rel={link.newTab ? "noopener noreferrer" : undefined}
                     onClick={() => setRegisterOpen(false)}
-                    className="bg-white text-royal-600 text-xs font-bold tracking-widest uppercase px-5 py-4 rounded-md hover:bg-silver-500 transition-colors border-b border-royal-900/10 last:border-0"
+                    className="bg-white text-royal-600 text-xs font-bold tracking-widest uppercase px-5 py-4 rounded-md hover:bg-silver-400/80 transition-colors border-b border-black-500/10 last:border-0"
                   >
                     {link.label}
                   </a>
@@ -237,7 +255,7 @@ export default function Navbar() {
           <div ref={jrkRef} className="ml-auto relative">
             <button
               onClick={(e) => { e.stopPropagation(); setJrkOpen(!jrkOpen) }}
-              className="bg-white text-black-500 text-xs font-bold tracking-widest uppercase px-4 py-2 hover:bg-silver-300 transition-colors rounded-md flex items-center gap-2"
+              className="bg-white text-royal-600 text-sm font-bold tracking-widest uppercase px-4 py-2 hover:bg-royal-600 hover:text-white transition-colors rounded-md flex items-center gap-2"
             >
               JR Knights
               <svg className={`w-3 h-3 transition-transform ${jrkOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -251,7 +269,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setJrkOpen(false)}
-                    className="bg-white text-black-500 tracking-widest text-xs font-bold uppercase px-5 py-4 hover:bg-silver-500 transition-colors border-b border-royal-900/10"
+                    className="bg-white text-royal-600 tracking-widest text-xs font-bold uppercase px-5 py-4 hover:bg-silver-400/80 transition-colors border-b border-black-500/10"
                   >
                     {link.label}
                   </a>
@@ -264,7 +282,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden absolute top-16 left-0 w-full md:w-80 bg-black-500/95 backdrop-blur-sm border border-white/10 rounded-br-2xl px-6 py-6 flex flex-col gap-6 z-50 shadow-2xl">
+        <div ref={menuRef} className="lg:hidden absolute top-16 left-0 w-full md:w-80 bg-black-500/95 backdrop-blur-sm border border-white/10 rounded-br-2xl px-6 py-6 flex flex-col gap-6 z-50 shadow-2xl">
           {navLinks.map((link) => {
             if ("children" in link) {
               return (
@@ -298,7 +316,7 @@ export default function Navbar() {
                           key={child.href}
                           href={child.href}
                           onClick={() => {setOpen(false); setSponsorsOpen(false)}}
-                          className="text-white/70 text-lg tracking-wider hover:text-silver-400 transition-colors"
+                          className="text-white/70 text-lg tracking-wider hover:text-white transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -325,10 +343,9 @@ export default function Navbar() {
           <div className="flex flex-col gap-3">
             <button
               onClick={(e: ReactMouseEvent<HTMLButtonElement>) => {
-                e.stopPropagation();
                 setRegisterOpen(!registerOpen);
               }}
-              className="font-display text-3xl tracking-widest text-royal-500 hover:text-royal-400 transition-colors flex items-center gap-3"
+              className="font-display text-3xl tracking-widest text-silver-300 hover:text-white transition-colors flex items-center gap-3 bg-royal-600/80 px-6 py-1 w-full -mx-6"
             >
               Register
               <svg
@@ -355,18 +372,18 @@ export default function Navbar() {
                     target={link.newTab ? "_blank" : undefined}
                     rel={link.newTab ? "noopener noreferrer" : undefined}
                     onClick={() => { setOpen(false); setRegisterOpen(false) }}
-                    className="text-white/70 text-lg tracking-wider hover:text-silver-400 transition-colors"
+                    className="text-white/70 text-lg tracking-wider hover:text-white transition-colors"
                   >
                     {link.label}
                   </a>
                 ))}
               </div>
             )}
-            {/* Junior Knights */}
+            {/* Mobile Junior Knights */}
             <div className="flex flex-col gap-3">
               <button
                 onClick={() => setJrkOpen(!jrkOpen)}
-                className="font-display text-3xl tracking-widest text-royal-500 hover:text-royal-400 transition-colors flex items-center gap-3"
+                className="font-display text-3xl tracking-widest text-royal-600 hover:text-black-500 transition-colors flex items-center gap-3 bg-white/90 px-6 py-1 w-full -mx-6"
               >
                 JR Knights
                 <svg
@@ -385,7 +402,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => { setOpen(false); setJrkOpen(false) }}
-                    className="text-white/70 text-lg tracking-wider hover:text-silver-400 transition-colors"
+                    className="text-white/70 text-lg tracking-wider hover:text-white transition-colors"
                   >
                     {link.label}
                   </a>

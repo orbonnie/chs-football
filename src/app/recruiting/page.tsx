@@ -46,7 +46,7 @@ export default function RecruitingPage() {
             </p>
             <a
               href="mailto:recruiting@centennialfootball.com"
-              className="bg-royal-600 text-black font-bold text-sm tracking-widest uppercase px-8 py-3 hover:bg-royal-500 transition-colors inline-block rounded-lg"
+              className="bg-royal-600 text-black font-bold text-sm tracking-widest uppercase px-8 py-3 hover:bg-black-500 transition-colors inline-block rounded-lg"
             >
               Email Recruiting Staff
             </a>

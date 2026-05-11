@@ -67,7 +67,7 @@ export default function ParentsPage() {
       {/* Hero */}
       <div className="px-6 mb-16">
         <div className="max-w-4xl mx-auto">
-          <p className="font-display text-royal-500 text-xl tracking-[0.4em]">CENTENNIAL KNIGHTS</p>
+          <p className="font-display text-royal-600 text-xl tracking-[0.4em]">CENTENNIAL KNIGHTS</p>
           <h1 className="font-display text-black-500 text-7xl tracking-widest leading-none">PARENT<br />PLAYBOOK</h1>
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function ParentsPage() {
       {/* UKNIGHTED Values */}
       <section className="bg-silver-400 py-20 px-6 mb-2">
         <div className="max-w-4xl mx-auto">
-          <p className="font-display text-royal-500 text-xl tracking-[0.4em] mb-2">OUR</p>
+          <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">OUR</p>
           <h2 className="font-display text-black-500 text-5xl tracking-widest mb-12">VALUES</h2>
           <div className="flex flex-col gap-px bg-white/5">
             {values.map((v) => (
@@ -106,8 +106,8 @@ export default function ParentsPage() {
       {/* 5 Actions of UKNIGHTED Parents */}
       <section className="bg-white py-20 px-6 mb-2">
         <div className="max-w-4xl mx-auto">
-          <p className="font-display text-royal-500 text-xl tracking-[0.4em] mb-2">PARENTING FOR</p>
-          <h2 className="font-display text-royal-900 text-5xl tracking-widest mb-12">SUCCESS</h2>
+          <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">PARENTING FOR</p>
+          <h2 className="font-display text-black-500 text-5xl tracking-widest mb-12">SUCCESS</h2>
           <div className="flex flex-col gap-4">
             {eliteParentActions.map((action, i) => (
               <div key={i} className="flex gap-6 items-start">
@@ -144,7 +144,7 @@ export default function ParentsPage() {
       {/* Communication */}
       <section className="bg-silver-400 py-20 px-6 mb-2">
         <div className="max-w-4xl mx-auto">
-          <p className="font-display text-royal-500 text-xl tracking-[0.4em] mb-2">STAY</p>
+          <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">STAY</p>
           <h2 className="font-display text-black-500 text-5xl tracking-widest mb-12">CONNECTED</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
             {[
@@ -162,7 +162,7 @@ export default function ParentsPage() {
               },
             ].map((channel) => (
               <div key={channel.title} className="bg-black-500/95 p-8 rounded-md">
-                <h3 className="font-display text-royal-500 text-2xl tracking-widest mb-4">{channel.title.toUpperCase()}</h3>
+                <h3 className="font-display text-royal-600 text-2xl tracking-widest mb-4">{channel.title.toUpperCase()}</h3>
                 <p className="text-white/90 text-sm leading-relaxed">{channel.description}</p>
               </div>
             ))}
@@ -173,11 +173,11 @@ export default function ParentsPage() {
       {/* FAQ */}
       <section className="bg-white py-20 px-6 mb-2">
         <div className="max-w-4xl mx-auto">
-          <p className="font-display text-royal-500 text-xl tracking-[0.4em] mb-2">FREQUENTLY ASKED</p>
+          <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">FREQUENTLY ASKED</p>
           <h2 className="font-display text-black-500 text-5xl tracking-widest mb-12">QUESTIONS</h2>
           <div className="flex flex-col gap-px bg-royal-900/10">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white hover:bg-royal-50 transition-colors px-6 py-6 border-b border-royal-900/10 last:border-0">
+              <div key={i} className="bg-white hover:bg-silver-400/80 transition-colors px-6 py-6 border-b border-black-500/15 last:border-0">
                 <p className="font-display text-black-500 text-xl tracking-wider mb-2">{faq.q.toUpperCase()}</p>
                 <p className="text-royal-900/60 text-sm leading-relaxed">{faq.a}</p>
               </div>
@@ -189,7 +189,7 @@ export default function ParentsPage() {
       {/* Contacts */}
       <section className="bg-black-500 py-20 px-6 mb-2">
         <div className="max-w-4xl mx-auto">
-          <p className="font-display text-royal-500 text-xl tracking-[0.4em] mb-2">PROGRAM</p>
+          <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">PROGRAM</p>
           <h2 className="font-display text-white text-5xl tracking-widest mb-12">CONTACTS</h2>
           <div className="flex flex-col gap-px bg-white/5">
             {contacts.map((c) => (
@@ -201,7 +201,7 @@ export default function ParentsPage() {
                 </div>
                 <a
                   href={`mailto:${c.email}`}
-                  className="text-royal-500 hover:text-white text-sm tracking-wider transition-colors shrink-0"
+                  className="text-royal-600 hover:text-white text-sm tracking-wider transition-colors shrink-0"
                 >
                   {c.email}
                 </a>
@@ -226,7 +226,7 @@ export default function ParentsPage() {
             href="/contract"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-silver-300 text-black-500 font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-white hover:text-royal-500 transition-colors rounded-lg"
+            className="inline-block bg-silver-300 text-black-500 font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-white hover:text-royal-600 transition-colors rounded-lg"
           >
             Complete the Agreement
           </a>

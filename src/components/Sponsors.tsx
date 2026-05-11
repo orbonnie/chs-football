@@ -36,7 +36,7 @@ export default function Sponsors() {
               href={sponsor.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-royal-600 relative flex items-center justify-center group hover:bg-royal-500 transition-colors overflow-hidden aspect-[3/2] rounded-md"
+              className="bg-royal-600 relative flex items-center justify-center group hover:bg-black-500 transition-colors overflow-hidden aspect-[3/2] rounded-md"
             >
               {sponsor.logo ? (
                 <Image
@@ -49,7 +49,7 @@ export default function Sponsors() {
               ) : (
                 <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3/4 bg-white flex items-center justify-center px-4">
                   <span
-                    className="font-display text-black-500 text-xl font-black tracking-widest text-center uppercase leading-none w-full  group-hover:text-royal-500"
+                    className="font-display text-black-500 text-xl font-black tracking-widest text-center uppercase leading-none w-full group-hover:text-royal-600"
                     style={{ fontSize: 'clamp(0.75rem, 4vw, 1.5rem)' }}
                   >
                     {sponsor.name}
@@ -64,7 +64,7 @@ export default function Sponsors() {
         <div className="text-center mt-12">
           <a
             href="/sponsorships"
-            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-8 py-3 hover:border-royal-500 transition-colors inline-block rounded-lg"
+            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-8 py-3 hover:bg-black-500 transition-colors inline-block rounded-lg"
           >
             Become a Sponsor
           </a>

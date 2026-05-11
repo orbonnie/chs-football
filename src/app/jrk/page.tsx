@@ -136,22 +136,22 @@ export default function JrkLandingPage() {
       </div>
 
       {/* Register CTA */}
-      <div className="bg-black-500 px-6 py-10">
+      <div className="bg-silver-500 px-6 py-10">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
-          <p className="font-display text-royal-400 text-sm tracking-[0.4em] uppercase">
+          <p className="font-display text-royal-600 text-lg tracking-[0.4em] uppercase">
             Join Us
           </p>
-          <h2 className="font-display text-white text-4xl tracking-widest">
+          <h2 className="font-display text-black-500 text-4xl tracking-widest">
             BECOME A KNIGHT
           </h2>
-          <p className="text-silver-400 text-sm max-w-md leading-relaxed">
+          <p className="text-black-500 text-sm max-w-md leading-relaxed">
             Register today for the 2026 season. Questions? Contact Program
             Director Alpha Owens at{" "}
-            <a href="tel:8054326170" className="text-white underline">
+            <a href="tel:8054326170" className="text-royal-600 font-semibold underline">
               805-432-6170
             </a>
             {" "}or{" "}
-            <a href="mailto:kibou94@icloud.com" className="text-white underline">
+            <a href="mailto:kibou94@icloud.com" className="text-royal-600 font-semibold underline">
               kibou94@icloud.com
             </a>
             .
@@ -161,7 +161,7 @@ export default function JrkLandingPage() {
               href="https://registration.teamsnap.com/form/48104"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-64 bg-royal-600 hover:bg-royal-700 text-white font-display tracking-widest uppercase px-8 py-4 rounded-xl transition-all duration-200 text-center"
+              className="w-full sm:w-64 bg-royal-600 hover:bg-black-500 text-white font-display tracking-widest uppercase px-8 py-4 rounded-xl transition-all duration-200 text-center"
             >
               Middle School
             </a>
@@ -169,7 +169,7 @@ export default function JrkLandingPage() {
               href="https://app.amilia.com/store/en/city-of-roswell/shop/programs/128058?subCategoryIds=6626396"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-64 bg-royal-600 hover:bg-royal-700 text-white font-display tracking-widest uppercase px-8 py-4 rounded-xl transition-all duration-200 text-center"
+              className="w-full sm:w-64 bg-royal-600 hover:bg-black-500 text-white font-display tracking-widest uppercase px-8 py-4 rounded-xl transition-all duration-200 text-center"
             >
               K–5th
             </a>

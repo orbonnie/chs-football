@@ -117,7 +117,7 @@ export default function RegisterPage() {
           </p>
 
           {/* Fee table */}
-          <div className="rounded-xl overflow-hidden border border-gray-200">
+          <div className="rounded-lg overflow-hidden border border-gray-400">
             <div className="hidden sm:grid grid-cols-[1fr_6rem_6rem_6rem] bg-black-500 px-5 py-3 text-white font-display text-xs tracking-widest uppercase">
               <span></span>
               <span className="text-center">9th–12th</span>
@@ -127,7 +127,7 @@ export default function RegisterPage() {
             {fees.map((row, i) => (
               <div
                 key={i}
-                className={`border-b border-gray-100 last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
+                className={`border-b border-gray-300 last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
               >
                 {/* Mobile */}
                 <div className="sm:hidden px-5 py-4 space-y-2">
@@ -204,7 +204,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <h2 className="font-display text-black-500 text-3xl tracking-widest mb-6">
             Touchdown Club
           </h2>
@@ -215,7 +215,7 @@ export default function RegisterPage() {
             well pre-game meals and 2 entries to each home game throughout the
             season.
           </p>
-        </div>
+        </div> */}
 
         {/* Bottom CTA */}
         <div className="bg-black-500 rounded-2xl px-8 py-10 flex flex-col items-center gap-6 text-center">
@@ -227,7 +227,7 @@ export default function RegisterPage() {
               href={TEAMSNAP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-royal-600 hover:bg-royal-700 text-white font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
+              className="bg-royal-600 text-white hover:bg-silver-400 hover:text-royal-600 hover:font-bold font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
             >
               General Registration
             </a>
@@ -235,7 +235,7 @@ export default function RegisterPage() {
               href={K5_REG_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-royal-600 hover:bg-royal-700 text-white font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
+              className="bg-royal-600  text-white hover:bg-silver-400 hover:text-royal-600 hover:font-bold font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
             >
               K-5th Registration
             </a>
