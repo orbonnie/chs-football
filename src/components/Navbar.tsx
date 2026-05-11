@@ -282,7 +282,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div ref={menuRef} className="lg:hidden absolute top-16 left-0 w-full md:w-80 bg-black-500/95 backdrop-blur-sm border border-white/10 rounded-br-2xl px-6 py-6 flex flex-col gap-6 z-50 shadow-2xl">
+        <div ref={menuRef} className="lg:hidden absolute top-16 left-0 w-full md:w-80 bg-black-500/95 backdrop-blur-sm border border-white/10 rounded-br-2xl px-6 py-6 flex flex-col gap-6 z-50 shadow-2xl overflow-y-auto max-h-[calc(100vh-4rem)]">
           {navLinks.map((link) => {
             if ("children" in link) {
               return (
