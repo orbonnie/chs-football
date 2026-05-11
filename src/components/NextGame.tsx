@@ -20,15 +20,15 @@ export default function NextGame() {
     <section className="bg-black-500 py-16 px-6">
       <div className="max-w-3xl mx-auto text-center">
 
-        <p className="font-display text-silver-400 text-md sm:text-xl tracking-[0.4em] mb-4">NEXT GAME</p>
+        <p className="font-display text-royal-600 text-md sm:text-xl tracking-[0.4em] mb-4">NEXT GAME</p>
 
-        <h2 className="font-display text-white text-[clamp(2.5rem,6vw,5rem)] leading-none tracking-wider mb-2">
+        <h2 className="font-display text-white text-[clamp(2.5rem,6vw,6rem)] leading-none tracking-wider mb-2">
           CENTENNIAL
         </h2>
         <p className="font-display text-white/30 text-2xl tracking-widest mb-2">
           {game.location}
         </p>
-        <h2 className="font-display text-silver-400 text-[clamp(2.5rem,6vw,5rem)] leading-none tracking-wider mb-8">
+        <h2 className="font-display text-silver-400 text-[clamp(2.5rem,6vw,6rem)] leading-none tracking-wider mb-8">
           {game.opponent.toUpperCase()}
         </h2>
 

@@ -6,17 +6,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const CALENDARS = [
   {
     id: '0dc6f5b46b44f0fb18d841c41d007c96960842c29b901e98f88935b5d978af9c@group.calendar.google.com',
-    name: 'Varsity Games',
+    name: 'Varsity Game',
     color: '#08129C'
   },
   {
     id: 'f535be00e0654a2cb18c463463cd25e10d4db8d07d2dad50edd8112aaa2cef6d@group.calendar.google.com',
-    name: 'JV Games',
+    name: 'JV Game',
     color: '#2442E8'
   },
   {
     id: 'cd8793cbfb0c1b13d946b6f6c373dfc2a51ebee4a26ffa80baf3f0b6fc9b1f6e@group.calendar.google.com',
-    name: 'Freshman Games',
+    name: 'Freshman Game',
     color: '#7A8EA0'
   },
   {
