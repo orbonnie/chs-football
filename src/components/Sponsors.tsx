@@ -16,7 +16,7 @@ const cloudinaryUrl = (path: string) =>
 
 export default function Sponsors() {
   return (
-    <section className="bg-silver-300 pt-10 pb-20 px-6">
+    <section className="bg-white py-16 px-6">
       <div className="max-w-6xl mx-auto">
         {/* HEADER */}
         <div className="text-center mb-14">

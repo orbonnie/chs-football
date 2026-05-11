@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Calendar from "@/components/Calendar"
 import NextGame from "@/components/NextGame";
 import News from "@/components/News";
 import Sponsors from "@/components/Sponsors";
@@ -8,8 +9,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <NextGame />
       <News />
+      <NextGame />
+      <Calendar />
       <Sponsors />
     </>
   );
