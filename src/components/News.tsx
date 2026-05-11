@@ -63,17 +63,17 @@ export default function News({ data = defaultNews }: { data?: typeof defaultNews
     }, [index, data.length])
 
   return (
-    <section className="bg-silver-300 pt-20 pb-8 px-6">
+    <section className="bg-silver-300 py-16 px-6">
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-4">
           <p className="font-display text-black-500 text-xl tracking-[0.4em] mb-2">
-            LATEST
+            STAY
           </p>
 
           <h2 className="font-display text-royal-600 text-6xl tracking-widest">
-            NEWS
+            INFORMED
           </h2>
         </div>
 
