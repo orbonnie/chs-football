@@ -21,17 +21,17 @@ const CALENDARS = [
   },
   {
     id: '098655c47346ec4ff43de7ac112a91ac1563024d8a9884bd33ae3ccf123aa3fa@group.calendar.google.com',
-    name: 'Jr Knights Events',
+    name: 'Jr Knights',
     color: '#0EA5f9'
   },
   {
     id: 'b04395491d033a444ab6997960a4b9330e97efe34f62dd77e5038344655f68ec@group.calendar.google.com',
-    name: 'CHS Events',
+    name: 'CHS',
     color: '#172554'
   },
   {
     id: '87485c37d867e372e6a0cef8a3c3fb1a0d5b9ceedadc8605411ab6e68f779843@group.calendar.google.com',
-    name: 'General Events',
+    name: 'General',
     color: '#EAB308'
   },
 ]
@@ -168,7 +168,7 @@ export default function Calendar() {
   const [activeCalendars, setActiveCalendars] = useState<Set<string>>(
     new Set(CALENDARS.map(c => c.id))
   )
-  const [view, setView] = useState<View>('month')
+  const [view, setView] = useState<View>('agenda')
   const [viewOpen, setViewOpen] = useState(false)
   const [calendarOpen, setCalendarOpen] = useState(false)
 
