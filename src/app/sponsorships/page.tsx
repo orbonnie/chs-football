@@ -9,7 +9,7 @@ const tiers = [
     name: 'Platinum',
     price: '$5,000+',
     color: 'border-gold-400',
-    labelColor: 'text-silver-400',
+    labelColor: 'text-white',
     perks: [
       'Logo on all game day materials',
       'Banner on field / stadium',
@@ -23,7 +23,7 @@ const tiers = [
     name: 'Gold',
     price: '$2,500',
     color: 'border-white/30',
-    labelColor: 'text-white',
+    labelColor: 'text-silver-300/90',
     perks: [
       'Logo on select game day materials',
       'Social media feature (2x per season)',
@@ -36,7 +36,7 @@ const tiers = [
     name: 'Silver',
     price: '$1,000',
     color: 'border-white/10',
-    labelColor: 'text-white/60',
+    labelColor: 'text-silver-400',
     perks: [
       'Logo on team website',
       'Social media mention (1x per season)',
@@ -47,7 +47,7 @@ const tiers = [
     name: 'Supporter',
     price: '$500',
     color: 'border-white/10',
-    labelColor: 'text-white/40',
+    labelColor: 'text-silver-500',
     perks: [
       'Name listed on team website',
       'Social media thank-you post',
@@ -85,7 +85,7 @@ export default function SponsorshipsPage() {
               </ul>
               <a
                 href="mailto:centennialfootballpartners@gmail.com"
-                className="mt-8 border bg-black-500 border-silver-500/40 text-silver-400 text-xs tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-700 hover:text-black-500 transition-colors rounded-md"
+                className="mt-8 border bg-black-500 border-silver-300/40 text-silver-200 text-xs tracking-widest uppercase px-4 py-3 text-center hover:bg-silver-300 hover:text-black-500 transition-colors rounded-md"
               >
                 Get Started
               </a>
@@ -101,7 +101,7 @@ export default function SponsorshipsPage() {
           </p>
           <a
             href="mailto:centennialfootballpartners@gmail.com"
-            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-royal-600 transition-colors inline-block rounded-md"
+            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-10 py-4 hover:bg-black-500 transition-colors inline-block rounded-md"
           >
             Contact Us
           </a>

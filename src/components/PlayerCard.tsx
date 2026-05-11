@@ -93,7 +93,7 @@ export default function PlayerCard({ player }: { player: Player }) {
       <div className="px-6 pb-6">
         <Link
           href={`/player/${player.slug}`}
-          className="block w-full bg-royal-600 hover:bg-royal-500 text-white font-display text-lg tracking-widest text-center py-4 rounded-xl transition-colors"
+          className="block w-full bg-royal-600 hover:bg-black-500 text-white font-display text-lg tracking-widest text-center py-4 rounded-xl transition-colors"
         >
           VIEW PROFILE
         </Link>

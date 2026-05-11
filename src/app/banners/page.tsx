@@ -102,12 +102,12 @@ export default function BannersPage() {
                   {banner.dimensions}
                 </p>
               </div>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <p className="text-white/90 text-sm leading-relaxed">
                 {banner.description}
               </p>
               <div className="border-t border-white/20 pt-6 grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <p className="font-display text-white/60 text-xs tracking-widest uppercase mb-1">
+                  <p className="font-display text-white/80 text-xs tracking-widest uppercase mb-1">
                     Sponsor Price
                   </p>
                   <p className="font-display text-white text-2xl tracking-widest">
@@ -115,7 +115,7 @@ export default function BannersPage() {
                   </p>
                 </div>
                 <div>
-                  <p className="font-display text-white/60 text-xs tracking-widest uppercase mb-1">
+                  <p className="font-display text-white/80 text-xs tracking-widest uppercase mb-1">
                     Player Credit
                   </p>
                   <p className="font-display text-white text-2xl tracking-widest">
@@ -127,7 +127,7 @@ export default function BannersPage() {
                 href={ORDER_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center bg-black-500 hover:bg-black-500/80 text-white font-display tracking-widest uppercase px-6 py-3 rounded-xl transition-all duration-200 text-sm"
+                className="mt-auto block text-center bg-black-500 hover:bg-silver-300 hover:text-royal-600 text-white font-display tracking-widest uppercase px-6 py-3 rounded-xl transition-all duration-200 text-sm"
               >
                 Order Now
               </a>
@@ -211,7 +211,7 @@ export default function BannersPage() {
             href={ORDER_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-royal-600 hover:bg-royal-700 text-white font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
+            className="bg-royal-600 hover:bg-silver-300 hover:text-royal-600 text-white font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
           >
             Submit Banner Order
           </a>

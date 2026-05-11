@@ -10,13 +10,13 @@ const ELEMENTARY_REGISTRATION_URL = 'https://app.amilia.com/store/en/city-of-ros
 const importantDates = [
   {
     program: 'Middle School',
-    summerTraining: 'July 7, 2026',
-    firstPractice: 'July 27, 2026',
+    summerTraining: 'July 7',
+    firstPractice: 'July 27',
   },
   {
     program: 'K–5th',
-    summerTraining: 'July 20, 2026',
-    firstPractice: 'August 1, 2026',
+    summerTraining: 'July 20',
+    firstPractice: 'August 1',
   },
 ]
 
