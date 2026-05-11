@@ -59,7 +59,7 @@ export default function JrKnightsPage() {
         {/* Registration buttons */}
         <div className="mb-14">
           <p className="text-black-500 text-md leading-relaxed mb-6">
-            <span className="font-bold text-lg text-royal-700 bg-royal-600/10 p-3">Register today</span> to secure your spot for the 2026 season.
+            <span className="font-bold text-lg text-royal-700 bg-royal-600/10 p-2 rounded-full">Register today</span> to secure your spot for the 2026 season.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a

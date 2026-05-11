@@ -27,7 +27,7 @@ function PlayerCard({ player }: { player: JrkPlayer }) {
 }
 
 export default function JrkRosterPage() {
-  const [activeGrade, setActiveGrade] = useState("8th")
+  const [activeGrade, setActiveGrade] = useState("6th")
   const active = grades.find(g => g.id === activeGrade)!
 
   return (
