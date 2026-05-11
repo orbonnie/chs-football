@@ -48,7 +48,7 @@ const steps = [
     step: "04",
     title: "Earn Your Credit",
     description:
-      "Credits are applied directly to your player dues — $200 for a 2×4 and $400 for a 4×6.",
+      "Credits are applied directly to your player dues. $200 for a 2×4 and $400 for a 4×6.",
   },
 ];
 

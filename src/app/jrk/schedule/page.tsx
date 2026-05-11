@@ -107,7 +107,7 @@ export default function JrkSchedulePage() {
         </div>
 
         {/* Active grade */}
-        <div className="rounded-2xl rounded-tl-none overflow-hidden border border-gray-400">
+        <div className="rounded-b-2xl sm:rounded-2xl sm:rounded-tl-none  overflow-hidden border border-gray-400">
           <div className="bg-royal-600 px-6 py-5 flex items-center justify-between">
             <h2 className="font-display text-white text-3xl tracking-widest leading-none">
               {active.label.toUpperCase()}
