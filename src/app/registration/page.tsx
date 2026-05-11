@@ -25,21 +25,21 @@ const K5_REG_URL =
 
 const fees = [
   {
-    program: 'High School',
-    registration: '$150',
-    dues: '$850',
+    program: "High School",
+    registration: "$150",
+    dues: "$850",
   },
   {
-    program: 'Middle School',
-    registration: '$150',
-    dues: '$500',
+    program: "Middle School",
+    registration: "$150",
+    dues: "$500",
   },
   {
-    program: 'K–5th',
-    registration: '$360',
-    dues: '$0',
+    program: "K–5th",
+    registration: "$360",
+    dues: "$0",
   },
-]
+];
 
 const programs = [
   {
@@ -82,22 +82,7 @@ export default function RegisterPage() {
             We're excited to open registration for the 2026 season. To be a
             Knight is more than wearing a uniform. It's joining a family built
             on hard work, discipline, and excellence. We can't wait to see your
-            student-athlete take the field.
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            <span className="font-bold">Registration Overview:</span> We work
-            hard to keep our program fees as low as possible without
-            compromising the quality of our program. Every student has the
-            opportunity to be part of the Knights family regardless of financial
-            circumstances. Payment plans and hardship waivers are available.
-            Email us at{" "}
-            <a
-              href="mailto:chsbapres@gmail.com"
-              className="text-royal-600 underline"
-            >
-              chsbapres@gmail.com
-            </a>{" "}
-            for more information.
+            player take the field.
           </p>
         </div>
 
@@ -106,50 +91,68 @@ export default function RegisterPage() {
           <h2 className="font-display text-black-500 text-3xl tracking-widest mb-2">
             2026 FEES
           </h2>
-          <p className="text-gray-600 mb-6 leading-relaxed">
-            Thanks to our TD Club and boosters, we're able to offer one of the
-            best playing experiences in the state while keeping fees among the
-            lowest in the area.
+          <p className="text-gray-700 leading-relaxed">
+            We work hard to keep our program fees as low as possible without
+            compromising the quality of our program. These fees cover equipment
+            usage, league fees, insurance, field usage, referees, game film,
+            meals, travel, and apparel. Registration is not complete and
+            equipment will not be issued until your registration payment is made.{" "}
           </p>
-          <p className="text-gray-700 mb-10 leading-relaxed">
-            These fees cover equipment usage, league fees, insurance, field
-            usage, referees, game film, meals, travel, and apparel. Registration
-            is not complete and equipment will not be issued until payment is
-            made.{" "}
-            <span className="underline">
-              After August 1, there will be no refunds issued.
-            </span>
+          <p className="text-gray-700 leading-relaxed underline">
+            After August 1, there will be no refunds issued.
           </p>
-
-          {/* Fundraising */}
-          <h2 className="font-display text-black-500 text-3xl tracking-widest mb-2">
-            FUNDRAISING
-          </h2>
+          <br/>
           <p className="text-gray-700 mb-10 leading-relaxed">
-            We offer fundraising oppurtunities through banner sales and
-            SnapRaise to offset player fees. Check out our{" "}
-            <a href="/banners" className="text-royal-600 font-bold">
-              Banners Page
+            Every student is welcome to be part of the Knights family regardless
+            of financial circumstances. We offer payment plans and hardship
+            waivers to make joining the team accessible to everyone. Email us at{" "}
+            <a
+              href="mailto:chsbapres@gmail.com"
+              className="text-royal-600 underline"
+            >
+              chsbapres@gmail.com
             </a>{" "}
             for more information.
           </p>
 
           {/* Fee table */}
           <div className="rounded-lg overflow-hidden border border-gray-400">
-              <div className="grid grid-cols-3 bg-black-500 px-6 py-3 font-display text-sm tracking-widest uppercase text-white">
+            <div className="grid grid-cols-3 bg-black-500 px-6 py-3 font-display text-sm tracking-widest uppercase text-white">
               <span>Program</span>
               <span className="text-center">Registration Fee</span>
               <span className="text-right">Players Dues</span>
             </div>
             {fees.map((fee, i) => (
-              <div key={i} className={`grid grid-cols-3 px-6 py-4 border-t border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
-                <span className="font-display text-royal-600 text-md tracking-wider">{fee.program}</span>
-                <span className="text-gray-700 text-md text-center">{fee.registration}</span>
-                <span className="text-gray-700 text-md text-right">{fee.dues}</span>
+              <div
+                key={i}
+                className={`grid grid-cols-3 px-6 py-4 border-t border-gray-100 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
+              >
+                <span className="font-display text-royal-600 text-md tracking-wider">
+                  {fee.program}
+                </span>
+                <span className="text-gray-700 text-md text-center">
+                  {fee.registration}
+                </span>
+                <span className="text-gray-700 text-md text-right">
+                  {fee.dues}
+                </span>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Fundraising */}
+        <h2 className="font-display text-black-500 text-3xl tracking-widest mb-2">
+          FUNDRAISING
+        </h2>
+        <p className="text-gray-700 mb-10 leading-relaxed">
+          We offer fundraising oppurtunities through banner sales and SnapRaise
+          to offset player fees. Check out our{" "}
+          <a href="/banners" className="text-royal-600 font-bold hover:text-royal-500">
+            Banners Page
+          </a>{" "}
+          for more information.
+        </p>
 
         {/* Program info */}
         <div className="mb-12">
