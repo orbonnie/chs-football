@@ -46,7 +46,7 @@ export default function JrKnightsPage() {
         {/* Intro */}
         <div className="mb-12 space-y-4">
           <p className="text-gray-700 leading-relaxed">
-            The Jr. Knights are the official youth feeder program for Centennial High School Football, serving players from kindergarten through 8th grade in the Centennial school district. Our program is dedicated to building the next generation of Knights — developing players on and off the field through great coaching, teamwork, and a commitment to excellence.
+            The Jr. Knights are the official youth feeder program for Centennial High School Football, serving players from kindergarten through 8th grade in the Centennial school district. Our program is dedicated to building the next generation of Knights by developing players on and off the field through great coaching, teamwork, and a commitment to excellence.
           </p>
           <p className="text-gray-700 leading-relaxed">
             <span className="font-bold">Middle School (6th–8th):</span> Players zoned for Centennial from <span className="font-bold">Holcomb Bridge</span> and <span className="font-bold">Haynes Bridge Middle Schools</span> are eligible to participate. All practices and home games are held at Centennial High School.
@@ -147,7 +147,7 @@ export default function JrKnightsPage() {
           <h2 className="font-display text-black-500 text-3xl tracking-widest mb-6">CONTACT</h2>
           <div className="bg-silver-300 rounded-md px-6 py-5 space-y-2">
             <p className="text-gray-700 leading-relaxed">
-              <span className="font-bold">Alpha Owens</span> — Jr. Knights Program Director
+              <span className="font-bold">Alpha Owens</span> Jr Knights Program Director
             </p>
             <p className="text-gray-700">
               <a href="tel:8054326170" className="text-royal-600 font-bold hover:underline">805-432-6170</a>
