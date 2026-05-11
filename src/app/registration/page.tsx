@@ -136,13 +136,13 @@ export default function RegisterPage() {
 
           {/* Fee table */}
           <div className="rounded-lg overflow-hidden border border-gray-400">
-              <div className="grid grid-cols-4 bg-black-500 px-6 py-3 font-display text-sm tracking-widest uppercase text-white">
+              <div className="grid grid-cols-3 bg-black-500 px-6 py-3 font-display text-sm tracking-widest uppercase text-white">
               <span>Program</span>
               <span className="text-center">Registration Fee</span>
               <span className="text-right">Players Dues</span>
             </div>
             {fees.map((fee, i) => (
-              <div key={i} className={`grid grid-cols-4 px-6 py-4 border-t border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+              <div key={i} className={`grid grid-cols-3 px-6 py-4 border-t border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                 <span className="font-display text-royal-600 text-md tracking-wider">{fee.program}</span>
                 <span className="text-gray-700 text-md text-center">{fee.registration}</span>
                 <span className="text-gray-700 text-md text-right">{fee.dues}</span>

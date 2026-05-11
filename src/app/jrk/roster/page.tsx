@@ -61,7 +61,7 @@ export default function JrkRosterPage() {
         </div>
 
         {/* Roster table */}
-        <div className="rounded-2xl rounded-tl-none overflow-hidden border border-gray-400">
+        <div className="rounded-b-2xl sm:rounded-2xl sm:rounded-tl-none overflow-hidden border border-gray-400">
           {/* Header */}
           <div className="bg-royal-600 px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
