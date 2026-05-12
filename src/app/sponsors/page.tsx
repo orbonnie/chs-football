@@ -1,6 +1,9 @@
 import Sponsors from "@/components/Sponsors";
-import { main } from "framer-motion/client";
-import { SP } from "next/dist/shared/lib/utils";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sponsors | Centennial Knights Football',
+}
 
 export default function SponsorsPage() {
   return (

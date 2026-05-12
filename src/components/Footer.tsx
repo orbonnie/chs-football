@@ -1,14 +1,25 @@
-import Link from 'next/link'
+"use client";
+
+import Link from "next/link";
+import { useHoverReset } from "@/hooks/useHoverReset";
+
+type SocialLink = {
+  label: string;
+  href: string;
+  icon: React.ReactNode;
+  hover: string;
+};
+
 const socialLinks = [
   {
-    label: 'Twitter/X',
-    href: 'https://x.com/CHSKnightsAth',
+    label: "Twitter/X",
+    href: "https://x.com/CHSKnightsAth",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
     ),
-    hover: 'text-white'
+    hover: "text-white",
   },
   // {
   //   label: 'Instagram',
@@ -21,34 +32,55 @@ const socialLinks = [
   //   ),
   // },
   {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/profile.php?id=100057624190756#',
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=100057624190756#",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
       </svg>
     ),
-    hover: 'text-royal-600'
+    hover: "text-royal-600",
   },
-]
+];
 
+function SocialCard({ social }: { social: SocialLink }) {
+  const hover = useHoverReset();
+  return (
+    <a
+      href={social.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={social.label}
+      onMouseEnter={hover.onMouseEnter}
+      onMouseLeave={hover.onMouseLeave}
+      className={`transition-colors ${
+        hover.hovered ? social.hover : "text-white/50"
+      }`}
+    >
+      {social.icon}
+    </a>
+  );
+}
 
 export default function Footer() {
   return (
     <footer className="w-full bg-black-500 border-t border-white/5 py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col items-center justify-between gap-6">
-
         <div className="text-center md:text-left">
-          <p className="font-display text-2xl text-royal-600 text-center tracking-widest">KNIGHTS NATION</p>
-          <p className="text-white/50 text-xs tracking-widest mt-1">Centennial High School · 9310 Scott Rd · ROSWELL, GA</p>
+          <p className="font-display text-2xl text-royal-600 text-center tracking-widest">
+            KNIGHTS NATION
+          </p>
+          <p className="text-white/50 text-xs tracking-widest mt-1">
+            Centennial High School · 9310 Scott Rd · ROSWELL, GA
+          </p>
         </div>
 
         <nav className="flex flex-wrap justify-center gap-6">
           {[
-            ['Schedule', '/schedule'],
-            ['Coaches', '/coaches'],
-            ['Recruiting', '/recruiting'],
-            ['Sponsorships', '/sponsorships'],
+            ["Schedule", "/schedule"],
+            ["Coaches", "/coaches"],
+            ["Recruiting", "/recruiting"],
+            ["Sponsorships", "/sponsorships"],
           ].map(([label, href]) => (
             <Link
               key={href}
@@ -63,16 +95,7 @@ export default function Footer() {
         {/* Social icons */}
         <div className="flex items-center gap-4">
           {socialLinks.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.label}
-              className={`text-white/50 hover:${social.hover} transition-colors`}
-            >
-              {social.icon}
-            </a>
+            <SocialCard social={social} key={social.label} />
           ))}
         </div>
 
@@ -81,5 +104,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-  )
+  );
 }
