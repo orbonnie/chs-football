@@ -2,7 +2,7 @@ import Link from "next/link";
 import News from "@/components/News";
 import { jrkNews } from "@/data/jrkNews";
 import { news } from "@/data/news";
-import RegisterButtons from "@/components/RegisterButtons";
+import RegisterButtons from "@/components/Links/RegisterButtons";
 
 const quickLinks = [
   {
@@ -84,7 +84,7 @@ export default function JrkLandingPage() {
 
           <p className="text-silver-400 text-lg font-bold max-w-xl mx-auto leading-relaxed mb-12">
             The official youth feeder program for Centennial High School
-            Football by developing Knights from kindergarten through 8th grade.
+            Football. Developing Knights from kindergarten through 8th grade.
           </p>
 
           {/* Quick links */}

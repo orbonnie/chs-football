@@ -79,7 +79,7 @@ export default function News({ data = defaultNews }: { data?: typeof defaultNews
 
         {/* CAROUSEL */}
         <div
-          className="relative overflow-hidden rounded-3xl bg-white border border-black/5 shadow-sm"
+          className="relative overflow-hidden max-w-3xl mx-auto rounded-3xl bg-white border border-black/5 shadow-sm"
           // onMouseEnter={() => setPaused(true)}
           // onMouseLeave={() => setPaused(false)}
         >

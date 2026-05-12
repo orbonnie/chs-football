@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SocialLink from "@/components/SocialLinks";
+import { RegSocialLink } from "@/components/Links/SocialLinks";
 
 export const metadata: Metadata = {
   title: "Parent Playbook | Centennial Knights Football",
@@ -273,9 +273,9 @@ export default function ParentsPage() {
                   <>
                     CentennialKnightsFootball.com is the central hub for all program
                     information including schedules, registration, and sponsorship. Follow us on{" "}
-                    <SocialLink label="Facebook" href="https://www.facebook.com/profile.php?id=100057624190756#" />{" "}
+                    <RegSocialLink label="Facebook" href="https://www.facebook.com/profile.php?id=100057624190756#" />{" "}
                     and{" "}
-                    <SocialLink label="X" href="https://x.com/CHSKnightsAth" />
+                    <RegSocialLink label="X" href="https://x.com/CHSKnightsAth" />
                     {" "}
                     for highlights and announcements.
                   </>
@@ -342,10 +342,10 @@ export default function ParentsPage() {
             {contacts.map((c) => (
               <div
                 key={c.role}
-                className="bg-silver-300 hover:bg-silver-400 transition-colors px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-md"
+                className="bg-silver-300 hover:bg-white transition-colors px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-md"
               >
                 <div>
-                  <p className="font-display text-blue-600 text-lg tracking-widest">
+                  <p className="font-display text-royal-600 text-lg tracking-widest">
                     {c.role.toUpperCase()}
                   </p>
                   <p className="text-black-500 font-semibold">{c.name}</p>

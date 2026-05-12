@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { OrderButton, SubmitButton } from "@/components/BannerButtons";
+import { OrderButton, SubmitButton } from "@/components/Links/BannerButtons";
 
 export const metadata: Metadata = {
   title: "Banners | Centennial Knights Football",

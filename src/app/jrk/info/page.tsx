@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { useHoverReset } from "@/hooks/useHoverReset";
-import RegisterButtons from "@/components/RegisterButtons";
+import RegisterButtons from "@/components/Links/RegisterButtons";
 
 export const metadata: Metadata = {
   title: "Jr. Knights | Centennial Knights Football",
 };
+
 const importantDates = [
   {
     program: "Middle School",

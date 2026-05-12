@@ -31,6 +31,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "",
+    instagramUrl: "https://instagram.com/avery.owens76",
+    xUrl: "https://x.com/averyowens76",
 
     offers: ["Charlotte", "South Alabama", "Tulane (Camp Invite)", "Kennesaw State"]
   },
@@ -67,6 +69,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "",
+    instagramUrl: "https://instagram.com/jadencarter12",
+    xUrl: "https://x.com/jadencarter12",
 
     offers: ["Georgia State", "Kennesaw State"],
   },
@@ -102,6 +106,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "",
+    instagramUrl: "https://instagram.com/masondavis4",
+    xUrl: "https://x.com/masondavis4",
 
     offers: ["Mercer", "App State"],
   },
@@ -137,6 +143,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "https://www.hudl.com/embed/video/3/123456/tyler",
+    instagramUrl: "https://instagram.com/tylerjennings21",
+    xUrl: "https://x.com/tylerjennings21",
 
     offers: [],
   },
@@ -173,6 +181,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "https://www.hudl.com/embed/video/3/123456/noah",
+    instagramUrl: "https://instagram.com/noahbennett88",
+    xUrl: "https://x.com/noahbennett88",
 
     offers: ["Georgia Tech", "Wake Forest", "Duke", "NC State"],
   },
@@ -207,6 +217,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "https://www.hudl.com/embed/video/3/123456/ethan",
+    instagramUrl: "https://instagram.com/ethanmitchell55",
+    xUrl: "https://x.com/ethanmitchell55",
 
     offers: ["App State", "Georgia State", "Kennesaw State", "Coastal Carolina"]
   },
@@ -242,6 +254,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "https://www.hudl.com/embed/video/3/123456/logan",
+    instagramUrl: "https://instagram.com/loganreed9",
+    xUrl: "https://x.com/loganreed9",
 
     offers: [],
   },
@@ -275,6 +289,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "https://www.hudl.com/embed/video/3/123456/carter",
+    instagramUrl: "https://instagram.com/cartermurphy66",
+    xUrl: "https://x.com/cartermurphy66",
 
     offers: ["Georgia State", "Louisiana", "FIU", "UTSA"]
   },
@@ -310,6 +326,8 @@ export const players: Player[] = [
     },
 
     hudlUrl: "https://www.hudl.com/embed/video/3/123456/lucas",
+    instagramUrl: "https://instagram.com/lucashoward3",
+    xUrl: "https://x.com/lucashoward3",
 
     offers: [],
   },
