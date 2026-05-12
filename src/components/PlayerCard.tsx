@@ -37,6 +37,8 @@ export type Player = {
   weightRoomStats?: WeightRoomStats
 
   hudlUrl?: string
+  instagramUrl?: string
+  xUrl?: string
   offers: string[]
 
   twitter?: string

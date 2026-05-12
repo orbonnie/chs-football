@@ -6,17 +6,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const CALENDARS = [
   {
     id: '0dc6f5b46b44f0fb18d841c41d007c96960842c29b901e98f88935b5d978af9c@group.calendar.google.com',
-    name: 'Varsity Game',
+    name: 'Varsity Games',
     color: '#08129C'
   },
   {
     id: 'f535be00e0654a2cb18c463463cd25e10d4db8d07d2dad50edd8112aaa2cef6d@group.calendar.google.com',
-    name: 'JV Game',
+    name: 'JV Games',
     color: '#2442E8'
   },
   {
     id: 'cd8793cbfb0c1b13d946b6f6c373dfc2a51ebee4a26ffa80baf3f0b6fc9b1f6e@group.calendar.google.com',
-    name: 'Freshman Game',
+    name: 'Freshman Games',
     color: '#7A8EA0'
   },
   {
@@ -120,14 +120,14 @@ function AgendaView({ currentDate, eventsByDate, todayKey }: {
 
   if (days.length === 0) {
     return (
-      <div className="px-6 py-12 text-center h-[500px]">
+      <div className="px-6 py-12 text-center h-[450px]">
         <p className="text-gray-400 text-sm">No events this month</p>
       </div>
     )
   }
 
   return (
-    <div className="overflow-y-auto h-[500px]">
+    <div className="overflow-y-auto h-[450px]">
       {days.map(({ day, dateKey, events }) => {
         const isToday = dateKey === todayKey
         const date = new Date(year, month, day)
@@ -255,7 +255,7 @@ export default function Calendar() {
 
   return (
     <section className="bg-silver-300 py-16 px-6 border-b border-silver-600/20">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-2xl mx-auto">
         <div className="mb-6 text-center">
           <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">TEAM</p>
           <h2 className="font-display text-black-500 text-6xl tracking-widest">CALENDAR</h2>
@@ -371,7 +371,7 @@ export default function Calendar() {
               <p className="text-gray-400 text-sm">{error}</p>
             </div>
           ) : view === 'month' ? (
-            <div className="grid grid-cols-7 auto-rows-80 sm:auto-rows-[100px] bg-white">
+            <div className="grid grid-cols-7 auto-rows-[4rem] sm:auto-rows-[5rem] bg-white">
               {Array.from({ length: firstDay }).map((_, i) => (
                 <div key={`empty-${i}`} className="border-b border-r border-gray-100 bg-gray-50/50 h-full p-1 flex flex-col" />
               ))}
@@ -386,19 +386,23 @@ export default function Calendar() {
                   <div
                     key={day}
                     onClick={() => setSelectedDate(isSelected ? null : dateKey)}
-                    className={`border-b border-r border-gray-100 min-h-[4rem] p-1.5 cursor-pointer transition-colors ${isSelected ? 'bg-royal-600/10' : 'hover:bg-gray-50'}`}
+                    className={`border-b border-r border-gray-100 flex flex-col cursor-pointer transition-colors ${isSelected ? 'bg-royal-600/10' : 'hover:bg-gray-50'}`}
                   >
-                    <div className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-display mb-1 ${isToday ? 'bg-royal-600 text-white' : 'text-gray-700'}`}>
-                      {day}
+                    {/* Fixed date number */}
+                    <div className="shrink-0 p-1.5 pb-0">
+                      <div className={`w-3 h-3 sm:w-7 sm:h-7 flex items-center justify-center rounded-full text-sm font-display mb-1 ${isToday ? 'bg-royal-600 text-white' : 'text-gray-700'}`}>
+                        {day}
+                      </div>
                     </div>
-                    <div className="space-y-0.5 overflow-hidden flex-1">
+
+                    <div className="overflow-y-auto flex-1 p-1.5 pt-1 space-y-0.5">
                       {dayEvents.slice(0, 2).map(event => (
-                        <div key={event.id} className="text-xs text-white px-0.5 py-0.5 rounded truncate" style={{ backgroundColor: event.calendarColor }}>
+                        <div key={event.id} className="text-[7px] sm:text-xs text-white px-0.5 sm:px-1 py-px sm:py-0.5 rounded truncate" style={{ backgroundColor: event.calendarColor }}>
                           {event.summary}
                         </div>
                       ))}
                       {dayEvents.length > 2 && (
-                        <div className="text-xs text-gray-500 font-bold">+{dayEvents.length - 2} more</div>
+                        <div className="text-[7px] sm:text-xs text-gray-700 font-bold">+{dayEvents.length - 2} more</div>
                       )}
                     </div>
                   </div>

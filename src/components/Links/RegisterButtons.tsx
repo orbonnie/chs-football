@@ -11,14 +11,14 @@ export default function RegisterButtons({ label="Middle School Registration", ho
 
   const regButtons = [
     {
-      label: "K–5th Registration",
-      href: ELEMENTARY_REGISTRATION_URL,
-      hook: k5RegHover
-    },
-    {
       label: label,
       href: MIDDLE_REGISTRATION_URL,
       hook: msRegHover
+    },
+    {
+      label: "K–5th Registration",
+      href: ELEMENTARY_REGISTRATION_URL,
+      hook: k5RegHover
     }
   ]
 
