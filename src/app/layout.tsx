@@ -28,6 +28,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={`${bebasNeue.variable} ${inter.variable} bg-white text-white font-body antialiased min-h-screen flex flex-col`}>

@@ -1,8 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { Ticket, Play } from "lucide-react";
 import MarqueeBanner from "./MarqueeBanner";
+import { useHoverReset } from "@/hooks/useHoverReset";
 
 export default function Intro() {
+  const ticketsHover = useHoverReset()
+  const videoHover = useHoverReset()
+
   return (
     <section className="relative min-h-screen flex flex-col">
       {/* Background image */}
@@ -58,7 +64,11 @@ export default function Intro() {
             href="https://gofan.co/app/school/GA4885"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-royal-600 hover:bg-royal-500 text-white font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-3"
+            onMouseEnter={ticketsHover.onMouseEnter}
+            onMouseLeave={ticketsHover.onMouseLeave}
+            className={`font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-3 ${
+              ticketsHover.hovered ? 'bg-royal-500 text-white' : 'bg-royal-600 text-white'
+            }`}
           >
             <Ticket className="w-7 h-7" />
             Buy Tickets
@@ -68,7 +78,11 @@ export default function Intro() {
             href="https://www.nfhsnetwork.com/schools/f53e94de87"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-black-500/80 hover:bg-black-500 text-white border border-white/20 font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-3"
+            onMouseEnter={videoHover.onMouseEnter}
+            onMouseLeave={videoHover.onMouseLeave}
+            className={`border border-white/20 font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-3 ${
+              videoHover.hovered ? 'bg-black-500 text-white' : 'bg-black-500/80 text-white'
+            }`}
           >
             <Play className="w-7 h-7 fill-current" />
             Watch Live

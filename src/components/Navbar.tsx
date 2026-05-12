@@ -7,7 +7,6 @@ import {
   type MouseEvent as ReactMouseEvent,
 } from "react";
 import Link from "next/link";
-import { div } from "framer-motion/client";
 
 const navLinks = [
   { label: "Home", href: "/" },

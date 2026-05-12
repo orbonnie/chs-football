@@ -1,12 +1,8 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import News from "@/components/News";
 import { jrkNews } from "@/data/jrkNews";
 import { news } from "@/data/news";
+import RegisterButtons from "@/components/RegisterButtons";
 
 const quickLinks = [
   {
@@ -147,33 +143,16 @@ export default function JrkLandingPage() {
           <p className="text-black-500 text-sm max-w-md leading-relaxed">
             Register today for the 2026 season. Questions? Contact Program
             Director Alpha Owens at{" "}
-            <a href="tel:8054326170" className="text-royal-600 font-semibold underline">
+            <a href="tel:8054326170" className="text-royal-600 font-semibold underline hover:text-royal-500">
               805-432-6170
             </a>
             {" "}or{" "}
-            <a href="mailto:kibou94@icloud.com" className="text-royal-600 font-semibold underline">
+            <a href="mailto:kibou94@icloud.com" className="text-royal-600 font-semibold underline hover:text-royal-500">
               kibou94@icloud.com
             </a>
             .
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="https://registration.teamsnap.com/form/48104"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-64 bg-royal-600 hover:bg-black-500 text-white font-display tracking-widest uppercase px-8 py-4 rounded-xl transition-all duration-200 text-center"
-            >
-              Middle School
-            </a>
-            <a
-              href="https://app.amilia.com/store/en/city-of-roswell/shop/programs/128058?subCategoryIds=6626396"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-64 bg-royal-600 hover:bg-black-500 text-white font-display tracking-widest uppercase px-8 py-4 rounded-xl transition-all duration-200 text-center"
-            >
-              K–5th
-            </a>
-          </div>
+            <RegisterButtons />
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OrderButton, SubmitButton } from "@/components/BannerButtons";
 
 export const metadata: Metadata = {
   title: "Banners | Centennial Knights Football",
@@ -123,14 +124,7 @@ export default function BannersPage() {
                   </p>
                 </div>
               </div>
-              <a
-                href={ORDER_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto block text-center bg-black-500 hover:bg-silver-300 hover:text-royal-600 text-white font-display tracking-widest uppercase px-6 py-3 rounded-xl transition-all duration-200 text-sm"
-              >
-                Order Now
-              </a>
+              <OrderButton />
             </div>
           ))}
         </div>
@@ -207,14 +201,7 @@ export default function BannersPage() {
             Submit your banner order before July 1, 2026. Every banner sold puts
             money directly back into your player's account.
           </p>
-          <a
-            href={ORDER_FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-royal-600 hover:bg-silver-300 hover:text-royal-600 text-white font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
-          >
-            Submit Banner Order
-          </a>
+          <SubmitButton />
           <p className="text-silver-500 text-sm">
             Questions? Contact us at{" "}
             <a

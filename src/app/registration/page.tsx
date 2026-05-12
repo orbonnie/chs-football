@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import RegisterButtons from "@/components/RegisterButtons";
 
 export const metadata: Metadata = {
   title: "Register | Centennial Knights Football",
@@ -108,7 +109,7 @@ export default function RegisterPage() {
             waivers to make joining the team accessible to everyone. Email us at{" "}
             <a
               href="mailto:chsbapres@gmail.com"
-              className="text-royal-600 underline"
+              className="text-royal-600 font-bold underline hover:text-royal-500"
             >
               chsbapres@gmail.com
             </a>{" "}
@@ -196,29 +197,12 @@ export default function RegisterPage() {
           <h3 className="font-display text-white text-3xl tracking-widest leading-tight">
             READY TO JOIN THE KNIGHTS?
           </h3>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href={TEAMSNAP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-royal-600 text-white hover:bg-silver-400 hover:text-royal-600 hover:font-bold font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
-            >
-              General Registration
-            </a>
-            <a
-              href={K5_REG_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-royal-600  text-white hover:bg-silver-400 hover:text-royal-600 hover:font-bold font-display tracking-widest uppercase px-10 py-4 rounded-xl transition-all duration-200"
-            >
-              K-5th Registration
-            </a>
-          </div>
+          <RegisterButtons label="General Registration" hover="bg-silver-400 text-royal-600 font-bold" />
           <p className="text-silver-400 text-sm tracking-wide">
             Questions? Contact us at{" "}
             <a
               href="mailto:chsbapres@gmail.com"
-              className="text-white underline"
+              className="underline font-bold hover:text-white"
             >
               chsbapres@gmail.com
             </a>
