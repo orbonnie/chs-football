@@ -3,7 +3,7 @@ export default function SchedulePage() {
     <div className="relative w-full h-screen overflow-hidden">
       <iframe
         src="/sponsorships.pdf"
-        className="absolute inset-0 w-full h-full scale-100 origin-top mt-16"
+        className="absolute inset-0 w-full h-full"
       />
       <a
         href="mailto:Centennialfootballpartners@gmail.com"
