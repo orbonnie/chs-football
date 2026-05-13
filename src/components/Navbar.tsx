@@ -254,7 +254,7 @@ export default function Navbar() {
           <div ref={jrkRef} className="ml-auto relative">
             <button
               onClick={(e) => { e.stopPropagation(); setJrkOpen(!jrkOpen) }}
-              className="bg-white text-royal-600 text-sm font-bold tracking-widest uppercase px-4 py-2 hover:bg-royal-600 hover:text-white transition-colors rounded-md flex items-center gap-2"
+              className="bg-white text-royal-600 text-xs font-bold tracking-wider uppercase px-3 py-2 hover:bg-royal-600 hover:text-white transition-colors rounded-md flex items-center gap-2"
             >
               JR Knights
               <svg className={`w-3 h-3 transition-transform ${jrkOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

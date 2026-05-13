@@ -3,7 +3,13 @@
 import { useEffect, useState, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
-const CALENDARS = [
+type CalendarConfig = {
+  id: string
+  name: string
+  color: string
+}
+
+const ALL_CALENDARS = [
   {
     id: '0dc6f5b46b44f0fb18d841c41d007c96960842c29b901e98f88935b5d978af9c@group.calendar.google.com',
     name: 'Varsity Games',
@@ -35,6 +41,8 @@ const CALENDARS = [
     color: '#EAB308'
   },
 ]
+
+const fullCalendar = ALL_CALENDARS.map(({name}) => name)
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY
 
@@ -81,7 +89,7 @@ function getHeaderLabel(view: View, currentDate: Date) {
 
 function EventDetail({ event }: { event: CalendarEvent }) {
   return (
-    <div className="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+    <div className={`flex gap-3 items-start py-3 border-b border-gray-100 last:border-0`}>
       <div className="w-1 self-stretch rounded-full shrink-0" style={{ backgroundColor: event.calendarColor }} />
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
@@ -102,10 +110,11 @@ function EventDetail({ event }: { event: CalendarEvent }) {
   )
 }
 
-function AgendaView({ currentDate, eventsByDate, todayKey }: {
+function AgendaView({ currentDate, eventsByDate, todayKey, altBg }: {
   currentDate: Date
   eventsByDate: Record<string, CalendarEvent[]>
   todayKey: string
+  altBg: string
 }) {
   const year = currentDate.getFullYear()
   const month = currentDate.getMonth()
@@ -120,8 +129,8 @@ function AgendaView({ currentDate, eventsByDate, todayKey }: {
 
   if (days.length === 0) {
     return (
-      <div className="px-6 py-12 text-center h-[450px]">
-        <p className="text-gray-400 text-sm">No events this month</p>
+      <div className={`px-6 py-12 bg-${altBg} text-center h-[450px]`}>
+        <p className="text-gray-700 text-sm">No events this month</p>
       </div>
     )
   }
@@ -133,9 +142,9 @@ function AgendaView({ currentDate, eventsByDate, todayKey }: {
         const date = new Date(year, month, day)
 
         return (
-          <div key={dateKey} className="flex border-b border-gray-100 last:border-0">
+          <div key={dateKey} className="flex border-b border-gray-400/50 last:border-0">
             {/* Date column */}
-            <div className={`w-20 shrink-0 px-4 py-4 flex flex-col items-center justify-start border-r border-gray-100 ${isToday ? 'bg-royal-600/5' : ''}`}>
+            <div className={`w-20 shrink-0 px-4 py-4 flex flex-col items-center justify-start bg-${altBg} border-r border-gray-100 ${isToday ? 'bg-royal-600/5' : ''}`}>
               <p className="font-display text-xs tracking-widest uppercase text-gray-400">
                 {date.toLocaleDateString('en-US', { weekday: 'short' })}
               </p>
@@ -145,9 +154,9 @@ function AgendaView({ currentDate, eventsByDate, todayKey }: {
             </div>
 
             {/* Events column */}
-            <div className="flex-1 px-4 py-2">
+            <div className={`flex-1 px-4 py-2 bg-${altBg}`}>
               {events.length === 0 ? (
-                <div className="py-3 text-gray-300 text-xs italic">No events</div>
+                <div className="py-3 text-gray-700 text-xs italic">No events</div>
               ) : (
                 events.map(event => <EventDetail key={event.id} event={event} />)
               )}
@@ -159,7 +168,11 @@ function AgendaView({ currentDate, eventsByDate, todayKey }: {
   )
 }
 
-export default function Calendar() {
+export default function Calendar({calendars=fullCalendar, divBg="silver-300", dayBg="white"}: {calendars?: string[], divBg?: string, dayBg?: string} ) {
+  const CALENDARS = ALL_CALENDARS.filter(cal =>
+    calendars.some(c => c.toLowerCase() === cal.name.toLowerCase())
+  )
+
   const [events, setEvents] = useState<CalendarEvent[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -254,7 +267,7 @@ export default function Calendar() {
   const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
 
   return (
-    <section className="bg-silver-300 py-16 px-6 border-b border-silver-600/20">
+    <section className={`bg-${divBg} py-16 px-6 border-b border-silver-600/20`}>
       <div className="max-w-2xl mx-auto">
         <div className="mb-6 text-center">
           <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">TEAM</p>
@@ -410,7 +423,7 @@ export default function Calendar() {
               })}
             </div>
           ) : (
-            <AgendaView currentDate={currentDate} eventsByDate={eventsByDate} todayKey={todayKey} />
+            <AgendaView currentDate={currentDate} eventsByDate={eventsByDate} todayKey={todayKey} altBg={dayBg}/>
           )}
 
           {/* Selected day events — month view only */}
@@ -420,7 +433,7 @@ export default function Calendar() {
                 {new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
               </p>
               {selectedEvents.length === 0 ? (
-                <p className="text-gray-400 text-sm">No events</p>
+                <p className="text-gray-700 text-sm">No events</p>
               ) : (
                 <div className="space-y-0 overflow-hidden flex-1">
                   {selectedEvents.map(event => <EventDetail key={event.id} event={event} />)}
