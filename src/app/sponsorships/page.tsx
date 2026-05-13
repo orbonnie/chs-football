@@ -4,7 +4,7 @@ import { useEffect } from "react"
 
 export default function Sponsorships() {
   useEffect(() => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 640) {
       window.location.href = "/sponsorships.pdf"
     }
   }, [])
