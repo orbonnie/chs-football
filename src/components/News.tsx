@@ -1,71 +1,78 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { news as defaultNews } from "@/data/news"
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { news as defaultNews } from "@/data/news";
 
-export default function News({ data = defaultNews }: { data?: typeof defaultNews }) {
-  const slides = [...data, data[0]]
-  const [index, setIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const [transitionEnabled, setTransitionEnabled] = useState(true)
+export default function News({
+  data = defaultNews,
+  divBg = "silver-300",
+  reelBg = "white",
+}: {
+  data?: typeof defaultNews;
+  divBg?: string;
+  reelBg?: string;
+}) {
+  const slides = [...data, data[0]];
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [transitionEnabled, setTransitionEnabled] = useState(true);
 
   const next = () => {
-    setIndex((prev) => (prev + 1))
-  }
+    setIndex((prev) => prev + 1);
+  };
 
   const prev = () => {
     if (index === 0) {
-      setTransitionEnabled(false)
-      setIndex(data.length - 1)
+      setTransitionEnabled(false);
+      setIndex(data.length - 1);
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          setTransitionEnabled(true)
-        })
-      })
+          setTransitionEnabled(true);
+        });
+      });
 
-      return
+      return;
     }
 
-    setIndex((prev) => prev - 1)
-  }
+    setIndex((prev) => prev - 1);
+  };
 
   // Auto advance
   useEffect(() => {
-    if (paused) return
+    if (paused) return;
 
     const interval = setInterval(() => {
-      next()
-    }, 6000)
+      next();
+    }, 6000);
 
-    return () => clearInterval(interval)
-  }, [paused])
+    return () => clearInterval(interval);
+  }, [paused]);
 
-    // seamless reset after cloned first slide
-    useEffect(() => {
-      if (index === data.length) {
-        const timeout = setTimeout(() => {
-          setTransitionEnabled(false)
-          setIndex(0)
+  // seamless reset after cloned first slide
+  useEffect(() => {
+    if (index === data.length) {
+      const timeout = setTimeout(() => {
+        setTransitionEnabled(false);
+        setIndex(0);
 
+        requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              setTransitionEnabled(true)
-            })
-          })
-        }, 700)
+            setTransitionEnabled(true);
+          });
+        });
+      }, 700);
 
-        return () => clearTimeout(timeout)
-      }
-    }, [index, data.length])
+      return () => clearTimeout(timeout);
+    }
+  }, [index, data.length]);
 
   return (
-    <section className="bg-silver-300 py-16 px-6">
+    <section className={`bg-${divBg} py-16 px-6`}>
       <div className="max-w-6xl mx-auto">
-
         {/* HEADER */}
         <div className="text-center mb-4">
           <p className="font-display text-royal-600 text-xl tracking-[0.4em] mb-2">
@@ -79,11 +86,10 @@ export default function News({ data = defaultNews }: { data?: typeof defaultNews
 
         {/* CAROUSEL */}
         <div
-          className="relative overflow-hidden max-w-3xl mx-auto rounded-3xl bg-white border border-black/5 shadow-sm"
+          className={`relative overflow-hidden max-w-3xl mx-auto rounded-3xl bg-${reelBg} border border-black/5 shadow-sm`}
           // onMouseEnter={() => setPaused(true)}
           // onMouseLeave={() => setPaused(false)}
         >
-
           <button
             onClick={() => setPaused((prev) => !prev)}
             className="absolute top-3 sm:top-6 left-3 sm:left-6 z-40
@@ -122,18 +128,17 @@ export default function News({ data = defaultNews }: { data?: typeof defaultNews
                 href={item.href}
                 className="min-w-full w-full flex-shrink-0"
               >
-
                 {/* IMAGE */}
                 <div className="pt-8 flex justify-center">
                   <div className="relative w-3/4 aspect-[16/7] overflow-hidden rounded-2xl">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="75vw"
-                    className="object-contain"
-                    priority={i === 0}
-                  />
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="75vw"
+                      className="object-contain"
+                      priority={i === 0}
+                    />
                   </div>
                 </div>
 
@@ -197,8 +202,7 @@ export default function News({ data = defaultNews }: { data?: typeof defaultNews
             />
           ))}
         </div>
-
       </div>
     </section>
-  )
+  );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import News from "@/components/News";
 import { jrkNews } from "@/data/jrkNews";
 import { news } from "@/data/news";
+import Calendar from "@/components/Calendar";
 import RegisterButtons from "@/components/Links/RegisterButtons";
 
 const quickLinks = [
@@ -15,15 +16,18 @@ const quickLinks = [
     href: "/jrk/roster",
     description: "Players & coaching staff",
   },
-  { label: "Info", href: "/jrk/info", description: "Registration, fees & contacts" },
+  {
+    label: "Info",
+    href: "/jrk/info",
+    description: "Registration, fees & contacts",
+  },
 ];
 
 export default function JrkLandingPage() {
   return (
-    <div className="min-h-screen bg-royal-600/95">
+    <div className="min-h-screen">
       {/* Hero — full screen poster */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-
+      <div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden bg-royal-600/95">
         {/* Yard lines - horizontal stripes like a football field viewed from above */}
         <div
           className="absolute inset-0 opacity-10"
@@ -125,9 +129,16 @@ export default function JrkLandingPage() {
       </div>
 
       {/* News reel */}
-      <div className="bg-silver-300 px-6">
+      <div className=" px-6">
         <div className="max-w-4xl mx-auto">
-          <News data={jrkNews} />
+          <News data={jrkNews} divBg="white" reelBg="silver-300"/>
+        </div>
+      </div>
+
+      {/* Calendar */}
+      <div className="px-6 border-y bg-silver-300 border-y-silver-600/10">
+        <div className="max-w-4xl mx-auto">
+          <Calendar calendars={["Jr Knights", "General"]} />
         </div>
       </div>
 
@@ -143,16 +154,22 @@ export default function JrkLandingPage() {
           <p className="text-black-500 text-sm max-w-md leading-relaxed">
             Register today for the 2026 season. Questions? Contact Program
             Director Alpha Owens at{" "}
-            <a href="tel:8054326170" className="text-royal-600 font-semibold underline hover:text-royal-500">
+            <a
+              href="tel:8054326170"
+              className="text-royal-600 font-semibold underline hover:text-royal-500"
+            >
               805-432-6170
-            </a>
-            {" "}or{" "}
-            <a href="mailto:kibou94@icloud.com" className="text-royal-600 font-semibold underline hover:text-royal-500">
+            </a>{" "}
+            or{" "}
+            <a
+              href="mailto:kibou94@icloud.com"
+              className="text-royal-600 font-semibold underline hover:text-royal-500"
+            >
               kibou94@icloud.com
             </a>
             .
           </p>
-            <RegisterButtons />
+          <RegisterButtons />
         </div>
       </div>
     </div>
