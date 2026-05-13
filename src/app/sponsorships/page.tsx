@@ -1,9 +1,19 @@
-export default function SchedulePage() {
+"use client"
+
+import { useEffect } from "react"
+
+export default function Sponsorships() {
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      window.location.href = "/sponsorships.pdf"
+    }
+  }, [])
+
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen">
       <iframe
         src="/sponsorships.pdf"
-        className="absolute inset-0 w-full h-full"
+        className="w-full h-full scale-100 origin-top mt-16"
       />
       <a
         href="mailto:Centennialfootballpartners@gmail.com"
