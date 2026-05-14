@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useHoverReset } from '@/hooks/useHoverReset'
 import { sponsors } from "@/data/sponsors"
-import { div } from "framer-motion/client";
 
 export type Sponsor = {
   name: string;

@@ -1,9 +1,5 @@
-export type JrkPlayer = {
-  name: string
-  number: number
-  position: string
-  grade: '6th' | '7th' | '8th'
-}
+import type {Coach} from "@/components/CoachCard"
+import type {JrkPlayer} from "@/components/JrkPlayerCard"
 
 export const players: JrkPlayer[] = [
     // 6TH GRADE
@@ -41,6 +37,25 @@ export const players: JrkPlayer[] = [
 
   // 8TH GRADE
 ]
+
+export const coaches: Coach[] = [
+  { grade: "6th", name: "Will Bass", role: "Head Coach", photo: "" },
+  { grade: "6th", name: "Sean Dent", role: "Assistant Coach", photo: "" },
+  { grade: "7th", name: "Alpha Owens", role: "Head Coach", photo: "" },
+  { grade: "7th", name: "Malik Patel", role: "Offensive Coordinator", photo: "" },
+  { grade: "7th", name: "Andy Payment", role: "Special Teams", photo: "" },
+  { grade: "7th", name: "Sam Walker", role: "Defensive Coordinator", photo: "" },
+  { grade: "7th", name: "Krystian Pryzemski", role: "Defensive Backs", photo: "" },
+  { grade: "7th", name: "Dustin Lepresi", role: "Linebackers", photo: "" },
+  { grade: "7th", name: "Doug Tedder", role: "Stats", photo: "" },
+  { grade: "8th", name: "Daniel Howard", role: "Head Coach", photo: "" },
+  { grade: "8th", name: "Gary Robinson", role: "Assistant Coach", photo: "" },
+  { grade: "8th", name: "Terrell Laster", role: "Assistant Coach", photo: "" },
+]
+
+export const eighthCoaches = coaches.filter(p => p.grade === '8th')
+export const seventhCoaches = coaches.filter(p => p.grade === '7th')
+export const sixthCoaches = coaches.filter(p => p.grade === '6th')
 
 export const eighthRoster = players.filter(p => p.grade === '8th')
 export const seventhRoster = players.filter(p => p.grade === '7th')

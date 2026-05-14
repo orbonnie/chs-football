@@ -1,34 +1,20 @@
 "use client"
 
 import { useState } from "react"
-import { sixthRoster, seventhRoster, eighthRoster } from "@/data/jrkRoster"
-import type { JrkPlayer } from "@/data/jrkRoster"
+import { sixthCoaches, seventhCoaches, eighthCoaches, sixthRoster, seventhRoster, eighthRoster, coaches } from "@/data/jrkRoster"
+import PlayerCard from "@/components/JrkPlayerCard"
+import CoachCard from "@/components/CoachCard"
 
 const grades = [
-  { id: "6th", label: "6th Grade", roster: sixthRoster },
-  { id: "7th", label: "7th Grade", roster: seventhRoster },
-  { id: "8th", label: "8th Grade", roster: eighthRoster },
+  { id: "6th", label: "6th Grade", roster: sixthRoster, coaches: sixthCoaches },
+  { id: "7th", label: "7th Grade", roster: seventhRoster, coaches: seventhCoaches},
+  { id: "8th", label: "8th Grade", roster: eighthRoster, coaches: eighthCoaches },
 ]
-
-function PlayerCard({ player }: { player: JrkPlayer }) {
-  return (
-    <div className="flex items-center gap-4 px-6 py-4 border-b border-gray-300 last:border-0">
-      <span className="font-display text-royal-600 text-2xl tracking-widest w-12 shrink-0">
-        #{player.number}
-      </span>
-      <span className="font-display text-black-500 text-lg tracking-wider flex-1">
-        {player.name.toUpperCase()}
-      </span>
-      <span className="text-xs tracking-widest uppercase text-royal-600 bg-royal-600/10 px-3 py-1 rounded-lg shrink-0">
-        {player.position}
-      </span>
-    </div>
-  )
-}
 
 export default function JrkRosterPage() {
   const [activeGrade, setActiveGrade] = useState("6th")
   const active = grades.find(g => g.id === activeGrade)!
+  const aspect = active.coaches.every((c) => c.photo) ? "tall" : "short"
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-20 px-6">
@@ -81,7 +67,24 @@ export default function JrkRosterPage() {
             <span className="font-display">Position</span>
           </div>
 
+          {/* Coaches */}
+          {active.coaches.length > 0 && (
+            <div className="bg-gray-50 border-b border-gray-400">
+              <p className="font-display text-gray-500 text-xs tracking-[0.3em] uppercase px-6 pt-4 pb-2 border-b border-gray-400">
+                Coaches
+              </p>
+              <div className="flex gap-4 px-6 py-5 overflow-x-auto">
+                {active.coaches.map((coach, i) => (
+                  <CoachCard key={i} coach={coach} aspect={aspect} />
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Players */}
+          <p className="font-display text-gray-500 text-xs tracking-[0.3em] uppercase px-6 pt-4 pb-2 border-b border-gray-400 bg-gray-50">
+            Players
+          </p>
           {active.roster.length > 0 ? (
             [...active.roster]
               .map((player, i) => <PlayerCard key={i} player={player} />)

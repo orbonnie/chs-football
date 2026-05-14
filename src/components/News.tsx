@@ -172,7 +172,7 @@ export default function News({
           {/* LEFT BUTTON */}
           <button
             onClick={prev}
-            className="absolute left-4 sm:left-16 top-1/2 -translate-y-1/2 z-30
+            className="absolute left-0 sm:left-16 top-1/2 -translate-y-1/2 z-30
                       flex items-center justify-center
                       text-black-500/90
                       transition-all duration-200
@@ -185,7 +185,7 @@ export default function News({
           {/* RIGHT BUTTON */}
           <button
             onClick={next}
-            className="absolute right-4 sm:right-16 top-1/2 -translate-y-1/2 z-30
+            className="absolute right-0 sm:right-16 top-1/2 -translate-y-1/2 z-30
                       flex items-center justify-center
                       text-black-500/90
                       transition-all duration-200
