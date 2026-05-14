@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { RegSocialLink } from "@/components/Links/SocialLinks";
+import CalendarSubscribe from "@/components/CalendarSubscribe";
 
 export const metadata: Metadata = {
   title: "Parent Playbook | Centennial Knights Football",
@@ -245,6 +246,8 @@ export default function ParentsPage() {
           </div>
         </div>
       </section>
+
+      <CalendarSubscribe />
 
       {/* Communication */}
       <section className="bg-silver-400 py-20 px-6 mb-2">
