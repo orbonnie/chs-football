@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -19,26 +19,35 @@ export default function News({
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const throttleRef = useRef(false);
+
+  const throttledNav = (fn: () => void) => {
+    if (throttleRef.current) return;
+    throttleRef.current = true;
+    fn();
+    setTimeout(() => {
+      throttleRef.current = false;
+    }, 750); // matches transition duration
+  };
 
   const next = () => {
-    setIndex((prev) => prev + 1);
+    throttledNav(() => setIndex((prev) => prev + 1));
   };
 
   const prev = () => {
-    if (index === 0) {
-      setTransitionEnabled(false);
-      setIndex(data.length - 1);
-
-      requestAnimationFrame(() => {
+    throttledNav(() => {
+      if (index === 0) {
+        setTransitionEnabled(false);
+        setIndex(data.length - 1);
         requestAnimationFrame(() => {
-          setTransitionEnabled(true);
+          requestAnimationFrame(() => {
+            setTransitionEnabled(true);
+          });
         });
-      });
-
-      return;
-    }
-
-    setIndex((prev) => prev - 1);
+        return;
+      }
+      setIndex((prev) => prev - 1);
+    });
   };
 
   // Auto advance
