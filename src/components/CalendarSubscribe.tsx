@@ -57,7 +57,7 @@ export default function CalendarSubscribe({
                     <div className="flex items-center gap-3">
                       {/* <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: cal.color }} /> */}
                       <span
-                        className="font-display text-[11px] sm:text-sm text-center sm:text-left tracking-widest rounded-2xl uppercase text-white px-6 py-2 shrink-0 w-20 sm:w-64"
+                        className="font-display text-[11px] sm:text-sm text-center sm:text-left tracking-widest rounded-2xl uppercase text-white px-6 py-2 shrink-0 w-24 sm:w-64"
                         style={{ backgroundColor: cal.color }}
                       >
                         {cal.name}
