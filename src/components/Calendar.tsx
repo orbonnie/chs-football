@@ -2,45 +2,14 @@
 
 import { useEffect, useState, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ALL_CALENDARS } from "@/data/calendars"
+import { getSubscribeUrls } from "@/lib/calendarUtils"
 
 type CalendarConfig = {
   id: string
   name: string
   color: string
 }
-
-const ALL_CALENDARS = [
-  {
-    id: '0dc6f5b46b44f0fb18d841c41d007c96960842c29b901e98f88935b5d978af9c@group.calendar.google.com',
-    name: 'Varsity Games',
-    color: '#08129C'
-  },
-  {
-    id: 'f535be00e0654a2cb18c463463cd25e10d4db8d07d2dad50edd8112aaa2cef6d@group.calendar.google.com',
-    name: 'JV Games',
-    color: '#2442E8'
-  },
-  {
-    id: 'cd8793cbfb0c1b13d946b6f6c373dfc2a51ebee4a26ffa80baf3f0b6fc9b1f6e@group.calendar.google.com',
-    name: 'Freshman Games',
-    color: '#7A8EA0'
-  },
-  {
-    id: '098655c47346ec4ff43de7ac112a91ac1563024d8a9884bd33ae3ccf123aa3fa@group.calendar.google.com',
-    name: 'Jr Knights',
-    color: '#0EA5f9'
-  },
-  {
-    id: 'b04395491d033a444ab6997960a4b9330e97efe34f62dd77e5038344655f68ec@group.calendar.google.com',
-    name: 'CHS',
-    color: '#172554'
-  },
-  {
-    id: '87485c37d867e372e6a0cef8a3c3fb1a0d5b9ceedadc8605411ab6e68f779843@group.calendar.google.com',
-    name: 'General',
-    color: '#EAB308'
-  },
-]
 
 const fullCalendar = ALL_CALENDARS.map(({name}) => name)
 
@@ -298,28 +267,60 @@ export default function Calendar({calendars=fullCalendar, divBg="silver-300", da
                   </svg>
                 </button>
                 {calendarOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-52 bg-white shadow-xl rounded-xl overflow-hidden z-50">
+                  <div className="absolute right-0 top-full mt-2 w-52 bg-white shadow-xl rounded-xl overflow-visible z-50">
                     {CALENDARS.map(cal => {
                       const isActive = activeCalendars.has(cal.id)
+                      const urls = getSubscribeUrls(cal.id)
                       return (
-                        <button
-                          key={cal.id}
-                          onClick={() => toggleCalendar(cal.id)}
-                          className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
-                        >
-                          <div
-                            className="w-3 h-3 rounded-full shrink-0 border-2 transition-colors"
-                            style={{ backgroundColor: isActive ? cal.color : 'transparent', borderColor: cal.color }}
-                          />
-                          <span className="font-display text-xs tracking-widest uppercase text-black-500 text-left flex-1">
-                            {cal.name}
-                          </span>
-                          {/* {isActive && (
-                            <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/>
-                            </svg>
-                          )} */}
-                        </button>
+                        // <div key={cal.id} className="border-b border-gray-100 last:border-0">
+                          <button
+                            key={cal.id}
+                            onClick={() => toggleCalendar(cal.id)}
+                            className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                          >
+                            <div
+                              className="w-3 h-3 rounded-full shrink-0 border-2 transition-colors"
+                              style={{ backgroundColor: isActive ? cal.color : 'transparent', borderColor: cal.color }}
+                            />
+                            <span className="font-display text-xs tracking-widest uppercase text-black-500 text-left flex-1">
+                              {cal.name}
+                            </span>
+
+                          {/* Subscribe links */}
+                          <div className="flex items-center gap-1">
+                            <a
+                              href={urls.apple}
+                              title="Subscribe on Apple"
+                              onClick={e => e.stopPropagation()}
+                              className="group relative w-7 h-7 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors text-gray-400 hover:text-royal-600"
+                            >
+                              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                              </svg>
+                              {/* <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-1 rounded-lg bg-black-500/30 text-white text-[10px] font-display tracking-widest uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                                Subscribe on Apple
+                              </span> */}
+                            </a>
+                            <a
+                              href={urls.google}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Subscribe on Google / Android"
+                              onClick={e => e.stopPropagation()}
+                              className="group relative w-7 h-7 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors text-gray-400 hover:text-royal-600"
+                            >
+                              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                              </svg>
+                              {/* <span className="absolute top-full right-0 mb-1.5 px-2 py-1 rounded-md bg-black-500/20 text-white text-[10px] font-display tracking-widest uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-[60]">
+                                Subscribe on Google
+                              </span> */}
+                            </a>
+                          </div>
+                          </button>
                       )
                     })}
                   </div>
