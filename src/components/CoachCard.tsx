@@ -15,7 +15,7 @@ export type Coach = {
 
 export default function CoachCard({ coach, aspect }: { coach: Coach, aspect: string }) {
   return (
-    <div className={`relative w-40 rounded-lg overflow-hidden border border-gray-300 bg-royal-600 shrink-0 ${
+    <div className={`relative w-36 sm:w-40 rounded-lg overflow-hidden border border-gray-300 bg-royal-600 shrink-0 ${
       aspect==="tall" ? "aspect-[4/5]" : "aspect-[4/1.5]"
     }`}>
       {coach.photo && (
@@ -29,7 +29,7 @@ export default function CoachCard({ coach, aspect }: { coach: Coach, aspect: str
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-      <div className={`absolute inset-0 z-10 flex flex-col justify-end ${aspect==="tall" ? "" : "p-3"}`}>
+      <div className={`absolute inset-0 z-10 flex flex-col justify-end ${aspect==="tall" ? "" : "p-1.5 sm:p-3"}`}>
         <div className={aspect==="tall" ? "bg-royal-600/90 w-full px-3 py-2" : ""}>
           <p className="font-display text-white text-sm leading-tight tracking-wider">
             {coach.name.toUpperCase()}
