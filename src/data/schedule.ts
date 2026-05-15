@@ -38,9 +38,9 @@ export const games: Game[] = [
   { team: 'jv', date: 'Oct 28', isoDate: '2026-10-28', opponent: 'Chattahoochee', time: '6:00 PM', note: '', location: '@', result: "", recording: "" },
 
   // FRESHMAN
-  { team: 'freshman', date: 'Sep 3',  isoDate: '2026-09-03', opponent: 'Chattahoochee', time: '6:00 PM', note: '', location: 'vs', result: "", recording: "" },
-  { team: 'freshman', date: 'Sep 10', isoDate: '2026-09-10', opponent: 'South Forsyth', time: '6:00 PM', note: '', location: 'vs', result: "", recording: "" },
-  { team: 'freshman', date: 'Sep 17', isoDate: '2026-09-17', opponent: 'Fellowship Christian', time: '6:00 PM', note: '', location: '@', result: "", recording: "" },
+  { team: 'freshman', date: 'Aug 26',  isoDate: '2026-08-26', opponent: 'Chattahoochee', time: '6:00 PM', note: '', location: 'vs', result: "", recording: "" },
+  { team: 'freshman', date: 'Sep 17', isoDate: '2026-09-17', opponent: 'South Forsyth', time: '6:00 PM', note: '', location: 'vs', result: "", recording: "" },
+  { team: 'freshman', date: 'Oct 19', isoDate: '2026-10-19', opponent: 'Fellowship Christian', time: '6:00 PM', note: '', location: '@', result: "", recording: "" },
 ]
 
 // Helper to get just one team's games

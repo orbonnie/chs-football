@@ -305,7 +305,7 @@ export default function Calendar({calendars=fullCalendar, divBg="silver-300", da
                               href={urls.google}
                               target="_blank"
                               rel="noopener noreferrer"
-                              title="Subscribe on Google / Android"
+                              title="Subscribe on Google"
                               onClick={e => e.stopPropagation()}
                               className="group relative w-7 h-7 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors text-gray-400 hover:text-royal-600"
                             >

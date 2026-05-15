@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Play } from "lucide-react";
 import { varsity, jv, freshman } from "@/data/schedule";
 import type { Game } from "@/data/schedule";
+import CalendarLinks from "@/components/links/CalendarLinks";
+import { varsityGames, jvGames, freshmanGames } from "@/data/calendars";
 
 export const metadata: Metadata = {
   title: "Schedule | Centennial Knights Football",
@@ -141,34 +143,44 @@ const jvColGrid =
   "grid grid-cols-[4rem_1fr_4rem_4rem_2rem] items-center gap-x-4";
 
 function JVRow({ game }: { game: Game }) {
-  const isBye = game.location === 'BYE'
-  const textColor = gameTextColor(game.location)
+  const isBye = game.location === "BYE";
+  const textColor = gameTextColor(game.location);
   return (
     <div className="px-4 py-3 border-b border-black-500/50 last:border-0">
       {/* Mobile */}
       <div className="flex items-start justify-between md:hidden">
         <div>
-          <span className={`font-display text-sm tracking-wider block ${textColor}`}>{game.date}</span>
-          <span className={`font-display text-sm tracking-wider block ${textColor}`}>
-            {isBye ? 'BYE WEEK' : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
+          <span
+            className={`font-display text-sm tracking-wider block ${textColor}`}
+          >
+            {game.date}
+          </span>
+          <span
+            className={`font-display text-sm tracking-wider block ${textColor}`}
+          >
+            {isBye
+              ? "BYE WEEK"
+              : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
           </span>
         </div>
         {!isBye && (
           <div className="flex flex-col items-center gap-1">
-            <span className={`font-display text-xs tracking-wider ${textColor}`}>
+            <span
+              className={`font-display text-xs tracking-wider ${textColor}`}
+            >
               {game.result ? game.result : game.time}
             </span>
-              <a
-                href={game.recording || undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`justify-self-center flex items-center justify-center w-5 h-5 rounded-md transition-all duration-200 ${
-                  game.recording
-                    ? 'bg-black-500/80 hover:bg-black-500 text-white border border-white/20'
-                    : 'bg-white text-gray-300 cursor-not-allowed pointer-events-none'
-                }`}
-                aria-label="Watch recording"
-              >
+            <a
+              href={game.recording || undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`justify-self-center flex items-center justify-center w-5 h-5 rounded-md transition-all duration-200 ${
+                game.recording
+                  ? "bg-black-500/80 hover:bg-black-500 text-white border border-white/20"
+                  : "bg-white text-gray-300 cursor-not-allowed pointer-events-none"
+              }`}
+              aria-label="Watch recording"
+            >
               <Play className="w-3 h-3 fill-current" />
             </a>
           </div>
@@ -177,28 +189,38 @@ function JVRow({ game }: { game: Game }) {
 
       {/* Desktop */}
       <div className={`hidden md:grid ${jvColGrid}`}>
-        <span className={`font-display text-sm tracking-wider ${textColor}`}>{game.date}</span>
         <span className={`font-display text-sm tracking-wider ${textColor}`}>
-          {isBye ? 'BYE WEEK' : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
+          {game.date}
         </span>
-        <span className={`text-sm tracking-wider text-right ${isBye ? 'invisible' : textColor}`}>{game.time}</span>
-        <span className={`text-sm tracking-wider text-right ${textColor}`}>{game.result || '—'}</span>
-          <a
-            href={game.recording || undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`justify-self-center flex items-center justify-center w-7 h-7 rounded-lg transition-all duration-200 ${
-              game.recording
-                ? 'bg-black-500/80 hover:bg-black-500 text-white border border-white/20'
-                : 'bg-gray-100 text-gray-300 cursor-not-allowed pointer-events-none'
-            }`}
-            aria-label="Watch recording"
-          >
+        <span className={`font-display text-sm tracking-wider ${textColor}`}>
+          {isBye
+            ? "BYE WEEK"
+            : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
+        </span>
+        <span
+          className={`text-sm tracking-wider text-right ${isBye ? "invisible" : textColor}`}
+        >
+          {game.time}
+        </span>
+        <span className={`text-sm tracking-wider text-right ${textColor}`}>
+          {game.result || "—"}
+        </span>
+        <a
+          href={game.recording || undefined}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`justify-self-center flex items-center justify-center w-7 h-7 rounded-lg transition-all duration-200 ${
+            game.recording
+              ? "bg-black-500/80 hover:bg-black-500 text-white border border-white/20"
+              : "bg-gray-100 text-gray-300 cursor-not-allowed pointer-events-none"
+          }`}
+          aria-label="Watch recording"
+        >
           <Play className="w-3 h-3 fill-current" />
         </a>
       </div>
     </div>
-  )
+  );
 }
 
 export default function SchedulePage() {
@@ -215,30 +237,33 @@ export default function SchedulePage() {
         </div>
 
         {/* Varsity */}
-        <div className="bg-silver-00 rounded-2xl overflow-hidden mb-14">
+        <div className="bg-silver-300 rounded-2xl overflow-hidden mb-14">
           {/* Varsity header */}
-          <div className="bg-black-500 px-6 py-5 flex items-end justify-between">
-            <div>
-              <h2 className="font-display text-white text-4xl tracking-widest leading-none">
+          <div className="bg-black-500 px-6 py-5 flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-end gap-1 sm:gap-4">
+              <h2 className="font-display text-white text-4xl sm:text-4xl tracking-widest leading-none">
                 VARSITY
               </h2>
-            </div>
-            {/* Color key */}
-            <div className="flex items-center gap-1 sm:gap-6 pb-1">
-              <span className="font-display text-royal-400 text-xs sm:text-sm tracking-wider sm:tracking-widest">
-                HOME
-              </span>
-              <span className="text-white/70">/</span>
-              <span className="bg-white px-0.5 sm:px-1 rounded-md sm:rounded-lg">
-                <span className="font-display text-black-500 text-xs sm:text-sm tracking-wider sm:tracking-widest">
-                  AWAY
+              {/* Color key */}
+              <div className="flex items-center gap-1 sm:gap-3 sm:pb-1 sm:px-3 text-[12px] sm:text-xs">
+                <span className="font-display text-royal-400 sm:text-sm tracking-wider sm:tracking-widest">
+                  HOME
                 </span>
-              </span>
-              <span className="text-white/70">/</span>
-              <span className="font-display text-silver-500 text-xs sm:text-sm tracking-wider sm:tracking-widest">
-                BYE
-              </span>
+                <span className="text-white/70">/</span>
+                <span className="bg-white px-0.5 sm:px-1 rounded-md sm:rounded-lg">
+                  <span className="font-display text-black-500 sm:text-sm tracking-wider sm:tracking-widest">
+                    AWAY
+                  </span>
+                </span>
+                <span className="text-white/70">/</span>
+                <span className="font-display text-silver-500 sm:text-sm tracking-wider sm:tracking-widest">
+                  BYE
+                </span>
+              </div>
             </div>
+
+              {/* Calendar links */}
+            <CalendarLinks calId={varsityGames.id}/>
           </div>
 
           <ColumnHeaders />
@@ -252,10 +277,11 @@ export default function SchedulePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* JV */}
           <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5 mb-8">
-            <div className="bg-black-500 px-6 py-4">
+            <div className="bg-black-500 px-6 py-4 flex items-center justify-between">
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">
                 JV
               </h2>
+              <CalendarLinks calId={jvGames.id}/>
             </div>
             {jv.map((game, i) => (
               <JVRow key={i} game={game} />
@@ -264,10 +290,11 @@ export default function SchedulePage() {
 
           {/* Freshman */}
           <div className="bg-silver-300 rounded-2xl overflow-hidden pb-5 mb-8">
-            <div className="bg-black-500 px-6 py-4">
+            <div className="bg-black-500 px-6 py-4 flex items-center justify-between">
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">
                 FRESHMAN
               </h2>
+              <CalendarLinks calId={freshmanGames.id}/>
             </div>
             {freshman.map((game, i) => (
               <JVRow key={i} game={game} />
