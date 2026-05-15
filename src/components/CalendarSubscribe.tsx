@@ -2,7 +2,7 @@
 
 import { getSubscribeUrls } from "@/lib/calendarUtils"
 import { ALL_CALENDARS } from "@/data/calendars";
-import CalendarLinks from "./links/CalendarLinks";
+import CalendarLinks from "@/components/links/CalendarLinks";
 
 const GROUP_ORDER = ['General', 'High School', 'Jr Knights']
 
