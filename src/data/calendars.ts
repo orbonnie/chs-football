@@ -35,4 +35,34 @@ export const ALL_CALENDARS = [
     color: '#EAB308',
     group: 'General',
   },
+  {
+    id: 'a32fd7f19d77220c4334f4ce345c0fac71861834ac5ab432027a0f162e9ffeaa@group.calendar.google.com',
+    name: '6th Grade Games',
+    color: '#6AAF82',
+    group: 'Jr Knights',
+  },
+  {
+    id: '32d88e3e963712737323f9ca31bd9b1c0a96d0028388e6f6428fb943e8cac342@group.calendar.google.com',
+    name: '7th Grade Games',
+    color: '#3A8F5C',
+    group: 'Jr Knights',
+  },
+  {
+    id: 'ed34d296ede9a459ab53f193c07e9b3323602195c4cf0cf66741155c14ee9ee9@group.calendar.google.com',
+    name: '8th Grade Games',
+    color: '#1A4731',
+    group: 'Jr Knights',
+  },
 ]
+
+export const JRK_GAMES =[
+
+]
+
+export const varsityGames = ALL_CALENDARS.filter((c) => c.name === "Varsity Games")[0]
+export const jvGames = ALL_CALENDARS.filter((c) => c.name === "JV Games")[0]
+export const freshmanGames = ALL_CALENDARS.filter((c) => c.name === "Freshman Games")[0]
+
+export const sixthGames = ALL_CALENDARS.filter((c) => c.name === "6th Grade Games")[0]
+export const seventhGames = ALL_CALENDARS.filter((c) => c.name === "7th Grade Games")[0]
+export const eighthGames = ALL_CALENDARS.filter((c) => c.name === "8th Grade Games")[0]
