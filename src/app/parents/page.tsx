@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { RegSocialLink } from "@/components/Links/SocialLinks";
+import { RegSocialLink } from "@/components/links/SocialLinks";
 import CalendarSubscribe from "@/components/CalendarSubscribe";
 
 export const metadata: Metadata = {

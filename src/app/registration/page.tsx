@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import RegisterButtons from "@/components/Links/RegisterButtons";
+import RegisterButtons from "@/components/links/RegisterButtons";
 
 export const metadata: Metadata = {
   title: "Register | Centennial Knights Football",
