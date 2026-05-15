@@ -3,7 +3,7 @@ import News from "@/components/News";
 import { jrkNews } from "@/data/jrkNews";
 import { news } from "@/data/news";
 import Calendar from "@/components/Calendar";
-import RegisterButtons from "@/components/Links/RegisterButtons";
+import RegisterButtons from "@/components/links/RegisterButtons";
 
 const quickLinks = [
   {

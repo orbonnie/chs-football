@@ -1,12 +1,15 @@
+"use client";
+
 import { getSubscribeUrls } from "@/lib/calendarUtils"
 import { ALL_CALENDARS } from "@/data/calendars";
+import CalendarLinks from "@/components/links/CalendarLinks";
 
 const GROUP_ORDER = ['General', 'High School', 'Jr Knights']
 
 const GoogleIcon = () => (
   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-  <path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-</svg>
+    <path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+  </svg>
 )
 
 const AppleIcon = () => (
@@ -62,22 +65,7 @@ export default function CalendarSubscribe({
                       >
                         {cal.name}
                       </span>
-                    <div className="flex gap-2 ml-auto">
-                      <a
-                        href={urls.google}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-1.5 font-display tracking-widest uppercase text-xs px-3 py-1.5 rounded-lg border border-royal-600/30 text-royal-600 hover:bg-royal-600 hover:text-white transition-colors"
-                      >
-                        <GoogleIcon /> Google
-                      </a>
-                      <a
-                        href={urls.apple}
-                        className="flex-1 flex items-center justify-center gap-1.5 font-display tracking-widest uppercase text-xs px-3 py-1.5 rounded-lg border border-black-500/20 text-black-500 hover:bg-black-500 hover:text-white transition-colors"
-                      >
-                        <AppleIcon /> Apple
-                      </a>
-                    </div>
+                    < CalendarLinks calId={cal.id} labels={true}/>
                     </div>
                   </div>
                 )

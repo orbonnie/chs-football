@@ -73,7 +73,7 @@ export default function JrkRosterPage() {
               <p className="font-display text-gray-500 text-xs tracking-[0.3em] uppercase px-6 pt-4 pb-2 border-b border-gray-400">
                 Coaches
               </p>
-              <div className="flex gap-4 px-6 py-5 overflow-x-auto">
+              <div className="flex overflow-x-auto gap-2 sm:gap-4 px-3 sm:px-6 py-5">
                 {active.coaches.map((coach, i) => (
                   <CoachCard key={i} coach={coach} aspect={aspect} />
                 ))}

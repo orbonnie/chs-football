@@ -3,7 +3,7 @@ import Image from "next/image";
 import { players } from "@/data/players";
 import InfoCard from "@/components/profile/InfoCard";
 import StatCard from "@/components/profile/StatCard";
-import { PlayerSocialLink } from "@/components/Links/SocialLinks";
+import { PlayerSocialLink } from "@/components/links/SocialLinks";
 
 
 type Props = {
