@@ -136,8 +136,8 @@ export default function JrkLandingPage() {
       </div>
 
       {/* Calendar */}
-      <div className="px-6 border-y bg-silver-300 border-y-silver-600/10">
-        <div className="max-w-4xl mx-auto">
+      <div className="sm:px-6 border-y bg-silver-300 border-y-silver-600/10">
+        <div className="sm:max-w-4xl mx-auto">
           <Calendar calendars={["Jr Knights", "General", "6th Grade Games", "7th Grade Games", "8th Grade Games"]} />
         </div>
       </div>
