@@ -432,7 +432,7 @@ export default function Calendar({
                   </svg>
                 </button>
                 {viewOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-36 bg-white shadow-xl rounded-xl overflow-hidden z-50">
+                  <div className="absolute right-0 top-full mt-2 w-36 bg-white shadow-xl rounded-xl overflow-hidden z-40">
                     {(["month", "agenda"] as View[]).map((v) => (
                       <button
                         key={v}
