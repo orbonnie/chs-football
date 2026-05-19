@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import PlayerCard from './PlayerCard'
-import type { Player } from './PlayerCard'
+import type { Player } from '@/types'
 
 export default function RecruitingFilters({ players }: { players: Player[] }) {
   const [search, setSearch] = useState('')
@@ -16,7 +16,7 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
       const matchesSearch = fullName.includes(search.toLowerCase())
       const matchesClass = classYear ? p.classYear === classYear : true
       const matchesPosition = position
-        ? p.position.some((pos) =>
+        ? p.position.split("|").some((pos) =>
             pos.toLowerCase().includes(position.toLowerCase())
           )
         : true

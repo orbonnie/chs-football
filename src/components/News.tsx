@@ -4,18 +4,18 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { news as defaultNews } from "@/data/news";
+import type { NewsStory } from "@/types";
 
 export default function News({
-  data = defaultNews,
+  news,
   divBg = "silver-300",
   reelBg = "white",
 }: {
-  data?: typeof defaultNews;
+  news: NewsStory[];
   divBg?: string;
   reelBg?: string;
 }) {
-  const slides = [...data, data[0]];
+  const slides = [...news, news[0]];
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
@@ -38,7 +38,7 @@ export default function News({
     throttledNav(() => {
       if (index === 0) {
         setTransitionEnabled(false);
-        setIndex(data.length - 1);
+        setIndex(news.length - 1);
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             setTransitionEnabled(true);
@@ -63,7 +63,7 @@ export default function News({
 
   // seamless reset after cloned first slide
   useEffect(() => {
-    if (index === data.length) {
+    if (index === news.length) {
       const timeout = setTimeout(() => {
         setTransitionEnabled(false);
         setIndex(0);
@@ -77,7 +77,7 @@ export default function News({
 
       return () => clearTimeout(timeout);
     }
-  }, [index, data.length]);
+  }, [index, news.length]);
 
   return (
     <section className={`bg-${divBg} py-16 px-6`}>
@@ -198,7 +198,7 @@ export default function News({
 
         {/* DOTS */}
         <div className="flex justify-center gap-3 mt-6">
-          {data.map((_, i) => (
+          {news.map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}

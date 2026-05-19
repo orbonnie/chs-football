@@ -5,8 +5,6 @@ export const metadata: Metadata = {
   title: "Banners | Centennial Knights Football",
 };
 
-const ORDER_FORM_URL = "https://forms.gle/Fbmt4UunfzzoRJga9";
-
 const banners = [
   {
     size: "Small",

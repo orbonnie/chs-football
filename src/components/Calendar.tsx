@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { ALL_CALENDARS } from "@/data/calendars";
 import { getSubscribeUrls } from "@/lib/calendarUtils";
 
 type CalendarConfig = {
@@ -10,8 +9,6 @@ type CalendarConfig = {
   name: string;
   color: string;
 };
-
-const fullCalendar = ALL_CALENDARS.map(({ name }) => name);
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY;
 
@@ -174,16 +171,18 @@ function AgendaView({
 }
 
 export default function Calendar({
-  calendars = fullCalendar,
+  ALL_CALENDARS,
+  selectedCalendars,
   divBg = "silver-300",
   dayBg = "white",
 }: {
-  calendars?: string[];
+  ALL_CALENDARS: CalendarConfig[];
+  selectedCalendars: string[];
   divBg?: string;
   dayBg?: string;
 }) {
   const CALENDARS = ALL_CALENDARS.filter((cal) =>
-    calendars.some((c) => c.toLowerCase() === cal.name.toLowerCase()),
+    selectedCalendars.some((c) => c.toLowerCase() === cal.name.toLowerCase()),
   );
 
   const [events, setEvents] = useState<CalendarEvent[]>([]);
@@ -300,9 +299,9 @@ export default function Calendar({
           </h2>
         </div>
 
-        <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+        <div className="rounded-2xl border border-gray-200 shadow-sm">
           {/* Header */}
-          <div className="bg-black-500 px-4 py-2 flex items-center gap-3">
+          <div className="bg-black-500 px-4 py-2 flex items-center gap-3 rounded-t-2xl">
             <button
               onClick={prev}
               className="text-white/70 hover:text-white transition-colors shrink-0"
@@ -345,11 +344,10 @@ export default function Calendar({
                       const isActive = activeCalendars.has(cal.id);
                       const urls = getSubscribeUrls(cal.id);
                       return (
-                        // <div key={cal.id} className="border-b border-gray-100 last:border-0">
                         <button
                           key={cal.id}
                           onClick={() => toggleCalendar(cal.id)}
-                          className="w-full flex items-center gap-2 sm:gap-3 px-3 py-1 sm:py-3 hover:bg-gray-50 transition-colors"
+                          className="w-full flex items-center gap-2 sm:gap-3 px-3 py-1 hover:bg-gray-50 transition-colors"
                         >
                           <div
                             className="w-3 h-3 rounded-full shrink-0 border-2 transition-colors"

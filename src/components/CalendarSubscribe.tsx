@@ -1,8 +1,8 @@
 "use client";
 
 import { getSubscribeUrls } from "@/lib/calendarUtils"
-import { ALL_CALENDARS } from "@/data/calendars";
 import CalendarLinks from "@/components/links/CalendarLinks";
+import type { CalendarConfig } from "@/types";
 
 const GROUP_ORDER = ['General', 'High School', 'Jr Knights']
 
@@ -19,14 +19,16 @@ const AppleIcon = () => (
 )
 
 export default function CalendarSubscribe({
-  calendars,
+  ALL_CALENDARS,
+  selectedCalendars,
   divBg = "white",
 }: {
-  calendars?: string[]
+  ALL_CALENDARS: CalendarConfig[]
+  selectedCalendars?: string[]
   divBg?: string
 }) {
-  const filtered = calendars
-    ? ALL_CALENDARS.filter(c => calendars.some(n => n.toLowerCase() === c.name.toLowerCase()))
+  const filtered = selectedCalendars
+    ? ALL_CALENDARS.filter(c => selectedCalendars.some(n => n.toLowerCase() === c.name.toLowerCase()))
     : ALL_CALENDARS
 
   const groups = GROUP_ORDER.reduce<Record<string, typeof ALL_CALENDARS>>((acc, group) => {
