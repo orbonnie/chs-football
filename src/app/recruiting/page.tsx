@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from 'next'
 import RecruitingFilters from '@/components/RecruitingFilters'
 import { getSheetData } from '@/lib/sheets'

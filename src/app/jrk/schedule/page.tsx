@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getSheetData } from "@/lib/sheets";
 import JrkScheduleClient from "./scheduleTabs"
 

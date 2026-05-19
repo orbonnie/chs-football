@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import News from "@/components/News";
 import Calendar from "@/components/Calendar";

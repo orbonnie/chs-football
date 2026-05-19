@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getSheetData } from "@/lib/sheets";
 import RosterTabs from "./rosterTabs"
 

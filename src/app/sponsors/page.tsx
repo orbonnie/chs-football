@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Sponsors, { Sponsor } from "@/components/Sponsors";
 import type { Metadata } from 'next'
 import { getSheetData } from "@/lib/sheets";

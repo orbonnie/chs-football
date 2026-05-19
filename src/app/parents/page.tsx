@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { RegSocialLink } from "@/components/links/SocialLinks";
 import CalendarSubscribe from "@/components/CalendarSubscribe";
