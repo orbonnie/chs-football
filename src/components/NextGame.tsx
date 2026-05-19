@@ -1,7 +1,22 @@
-import { getNextGame } from '@/data/schedule'
+import { getSheetData } from '@/lib/sheets'
 
-export default function NextGame() {
-  const game = getNextGame()
+async function getNextGame() {
+  const games = await getSheetData("HS-Schedule")
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  return (
+    games.find(g => {
+      if(g.location === 'BYE') return false
+
+      const [year, month, day] = g.isoDate.split('-').map(Number)
+      const gameDate = new Date(year, month - 1, day) // Format to 0-indexed months
+      return gameDate >= today
+    }) ?? null
+  )
+}
+
+export default async function NextGame() {
+  const game = await getNextGame()
 
     if (!game) {
     return (

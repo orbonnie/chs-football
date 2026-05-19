@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import RecruitingFilters from '@/components/RecruitingFilters'
-import { players } from '@/data/players'
+import { getSheetData } from '@/lib/sheets'
+import type { Player } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Recruiting | Centennial Knights Football',
 }
 
-export default function RecruitingPage() {
+export default async function RecruitingPage() {
+  const players = await getSheetData("HS-Players") as unknown as Player[]
+
   return (
     <div className="min-h-screen bg-silver-300 pt-24 pb-20 px-6">
       <div className="max-w-4xl mx-auto">

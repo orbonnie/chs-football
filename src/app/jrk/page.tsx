@@ -1,9 +1,10 @@
 import Link from "next/link";
 import News from "@/components/News";
-import { jrkNews } from "@/data/jrkNews";
-import { news } from "@/data/news";
 import Calendar from "@/components/Calendar";
 import RegisterButtons from "@/components/links/RegisterButtons";
+import { getSheetData } from "@/lib/sheets";
+import type { NewsStory } from "@/types";
+import type { CalendarConfig } from "@/types";
 
 const quickLinks = [
   {
@@ -23,7 +24,17 @@ const quickLinks = [
   },
 ];
 
-export default function JrkLandingPage() {
+export default async function JrkLandingPage() {
+  const [jrkNews, news, allCalendars] = await Promise.all([
+    getSheetData("JRK-News"),
+    getSheetData("HS-News"),
+    getSheetData("Calendars") as unknown as CalendarConfig[],
+  ]);
+
+  const selectedCalendars = allCalendars
+    .filter((c) => c.group === "Jr Knights" || c.group === "General")
+    .map(({ name }) => name);
+
   return (
     <div className="min-h-screen">
       {/* Hero — full screen poster */}
@@ -131,14 +142,21 @@ export default function JrkLandingPage() {
       {/* News reel */}
       <div className=" px-6">
         <div className="max-w-4xl mx-auto">
-          <News data={jrkNews} divBg="white" reelBg="silver-300"/>
+          <News
+            news={jrkNews as NewsStory[]}
+            divBg="white"
+            reelBg="silver-300"
+          />
         </div>
       </div>
 
       {/* Calendar */}
       <div className="sm:px-6 border-y bg-silver-300 border-y-silver-600/10">
         <div className="sm:max-w-4xl mx-auto">
-          <Calendar calendars={["Jr Knights", "General", "6th Grade Games", "7th Grade Games", "8th Grade Games"]} />
+          <Calendar
+            selectedCalendars={selectedCalendars}
+            ALL_CALENDARS={allCalendars}
+          />
         </div>
       </div>
 

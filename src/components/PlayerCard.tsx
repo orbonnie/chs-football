@@ -1,50 +1,8 @@
 // src/components/PlayerCard.tsx
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Player } from '@/types'
 
-export type FootballStats = {
-  gamesPlayed: number
-  tackles?: number
-  yards?: number
-  touchdowns?: number
-}
-
-export type WeightRoomStats = {
-  bench?: number
-  squat?: number
-  deadlift?: number
-  clean?: number
-  forty?: number
-}
-
-export type Player = {
-  slug: string
-  number: string
-  firstName: string
-  lastName: string
-  classYear: string
-  position: string[]
-  photo: string
-  height: string
-  weight: string
-
-  gpa?: number
-
-  bio?: string
-  hometown?: string
-
-  footballStats: FootballStats
-  weightRoomStats?: WeightRoomStats
-
-  hudlUrl?: string
-  instagramUrl?: string
-  xUrl?: string
-  offers: string[]
-
-  twitter?: string
-  instagram?: string
-  highlightsUrl?: string
-}
 
 export default function PlayerCard({ player }: { player: Player }) {
   return (
@@ -87,7 +45,7 @@ export default function PlayerCard({ player }: { player: Player }) {
         </span>
 
         <p className="mt-4 text-black-500/70 text-sm font-medium">
-          {player.position.join(", ")}
+          {player.position.split("|").join(", ")}
         </p>
       </div>
 

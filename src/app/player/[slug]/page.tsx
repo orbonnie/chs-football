@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { players } from "@/data/players";
 import InfoCard from "@/components/profile/InfoCard";
 import StatCard from "@/components/profile/StatCard";
 import { PlayerSocialLink } from "@/components/links/SocialLinks";
+import { getSheetData } from "@/lib/sheets";
 
 
 type Props = {
@@ -12,28 +12,31 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
+  const players = await getSheetData("HS-Players");
   const player = players.find((p) => p.slug === slug)
 
   if (!player) return {}
 
     return {
     title: `${player.firstName} ${player.lastName} | Centennial Knights Football`,
-    description: player.bio ?? `${player.firstName} ${player.lastName} — #${player.number} ${player.position.join(" / ")}, Class of ${player.classYear}. Centennial Knights Football.`,
+    description: player.bio ?? `${player.firstName} ${player.lastName} — #${player.number} ${player.position.split("|").join(" / ")}, Class of ${player.classYear}. Centennial Knights Football.`,
     openGraph: {
       title: `${player.firstName} ${player.lastName} | Centennial Knights Football`,
-      description: player.bio ?? `#${player.number} ${player.position.join(" / ")} • Class of ${player.classYear}`,
+      description: player.bio ?? `#${player.number} ${player.position.split("|").join(" / ")} • Class of ${player.classYear}`,
       images: player.photo ? [{ url: player.photo }] : [],
     },
     twitter: {
       card: "summary_large_image",
       title: `${player.firstName} ${player.lastName} | Centennial Knights Football`,
-      description: player.bio ?? `#${player.number} ${player.position.join(" / ")} • Class of ${player.classYear}`,
+      description: player.bio ?? `#${player.number} ${player.position.split("|").join(" / ")} • Class of ${player.classYear}`,
       images: player.photo ? [player.photo] : [],
     },
   }
 }
 
 export default async function PlayerPage({ params }: Props) {
+  const players = await getSheetData("HS-Players")
+
   const { slug } = await params;
 
   const player = players.find((p) => p.slug === slug);
@@ -80,7 +83,7 @@ export default async function PlayerPage({ params }: Props) {
               </h1>
 
               <p className="mt-4 text-lg text-white/70">
-                #{player.number} • {player.position.join(" / ")} • Class of{" "}
+                #{player.number} • {player.position.split("|").join(" / ")} • Class of{" "}
                 {player.classYear}
               </p>
 
@@ -166,7 +169,7 @@ export default async function PlayerPage({ params }: Props) {
           </h2>
 
           <div className="flex flex-wrap gap-4">
-            {player.offers.map((offer) => (
+            {player.offers.split("|").map((offer: string) => (
               <div
                 key={offer}
                 className="bg-royal-600 px-6 py-4 rounded-lg font-semibold tracking-wide border border-black-500/20"
@@ -185,67 +188,67 @@ export default async function PlayerPage({ params }: Props) {
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <StatCard label="Games" value={player.footballStats.gamesPlayed} />
-
-          {player.footballStats.tackles !== undefined && (
-            <StatCard label="Tackles" value={player.footballStats.tackles} />
+          {player.gamesPlayed && (
+            <StatCard label="Games" value={player.gamesPlayed} />
           )}
 
-          {player.footballStats.yards !== undefined && (
-            <StatCard label="Yards" value={player.footballStats.yards} />
+          {player.tackles && (
+            <StatCard label="Tackles" value={player.tackles} />
           )}
 
-          {player.footballStats.touchdowns !== undefined && (
-            <StatCard label="TDs" value={player.footballStats.touchdowns} />
+          {player.yards && (
+            <StatCard label="Yards" value={player.yards} />
+          )}
+
+          {player.touchdowns && (
+            <StatCard label="TDs" value={player.touchdowns} />
           )}
         </div>
       </section>
 
       {/* ATHLETIC METRICS */}
-      {player.weightRoomStats && (
-        <section className="bg-white max-w-6xl mx-auto px-6 py-8 border-b border-black-500/30">
-          <h2 className="font-display text-black-500 text-3xl tracking-widest mb-6">
-            ATHLETIC METRICS
-          </h2>
+      <section className="bg-white max-w-6xl mx-auto px-6 py-8 border-b border-black-500/30">
+        <h2 className="font-display text-black-500 text-3xl tracking-widest mb-6">
+          ATHLETIC METRICS
+        </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {player.weightRoomStats.bench && (
-              <StatCard
-                label="Bench"
-                value={`${player.weightRoomStats.bench} lbs`}
-              />
-            )}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {player.bench && (
+            <StatCard
+              label="Bench"
+              value={`${player.bench} lbs`}
+            />
+          )}
 
-            {player.weightRoomStats.squat && (
-              <StatCard
-                label="Squat"
-                value={`${player.weightRoomStats.squat} lbs`}
-              />
-            )}
+          {player.squat && (
+            <StatCard
+              label="Squat"
+              value={`${player.squat} lbs`}
+            />
+          )}
 
-            {player.weightRoomStats.deadlift && (
-              <StatCard
-                label="Deadlift"
-                value={`${player.weightRoomStats.deadlift} lbs`}
-              />
-            )}
+          {player.deadlift && (
+            <StatCard
+              label="Deadlift"
+              value={`${player.deadlift} lbs`}
+            />
+          )}
 
-            {player.weightRoomStats.clean && (
-              <StatCard
-                label="Clean"
-                value={`${player.weightRoomStats.clean} lbs`}
-              />
-            )}
+          {player.clean && (
+            <StatCard
+              label="Clean"
+              value={`${player.clean} lbs`}
+            />
+          )}
 
-            {player.weightRoomStats.forty && (
-              <StatCard
-                label="40 Yard"
-                value={`${player.weightRoomStats.forty}s`}
-              />
-            )}
-          </div>
-        </section>
-      )}
+          {player.forty && (
+            <StatCard
+              label="40 Yard"
+              value={`${player.forty}s`}
+            />
+          )}
+        </div>
+      </section>
 
       {/* HIGHLIGHTS (HUDL) */}
       {player.hudlUrl && (

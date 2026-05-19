@@ -2,16 +2,10 @@ import { google } from "googleapis";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  try{
+  try {
     const body = await req.json();
-    const {
-      playerFirst,
-      playerLast,
-      parentFirst,
-      parentLast,
-      date,
-      email,
-    } = body;
+    const { playerFirst, playerLast, parentFirst, parentLast, date, email } =
+      body;
 
     const auth = new google.auth.JWT({
       email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -22,7 +16,7 @@ export async function POST(req: Request) {
     const sheets = google.sheets({ version: "v4", auth });
 
     await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      spreadsheetId: process.env.CONTRACT_GOOGLE_SHEET_ID,
       range: "Sheet1!A:H",
       valueInputOption: "USER_ENTERED",
       requestBody: {
@@ -42,8 +36,11 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true });
-}catch(error) {
-  console.error("Sheet error:", error);
-    return NextResponse.json({ success: false, error: String(error) }, { status: 500 });
-}
+  } catch (error) {
+    console.error("Sheet error:", error);
+    return NextResponse.json(
+      { success: false, error: String(error) },
+      { status: 500 },
+    );
+  }
 }

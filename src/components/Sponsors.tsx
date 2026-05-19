@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useHoverReset } from '@/hooks/useHoverReset'
-import { sponsors } from "@/data/sponsors"
 
 export type Sponsor = {
   name: string;
@@ -54,8 +53,10 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   )
 }
 
-export default function Sponsors() {
+export default function Sponsors({sponsors} : {sponsors: Sponsor[]}) {
   const buttonHover = useHoverReset()
+
+  if (!sponsors) return null
 
   return (
     <section className="bg-white py-16 px-6">

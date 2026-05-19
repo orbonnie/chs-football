@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { RegSocialLink } from "@/components/links/SocialLinks";
 import CalendarSubscribe from "@/components/CalendarSubscribe";
+import { getSheetData } from "@/lib/sheets";
+import type { CalendarConfig } from "@/types";
 
 export const metadata: Metadata = {
   title: "Parent Playbook | Centennial Knights Football",
@@ -130,7 +132,9 @@ const contacts = [
   },
 ];
 
-export default function ParentsPage() {
+export default async function ParentsPage() {
+  const allCalendars = await getSheetData("Calendars") as unknown as CalendarConfig[]
+  const fullCalendar = allCalendars.map(({name}) => name)
   return (
     <div className="min-h-screen bg-white pt-24 pb-20">
       {/* Hero */}
@@ -247,7 +251,7 @@ export default function ParentsPage() {
         </div>
       </section>
 
-      <CalendarSubscribe />
+      <CalendarSubscribe selectedCalendars={fullCalendar} ALL_CALENDARS={allCalendars}/>
 
       {/* Communication */}
       <section className="bg-silver-400 py-20 px-6 mb-2">

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Play } from "lucide-react";
-import { varsity, jv, freshman } from "@/data/schedule";
-import type { Game } from "@/data/schedule";
+import type { HsGame } from "@/types";
 import CalendarLinks from "@/components/links/CalendarLinks";
-import { varsityGames, jvGames, freshmanGames } from "@/data/calendars";
+
+import { getSheetData } from "@/lib/sheets";
 
 export const metadata: Metadata = {
   title: "Schedule | Centennial Knights Football",
@@ -35,7 +35,7 @@ function ColumnHeaders() {
   );
 }
 
-function VarsityRow({ game }: { game: Game }) {
+function VarsityRow({ game }: { game: HsGame }) {
   const isBye = game.location === "BYE";
   const textColor = gameTextColor(game.location);
   return (
@@ -142,7 +142,7 @@ function VarsityRow({ game }: { game: Game }) {
 const jvColGrid =
   "grid grid-cols-[4rem_1fr_4rem_4rem_2rem] items-center gap-x-4";
 
-function JVRow({ game }: { game: Game }) {
+function JVRow({ game }: { game: HsGame }) {
   const isBye = game.location === "BYE";
   const textColor = gameTextColor(game.location);
   return (
@@ -202,28 +202,45 @@ function JVRow({ game }: { game: Game }) {
         >
           {game.time}
         </span>
-        <span className={`text-sm tracking-wider text-right ${textColor}`}>
-          {game.result || "—"}
-        </span>
-        <a
-          href={game.recording || undefined}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`justify-self-center flex items-center justify-center w-7 h-7 rounded-lg transition-all duration-200 ${
-            game.recording
-              ? "bg-black-500/80 hover:bg-black-500 text-white border border-white/20"
-              : "bg-gray-100 text-gray-300 cursor-not-allowed pointer-events-none"
-          }`}
-          aria-label="Watch recording"
-        >
-          <Play className="w-3 h-3 fill-current" />
-        </a>
+        {!isBye && (
+          <span className={`text-sm tracking-wider text-right ${textColor}`}>
+            {game.result || "—"}
+          </span>
+        )}
+        {!isBye && (
+          <a
+            href={game.recording || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`justify-self-center flex items-center justify-center w-7 h-7 rounded-lg transition-all duration-200 ${
+              game.recording
+                ? "bg-black-500/80 hover:bg-black-500 text-white border border-white/20"
+                : "bg-gray-100 text-gray-300 cursor-not-allowed pointer-events-none"
+            }`}
+            aria-label="Watch recording"
+          >
+            <Play className="w-3 h-3 fill-current" />
+          </a>
+        )}
       </div>
     </div>
   );
 }
 
-export default function SchedulePage() {
+export default async function SchedulePage() {
+  const [allGames, allCalendars] = await Promise.all([
+    getSheetData("HS-Schedule"),
+    getSheetData("Calendars"),
+  ]);
+
+  const varsity = allGames.filter((g) => g.team === "varsity") as unknown as HsGame[];
+  const jv = allGames.filter((g) => g.team === "jv") as unknown as HsGame[];
+  const freshman = allGames.filter((g) => g.team === "freshman") as unknown as HsGame[];
+
+  const varsityCal = allCalendars.find((c) => c.name === "Varsity Games");
+  const jvCal = allCalendars.find((c) => c.name === "JV Games");
+  const freshmanCal = allCalendars.find((c) => c.name === "Freshman Games");
+
   return (
     <div className="min-h-screen bg-white pt-24 pb-20 px-6">
       <div className="max-w-4xl mx-auto">
@@ -263,13 +280,13 @@ export default function SchedulePage() {
             </div>
 
               {/* Calendar links */}
-            <CalendarLinks calId={varsityGames.id}/>
+            <CalendarLinks calId={varsityCal?.id}/>
           </div>
 
           <ColumnHeaders />
           {/* Varsity rows */}
           {varsity.map((game, i) => (
-            <VarsityRow key={i} game={game} />
+            <VarsityRow key={i} game={game as unknown as HsGame} />
           ))}
         </div>
 
@@ -281,10 +298,10 @@ export default function SchedulePage() {
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">
                 JV
               </h2>
-              <CalendarLinks calId={jvGames.id}/>
+              <CalendarLinks calId={jvCal?.id}/>
             </div>
             {jv.map((game, i) => (
-              <JVRow key={i} game={game} />
+              <JVRow key={i} game={game as unknown as HsGame} />
             ))}
           </div>
 
@@ -294,10 +311,10 @@ export default function SchedulePage() {
               <h2 className="font-display text-white text-2xl tracking-widest leading-none">
                 FRESHMAN
               </h2>
-              <CalendarLinks calId={freshmanGames.id}/>
+              <CalendarLinks calId={freshmanCal?.id}/>
             </div>
             {freshman.map((game, i) => (
-              <JVRow key={i} game={game} />
+              <JVRow key={i} game={game as unknown as HsGame} />
             ))}
           </div>
         </div>
