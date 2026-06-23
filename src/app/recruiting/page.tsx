@@ -44,7 +44,7 @@ export default async function RecruitingPage() {
 
           <RecruitingFilters players={players}/>
 
-          <div className="border border-white/10 p-8 mb-8">
+          <div className="border border-white/10 p-8 my-8 text-center">
             <h2 className="font-display text-black-500 text-3xl tracking-widest mb-4">CONTACT RECRUITING</h2>
             <p className="text-black-500/90 text-sm mb-6">
               Coaches and college recruiters interested in our athletes, please reach out directly.

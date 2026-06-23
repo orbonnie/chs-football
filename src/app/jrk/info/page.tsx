@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import RegisterButtons from "@/components/links/RegisterButtons";
 
 export const metadata: Metadata = {
-  title: "Jr. Knights | Centennial Knights Football",
+  title: "Jr Knights | Centennial Knights Football",
 };
 
 const importantDates = [
