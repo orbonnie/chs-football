@@ -135,6 +135,7 @@ export default function News({
               <Link
                 key={`${item.title}-${i}`}
                 href={item.href}
+                target={item.href === "#" ? "" : "_blank"}
                 className="min-w-full w-full flex-shrink-0"
               >
                 {/* IMAGE */}
