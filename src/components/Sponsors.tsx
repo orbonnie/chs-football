@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useHoverReset } from '@/hooks/useHoverReset'
+import { cloudinaryUrl } from "@/lib/cloudinary";
+import { useHoverReset } from '@/hooks/useHoverReset';
 
 export type Sponsor = {
   name: string;
@@ -9,14 +10,8 @@ export type Sponsor = {
   logo?: string;
 };
 
-const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-
-// Cloudinary helper
-const cloudinaryUrl = (path: string) =>
-  `https://res.cloudinary.com/${cloudName}/image/upload/${path}`;
-
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
-  const hover = useHoverReset()
+  const hover = useHoverReset();
 
   return (
     <a
@@ -25,32 +20,46 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
       rel="noopener noreferrer"
       onMouseEnter={hover.onMouseEnter}
       onMouseLeave={hover.onMouseLeave}
-      className={`relative flex items-center justify-center overflow-hidden aspect-[3/2] rounded-md transition-colors ${
-        hover.hovered ? 'bg-black-500' : 'bg-royal-600'
+      className={`relative flex items-center justify-center overflow-hidden aspect-[3/2] border-x border-royal-600 rounded-md transition-colors ${
+        hover.hovered ? "bg-black-500" : "bg-royal-600"
       }`}
     >
       {sponsor.logo ? (
-        <Image
-          src={cloudinaryUrl(sponsor.logo)}
-          alt={sponsor.name}
-          fill
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-contain opacity-90 h-3/4"
-        />
-      ):(
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3/4 flex items-center justify-center px-4">
+          <Image
+            src={cloudinaryUrl(sponsor.logo)}
+            alt={sponsor.name}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover h-full w-full"
+          />
+        </div>
+      ) : (
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-3/4 bg-white flex items-center justify-center px-4">
           <span
             className={`font-display font-black tracking-widest text-center uppercase leading-none w-full transition-colors ${
-              hover.hovered ?  'text-royal-600' : 'text-black-500'
+              hover.hovered ? "text-royal-600" : "text-black-500"
             }`}
-            style={{ fontSize: 'clamp(0.75rem, 4vw, 1.5rem' }}
+            style={{ fontSize: "clamp(0.75rem, 4vw, 1.5rem" }}
           >
             {sponsor.name}
           </span>
         </div>
       )}
+      {/* Hover label */}
+      <div
+        className={`absolute top-10 left-1/2 -translate-x-1/2 pointer-events-none transition-all duration-200 ${
+          hover.hovered
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-1"
+        }`}
+      >
+        <span className="bg-black-500/90 text-white text-[18px] md:text-[.9rem] lg:text-[20px] font-display tracking-widest uppercase px-2 py-1 rounded-md shadow-md whitespace-nowrap">
+          {sponsor.name}
+        </span>
+      </div>
     </a>
-  )
+  );
 }
 
 export default function Sponsors({sponsors} : {sponsors: Sponsor[]}) {
