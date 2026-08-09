@@ -2,7 +2,7 @@
 
 import { useHoverReset } from '@/hooks/useHoverReset'
 
-const MIDDLE_REGISTRATION_URL = 'https://registration.teamsnap.com/form/48104'
+const MIDDLE_REGISTRATION_URL = 'https://registration.teamsnap.com/form/51390'
 const ELEMENTARY_REGISTRATION_URL = 'https://app.amilia.com/store/en/city-of-roswell/shop/programs/128058?subCategoryIds=6626396'
 
 export default function RegisterButtons({ label="Middle School Registration", hover="bg-black-500 text-white"}: { label?: string, hover?: string }) {
