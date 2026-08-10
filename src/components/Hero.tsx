@@ -14,14 +14,14 @@ export default function Intro() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/fortress.jpg"
+          src="/fortress-live.png"
           alt="The Fortress"
           fill
           className="object-cover object-center"
           priority
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-white/50" />
+        <div className="absolute inset-0 bg-white/70" />
         {/* Bottom gradient fade to page bg */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-royal-900 to-transparent" />
       </div>
@@ -61,7 +61,7 @@ export default function Intro() {
           style={{ animationDelay: "500ms", animationFillMode: "forwards" }}
         >
           <a
-            href="https://gofan.co/app/school/GA4885"
+            href="https://gofan.co/app/school/GA4885?activity=Football"
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={ticketsHover.onMouseEnter}
@@ -75,7 +75,7 @@ export default function Intro() {
           </a>
 
           <a
-            href="https://www.nfhsnetwork.com/schools/f53e94de87"
+            href="https://www.nfhsnetwork.com/schools/f53e94de87/football"
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={videoHover.onMouseEnter}

@@ -15,7 +15,9 @@ export default async function HomePage() {
   const AllCalendars = await getSheetData("Calendars") as unknown as CalendarConfig[]
   const sponsors = await getSheetData("Sponsors") as unknown as Sponsor[]
 
-  const fullCalendar = AllCalendars.map(({ name }) => name);
+  const fullCalendar = AllCalendars
+  .filter(({ group }) => group?.trim().toLowerCase() !== 'jr knights')
+  .map(({ name }) => name);
 
   return (
     <>

@@ -42,24 +42,10 @@ const registerLinks = [
   },
 ];
 
-const JrkLinks = [
-  {
-    label: "General",
-    href: "/jrk",
-  },
-  {
-    label: "Schedule",
-    href: "/jrk/schedule",
-  },
-  {
-    label: "Roster",
-    href: "/jrk/roster",
-  },
-  {
-    label: "Register",
-    href: "/jrk/info",
-  },
-];
+const jrk = {
+  label: "Jr Knights",
+  href: "https://www.jrknightsfootball.com/"
+}
 
 
 export default function Navbar() {
@@ -253,15 +239,16 @@ export default function Navbar() {
           {/* Junior Knights */}
           <div ref={jrkRef} className="ml-auto relative">
             <button
-              onClick={(e) => { e.stopPropagation(); setJrkOpen(!jrkOpen) }}
+              onClick={(e) => { e.stopPropagation(); window.open(jrk.href) }}
               className="bg-white text-royal-600 text-xs font-bold tracking-wider uppercase px-3 py-2 hover:bg-royal-600 hover:text-white transition-colors rounded-md flex items-center gap-2"
             >
-              JR Knights
-              <svg className={`w-3 h-3 transition-transform ${jrkOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {jrk.label}
+
+              {/* <svg className={`w-3 h-3 transition-transform ${jrkOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7"/>
-              </svg>
+              </svg> */}
             </button>
-            {jrkOpen && (
+            {/* {jrkOpen && (
               <div className="absolute right-0 top-full mt-2 w-48 bg-white shadow-xl flex flex-col z-[100] rounded-md overflow-hidden">
                 {JrkLinks.map((link) => (
                   <a
@@ -274,7 +261,7 @@ export default function Navbar() {
                   </a>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </nav>
       </div>
@@ -381,20 +368,20 @@ export default function Navbar() {
             {/* Mobile Junior Knights */}
             <div className="flex flex-col gap-3">
               <button
-                onClick={() => setJrkOpen(!jrkOpen)}
+                onClick={(e) => { e.stopPropagation(); window.open(jrk.href) }}
                 className="font-display text-3xl tracking-widest text-royal-600 hover:text-black-500 transition-colors flex items-center gap-3 bg-white/90 px-6 py-1 w-full -mx-6"
               >
-                JR Knights
-                <svg
+                {jrk.label}
+                {/* <svg
                   className={`w-3 h-3 transition-transform ${jrkOpen ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7"/>
-                </svg>
+                </svg> */}
               </button>
-              {jrkOpen && (
+              {/* {jrkOpen && (
                 <div className="ml-4 flex flex-col gap-3">
                   {JrkLinks.map((link) => (
                   <a
@@ -407,7 +394,7 @@ export default function Navbar() {
                   </a>
                 ))}
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

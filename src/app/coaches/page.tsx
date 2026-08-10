@@ -8,20 +8,36 @@ export const metadata: Metadata = {
 const headCoach = {
   name: 'Adam Miller',
   title: 'Head Football Coach',
-  bio: 'Add your head coach bio here. Include years of experience, record, championships, and any other highlights that speak to their leadership and impact on the program.',
-  email: 'coach@centennialknights.com',
-  photo: '/coaches/head-coach.jpg',
+  bio: "Coach Adam Miller enters his 10th year of coaching \
+        and his fourth season leading the Centennial football \
+        program as Head Coach. Throughout his career, Coach Miller \
+        has been driven by a passion for developing young men, \
+        believing that the lessons learned through football extend far \
+        beyond the field. What he enjoys most about coaching is watching \
+        student-athletes grow in character, leadership, and confidence as \
+        they progress through the program. \n\nThis season, Coach Miller is especially \
+        excited about the unity, brotherhood, and commitment that this team has built. \
+        He believes that strong relationships and a shared purpose are the foundation \
+        for success and is eager to see that culture on display throughout the season. \
+        His goal is simple: to get better every day and maximize every opportunity to improve as a team, both on and off the field.\n\n\
+        When he is away from football, Coach Miller enjoys spending quality time with his family. \
+        He would like to recognize and thank his wite Joanna and three beautitul daughters \
+        for their unwavering love, support, and sacrifices. Their encouragement allows him \
+        to do what he loves and continues to inspire his commitment to the Centennial football family.",
+  email: 'millera7@fultonschools.org',
+  photo: '/miller.png',
 }
 
 const staff = [
-  { name: 'Reginald Nixon', title: 'Associate Head Coach / Offensive Line', photo: '' },
-  { name: 'Scotty Connors', title: 'Defensive Coordinator', photo: '' },
-  { name: 'Robert Baker', title: 'Defensive Line', photo: '' },
+  { name: 'Scott Connors', title: 'Defensive Coordinator/Linebackers', photo: '' },
+  { name: 'Andrew Wilson', title: 'Defensive Coordinator/Defensive Backs', photo: '' },
+  { name: 'Matt DeSchong', title: 'Defensive Backs', photo: '' },
+  { name: 'Reginald Nixon', title: 'Offensive Line', photo: '' },
   { name: "Rick O'Buck", title: 'Offensive Line', photo: '' },
-  { name: 'Avery Potite', title: 'Running Backs', photo: '' },
-  { name: 'Matt DeSchong', title: 'Wide Receivers', photo: '' },
-  { name: 'Kelly', title: 'Tight Ends', photo: '' },
-  { name: 'Wilson', title: 'Defensive Backs', photo: '' },
+  { name: 'Avery Poteet', title: 'Wide Receivers', photo: '' },
+  { name: 'Kyle Roberts', title: 'Tight Ends', photo: '' },
+  { name: 'Robert Baker', title: 'Defensive Line', photo: '' },
+  { name: 'Praiss Barron', title: 'Wide Receivers', photo: '' },
   { name: 'Jim Showfety', title: 'Special Teams', photo: '' },
 ]
 
@@ -43,12 +59,13 @@ export default function CoachesPage() {
         <div className="bg-white rounded-xl overflow-hidden mb-10 flex flex-col md:flex-row">
 
           {/* Photo */}
-          <div className="relative w-full md:w-80 shrink-0 aspect-[4/3] md:aspect-auto bg-royal-600">
+          <div className="relative w-full md:w-80 shrink-0 aspect-[4/3] md:aspect-auto bg-silver-500">
             {headCoach.photo ? (
               <Image
                 src={headCoach.photo}
                 alt={headCoach.name}
                 fill
+                sizes="(min-width: 768px) 320px, 100vw"
                 className="object-cover object-top"
               />
             ) : (
@@ -68,7 +85,7 @@ export default function CoachesPage() {
             <h2 className="font-display text-black-500 text-5xl tracking-wider leading-none mb-6">
               {headCoach.name.toUpperCase()}
             </h2>
-            <p className="text-black-500/90 text-sm leading-relaxed max-w-xl mb-8">
+            <p className="text-black-500/90 text-sm leading-relaxed max-w-xl mb-8 whitespace-pre-line">
               {headCoach.bio}
             </p>
             <a
