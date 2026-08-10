@@ -57,10 +57,16 @@ export default async function NextGame() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+          <a
+            href="/roster"
+            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-8 py-4 hover:bg-royal-500 transition-colors rounded-lg w-52 text-center whitespace-nowrap"
+          >
+            Roster
+          </a>
           <a
             href="/schedule"
-            className="bg-royal-600 text-white font-bold text-xs sm:text-sm tracking-widest uppercase px-8 py-4 hover:bg-royal-500 transition-colors rounded-lg"
+            className="bg-royal-600 text-white font-bold text-sm tracking-widest uppercase px-8 py-4 hover:bg-royal-500 transition-colors rounded-lg w-52 text-center whitespace-nowrap"
           >
             Full Schedule
           </a>

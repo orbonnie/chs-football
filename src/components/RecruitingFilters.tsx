@@ -41,10 +41,10 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
           className="bg-white text-royal-900 rounded-2xl px-6 py-4 text-sm outline-none cursor-pointer min-w-44"
         >
           <option value="">All Classes</option>
-          <option value="2026">2026</option>
           <option value="2027">2027</option>
           <option value="2028">2028</option>
           <option value="2029">2029</option>
+          <option value="2030">2030</option>
         </select>
         <select
           value={position}
@@ -62,6 +62,7 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
           <option value="Defensive Back">DB</option>
           <option value="Kicker">K</option>
           <option value="Punter">P</option>
+          <option value="ATH">ATH</option>
         </select>
       </div>
 
