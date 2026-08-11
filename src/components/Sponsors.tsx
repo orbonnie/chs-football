@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { cloudinaryUrl } from "@/lib/cloudinary";
 import { useHoverReset } from '@/hooks/useHoverReset'
 
 export type Sponsor = {
@@ -10,10 +11,6 @@ export type Sponsor = {
 };
 
 const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-
-// Cloudinary helper
-const cloudinaryUrl = (path: string) =>
-  `https://res.cloudinary.com/${cloudName}/image/upload/${path}`;
 
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   const hover = useHoverReset()

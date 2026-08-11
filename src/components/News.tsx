@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { NewsStory } from "@/types";
+import { isInternalLink } from "@/lib/links"
+import { cloudinaryUrl } from "@/lib/cloudinary";
 
 export default function News({
   news,
@@ -22,6 +24,7 @@ export default function News({
   const throttleRef = useRef(false);
 
   const slides = [...news].filter(n => {
+    if (n.team?.toLowerCase() === 'jrk') return false
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const [year, month, day] = n.isoDate.split('-').map(Number)
@@ -143,14 +146,14 @@ export default function News({
               <Link
                 key={`${item.title}-${i}`}
                 href={item.href}
-                target={item.href === "#" ? "" : "_blank"}
+                target={isInternalLink(item.href) ? undefined : "_blank"}
                 className="min-w-full w-full flex-shrink-0"
               >
                 {/* IMAGE */}
                 <div className="pt-8 flex justify-center">
                   <div className="relative w-3/4 aspect-[16/7] overflow-hidden rounded-2xl">
                     <Image
-                      src={item.image}
+                      src={cloudinaryUrl(item.image)}
                       alt={item.title}
                       fill
                       sizes="75vw"

@@ -76,6 +76,7 @@ export type NewsStory = {
   href: string
   date: string
   isoDate: string
+  team: string
 }
 
 export type CalendarConfig = {
