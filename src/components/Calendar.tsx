@@ -109,6 +109,9 @@ function AgendaView({
   const month = currentDate.getMonth();
   const daysInMonth = getDaysInMonth(year, month);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const todayRef = useRef<HTMLDivElement>(null);
+
   // Build list of days that have events, plus today
   const days = Array.from({ length: daysInMonth })
     .map((_, i) => {
@@ -118,7 +121,13 @@ function AgendaView({
     })
     .filter((d) => d.events.length > 0 || d.dateKey === todayKey);
 
-  if (days.length === 0) {
+  useEffect(() => {
+    if(todayRef.current && containerRef.current) {
+      containerRef.current.scrollTop = todayRef.current.offsetTop;
+    }
+  })
+
+    if (days.length === 0) {
     return (
       <div className={`px-6 py-12 bg-${altBg} text-center h-[450px]`}>
         <p className="text-gray-700 text-sm">No events this month</p>
@@ -127,7 +136,10 @@ function AgendaView({
   }
 
   return (
-    <div className="overflow-y-auto h-[450px]">
+    <div
+      ref={containerRef}
+      className="relative overflow-y-auto h-[450px] rounded-b-2xl"
+    >
       {days.map(({ day, dateKey, events }) => {
         const isToday = dateKey === todayKey;
         const date = new Date(year, month, day);
@@ -135,6 +147,7 @@ function AgendaView({
         return (
           <div
             key={dateKey}
+            ref={isToday ? todayRef : undefined}
             className="flex border-b border-gray-400/50 last:border-0"
           >
             {/* Date column */}
@@ -495,7 +508,7 @@ export default function Calendar({
               <p className="text-gray-400 text-sm">{error}</p>
             </div>
           ) : view === "month" ? (
-            <div className="grid grid-cols-7 auto-rows-[4rem] sm:auto-rows-[5rem] bg-white">
+            <div className="grid grid-cols-7 auto-rows-[4rem] sm:auto-rows-[6rem] bg-white">
               {Array.from({ length: firstDay }).map((_, i) => (
                 <div
                   key={`empty-${i}`}

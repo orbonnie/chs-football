@@ -10,6 +10,8 @@ export type Sponsor = {
   logo?: string;
 };
 
+const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   const hover = useHoverReset();
 
