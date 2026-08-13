@@ -69,8 +69,12 @@ export default function RecruitingFilters({ players }: { players: Player[] }) {
       {/* Player grid */}
       {filtered.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-          {filtered.map((player) => (
-            <PlayerCard key={`${player.number}-${player.lastName}`} player={player} />
+          {filtered.map((player, index) => (
+            <PlayerCard
+              key={`${player.number}-${player.lastName}`}
+              player={player}
+              priority={index < 3}
+            />
           ))}
         </div>
       ) : (

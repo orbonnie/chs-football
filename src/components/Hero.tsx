@@ -53,7 +53,16 @@ export default function Intro() {
             animationFillMode: "forwards",
           }}
         >
-          CENTENNIAL HIGH SCHOOL · ROSWELL, GA
+          CENTENNIAL HIGH SCHOOL
+        </p>
+        <p
+          className="font-display font-semibold text-royal-600 text-2xl tracking-[0.3em] mt-4 animate-fade-up opacity-0"
+          style={{
+            animationDelay: "400ms",
+            animationFillMode: "forwards",
+          }}
+        >
+          ROSWELL, GA
         </p>
 
         <div

@@ -1,10 +1,11 @@
 // src/components/PlayerCard.tsx
-import Image from 'next/image'
-import Link from 'next/link'
-import type { Player } from '@/types'
+import Image from 'next/image';
+import Link from 'next/link';
+import type { Player } from '@/types';
+import { cloudinaryImage } from '@/lib/cloudinary';
 
 
-export default function PlayerCard({ player }: { player: Player }) {
+export default function PlayerCard({ player, priority = false }: { player: Player; priority?: boolean }) {
   return (
     <div className="bg-white rounded-2xl overflow-hidden flex flex-col border border-royal-600/20">
 
@@ -18,9 +19,11 @@ export default function PlayerCard({ player }: { player: Player }) {
           </div>
         ) : (
           <Image
-            src={player.photo}
+            src={cloudinaryImage(player.photo, 800)}
             alt={`${player.firstName} ${player.lastName}`}
             fill
+            sizes="(min-width: 512px) 512px, 100vw"
+            priority={priority}
             className="object-cover object-top"
             onError={(e) => {
               // Hide broken image so the parent bg-royal-600 shows through
