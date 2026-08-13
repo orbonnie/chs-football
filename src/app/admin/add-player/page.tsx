@@ -15,7 +15,7 @@ const positions = [
   "Defensive End",
   "Linebacker",
   "Defensive Back",
-  "ATH",
+  "Athlete",
   "Kicker",
   "Punter",
 ];
