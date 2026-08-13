@@ -264,7 +264,7 @@ export function AddPlayerForm()  {
         )}
 
         <div>
-          <label className={labelClass}>Position</label>
+          <label className={labelClass}>Position (Select up to 2)</label>
 
           <div className="grid grid-cols-2 gap-2">
             {positions.map((position) => (
@@ -295,13 +295,18 @@ export function AddPlayerForm()  {
 
         <div>
           <label className={labelClass}>Class Year</label>
-          <input
-            type="text"
+          <select
             value={classYear}
             onChange={(e) => setClassYear(e.target.value)}
             required
             className={inputClass}
-          />
+          >
+            <option value="">Select a class</option>
+            <option value="2027">2027</option>
+            <option value="2027">2028</option>
+            <option value="2027">2029</option>
+            <option value="2027">2030</option>
+          </select>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
