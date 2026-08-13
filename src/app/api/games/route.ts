@@ -2,6 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { appendSheetRow, findRowIndex, updateSheetRow } from "@/lib/sheets";
 
+function formatDisplayDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export async function POST(req: NextRequest) {
   const cookieStore = await cookies();
   const session = cookieStore.get("admin_session")?.value;
@@ -10,15 +18,15 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const {team, date, isoDate, opponent, time, note, location, result, recording } = body;
+  const {team, isoDate, opponent, time, note, location, result, recording } = body;
 
-  if (!isoDate || !date || !opponent || !team) {
+  if (!isoDate || !opponent || !team) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
   }
 
   const values = [
     team,
-    date,
+    formatDisplayDate(isoDate),
     isoDate,
     opponent,
     time || "",
@@ -31,8 +39,9 @@ export async function POST(req: NextRequest) {
   const existingRow = await findRowIndex(
     "HS-Schedule",
     (row) =>
-      row.Date?.trim().toLowerCase() === isoDate.trim().toLowerCase() &&
-      row.opponent.trim().toLowerCase() === opponent.trim().toLowerCase()
+      row.isoDate?.trim().toLowerCase() === isoDate.trim().toLowerCase() &&
+      row.opponent.trim().toLowerCase() === opponent.trim().toLowerCase() &&
+      row.team?.trim().toLowerCase() === team.trim().toLowerCase()
   );
 
   if (existingRow) {
