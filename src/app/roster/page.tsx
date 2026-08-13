@@ -1,25 +1,11 @@
 import type { Metadata } from 'next'
 import { getSheetData } from '@/lib/sheets'
+import { formatPosition } from '@/lib/positions';
 
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Roster | Centennial Knights Football',
-}
-
-const POSITION_ABBREVIATIONS: Record<string, string> = {
-  'Quarterback': 'QB',
-  'Running Back': 'RB',
-  'Wide Receiver': 'WR',
-  'Tight End': 'TE',
-  'Offensive Line': 'OL',
-  'Defensive Line': 'DL',
-  'Defensive End': 'DE',
-  'Linebacker': 'LB',
-  'Defensive Back': 'DB',
-  'ATH': 'ATH',
-  'Kicker': 'K',
-  'Punter': 'P',
 }
 
 type Player = {
@@ -41,14 +27,6 @@ async function getRoster(): Promise<Player[]> {
       position: r.position,
     }))
     .sort((a, b) => Number(a.number) - Number(b.number))
-}
-
-function formatPosition(pos: string) {
-  if (!pos) return ''
-  return pos
-    .split('|')
-    .map(pos => POSITION_ABBREVIATIONS[pos.trim()] ?? pos.trim())
-    .join('/')
 }
 
 export default async function RosterPage() {

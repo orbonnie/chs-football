@@ -1,12 +1,12 @@
 // lib/sheets.ts
 import { google } from "googleapis";
-import { unstable_cache } from "next/cache";
+import { unstable_cache, revalidateTag } from "next/cache";
 
 function getAuth() {
   return new google.auth.JWT({
     email: process.env.GOOGLE_CLIENT_EMAIL,
     key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-    scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 }
 
@@ -35,4 +35,71 @@ export function getSheetData(sheetName: string, range = "A:Z") {
       tags: [sheetName.toLowerCase()],
     }
   )();
+}
+
+export async function appendSheetRow(sheetName: string, values: string[]) {
+  const sheets = google.sheets({ version: "v4", auth: getAuth() });
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: process.env.DATA_GOOGLE_SHEET_ID,
+    range: `${sheetName}!A:A`,
+    valueInputOption: "RAW",
+    insertDataOption: "INSERT_ROWS",
+    requestBody: { values: [values] },
+  });
+
+  revalidateTag(sheetName.toLowerCase(), "max");
+}
+
+export async function findRowIndex(
+  sheetName: string,
+  predicate: (row: Record<string, string>) => boolean
+): Promise<number | null> {
+  const sheets = google.sheets({ version: "v4", auth: getAuth() });
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.DATA_GOOGLE_SHEET_ID,
+    range: `${sheetName}!A:Z`,
+  });
+  const [headers, ...rows] = res.data.values ?? [];
+  if (!headers) return null;
+
+  const idx = rows.findIndex((row) => {
+    const obj = Object.fromEntries(
+      headers.map((h: string, i: number) => [h, row[i] ?? ""])
+    );
+    return predicate(obj);
+  });
+
+  return idx === -1 ? null : idx + 2
+}
+
+
+export async function updateSheetRow(
+  sheetName: string,
+  rowNumber: number,
+  values: string[]
+) {
+  const sheets = google.sheets({ version: "v4", auth: getAuth() });
+  const endCol = String.fromCharCode(64 + values.length);
+
+  await sheets.spreadsheets.values.update({
+    spreadsheetId: process.env.DATA_GOOGLE_SHEET_ID,
+    range: `${sheetName}!A${rowNumber}:${endCol}${rowNumber}`,
+    valueInputOption: "RAW",
+    requestBody: {values: [values]},
+  });
+  revalidateTag(sheetName.toLowerCase(), "max");
+}
+
+export async function getRowValues(
+  sheetName: string,
+  rowNumber: number,
+): Promise<string[]> {
+  const sheets = google.sheets({ version: "v4", auth: getAuth() });
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.DATA_GOOGLE_SHEET_ID,
+    range: `${sheetName}!A${rowNumber}:Z${rowNumber}`,
+  });
+
+  return res.data.values?.[0] ?? []
 }
