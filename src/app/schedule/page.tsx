@@ -235,9 +235,14 @@ export default async function SchedulePage() {
     getSheetData("Calendars"),
   ]);
 
-  const varsity = allGames.filter((g) => g.team === "varsity") as unknown as HsGame[];
-  const jv = allGames.filter((g) => g.team === "jv") as unknown as HsGame[];
-  const freshman = allGames.filter((g) => g.team === "freshman") as unknown as HsGame[];
+  const byTeamAndDate = (team: string) =>
+  allGames
+    .filter((g) => g.team === team)
+    .sort((a, b) => new Date(a.isoDate).getTime() - new Date(b.isoDate).getTime());
+
+  const varsity = byTeamAndDate("varsity") as unknown as HsGame[];
+  const jv = byTeamAndDate("jv") as unknown as HsGame[];
+  const freshman = byTeamAndDate("freshman") as unknown as HsGame[];
 
   const varsityCal = allCalendars.find((c) => c.name === "Varsity Games");
   const jvCal = allCalendars.find((c) => c.name === "JV Games");

@@ -5,6 +5,21 @@ import { useState } from "react";
 const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
+const positions = [
+  "Quarterback",
+  "Running Back",
+  "Wide Receiver",
+  "Tight End",
+  "Offensive Line",
+  "Defensive Line",
+  "Defensive End",
+  "Linebacker",
+  "Defensive Back",
+  "ATH",
+  "Kicker",
+  "Punter",
+];
+
 async function uploadImage(file: File): Promise<string> {
   const formData = new FormData();
   formData.append("file", file);
@@ -26,7 +41,7 @@ export function AddPlayerForm()  {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [classYear, setClassYear] = useState("");
-  const [position, setPosition] = useState("");
+  const [selectedPositions, setSelectedPositions] = useState<string[]>([]);
   const [existingPhoto, setExistingPhoto] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [height, setHeight] = useState("");
@@ -90,7 +105,7 @@ export function AddPlayerForm()  {
 
       setNumber(num ?? "");
       setClassYear(clsYear ?? "");
-      setPosition(pos ?? "");
+      setSelectedPositions(pos ?? []);
       setExistingPhoto(photo ?? "");
       setHeight(ht ?? "");
       setWeight(wt ?? "");
@@ -109,6 +124,26 @@ export function AddPlayerForm()  {
       setOffers(offersVal ?? "");
       setLookupStatus("found");
     } else {
+      setNumber("");
+      setClassYear("");
+      setSelectedPositions([]);
+      setExistingPhoto("");
+      setFile(null);
+      setHeight("");
+      setWeight("");
+      setGpa("");
+      setBio("");
+      setGamesPlayed("");
+      setYards("");
+      setTouchdowns("");
+      setTackles("");
+      setBench("");
+      setSquat("");
+      setDeadlift("");
+      setClean("");
+      setForty("");
+      setHudlUrl("");
+      setOffers("");
       setLookupStatus("new");
     }
   };
@@ -131,7 +166,7 @@ export function AddPlayerForm()  {
           firstName,
           lastName,
           classYear,
-          position,
+          selectedPositions,
           photo: publicId,
           height,
           weight,
@@ -228,26 +263,33 @@ export function AddPlayerForm()  {
           </p>
         )}
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className={labelClass}>Number</label>
-            <input
-              type="text"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-              required
-              className={inputClass}
-            />
-          </div>
-          <div>
-            <label className={labelClass}>Position</label>
-            <input
-              type="text"
-              value={position}
-              onChange={(e) => setPosition(e.target.value)}
-              required
-              className={inputClass}
-            />
+        <div>
+          <label className={labelClass}>Position</label>
+
+          <div className="grid grid-cols-2 gap-2">
+            {positions.map((position) => (
+              <label key={position} className="flex items-center gap-2 text-black-500">
+                <input
+                  type="checkbox"
+                  value={position}
+                  checked={selectedPositions.includes(position)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setSelectedPositions([
+                        ...selectedPositions,
+                        position,
+                      ]);
+                    } else {
+                      setSelectedPositions(
+                        selectedPositions.filter((p) => p !== position)
+                      );
+                    }
+                  }}
+                />
+
+                {position}
+              </label>
+            ))}
           </div>
         </div>
 
@@ -257,6 +299,7 @@ export function AddPlayerForm()  {
             type="text"
             value={classYear}
             onChange={(e) => setClassYear(e.target.value)}
+            required
             className={inputClass}
           />
         </div>

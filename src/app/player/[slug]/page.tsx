@@ -184,7 +184,7 @@ export default async function PlayerPage({ params }: Props) {
           {player.bio && (
             <div className="mt-10 max-w-3xl">
               <h2 className="font-display text-2xl tracking-widest mb-3">
-                PLAYER BIO
+                ABOUT
               </h2>
               <p className="text-white/70 leading-relaxed">{player.bio}</p>
             </div>

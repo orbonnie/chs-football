@@ -48,7 +48,7 @@ export default function PlayerCard({ player, priority = false }: { player: Playe
         </span>
 
         <p className="mt-4 text-black-500/70 text-sm font-medium">
-          {player.position.split("|").join(", ")}
+          {player.position.split("|").join("/")}
         </p>
       </div>
 

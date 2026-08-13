@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { appendSheetRow, findRowIndex, updateSheetRow } from "@/lib/sheets";
+import { capWords } from "@/lib/formatData";
 
 
 function createSlug(fname: string, lname: string) {
-  return `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+  return `${fname.trim().toLowerCase()}-${lname.trim().toLowerCase()}`;
 }
 
 export async function POST(req: NextRequest) {
@@ -40,17 +41,17 @@ export async function POST(req: NextRequest) {
     offers,
   } = body;
 
-  if ( !number || !firstName || !lastName || !classYear || !position ) {
+  if ( !number || !firstName || !lastName || !classYear || !Array.isArray(position) || position.length === 0) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
   }
 
    const values = [
     createSlug(firstName, lastName),
     number,
-    firstName,
-    lastName,
+    capWords(firstName),
+    capWords(lastName),
     classYear,
-    position,
+    position.join("|"),
     photo|| "",
     height|| "",
     weight|| "",

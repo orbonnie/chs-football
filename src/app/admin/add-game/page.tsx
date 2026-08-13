@@ -40,6 +40,11 @@ export function AddGameForm() {
       setRecording(rec ?? "");
       setLookupStatus("found");
     } else {
+      setTime("");
+      setNote("");
+      setLocation("");
+      setResult("");
+      setRecording("");
       setLookupStatus("new");
     }
   };
@@ -146,15 +151,19 @@ export function AddGameForm() {
         )}
 
         <div>
-          <label className={labelClass}>Team ("varsity", "jv" or "freshman")</label>
-          <input
-            type="text"
+          <label className={labelClass}>Team</label>
+          <select
             value={team}
             onChange={(e) => setTeam(e.target.value)}
             onBlur={runLookup}
             required
             className={inputClass}
-          />
+          >
+            <option value="">Select a team</option>
+            <option value="varsity">Varsity</option>
+            <option value="jv">JV</option>
+            <option value="freshman">Freshman</option>
+          </select>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -164,18 +173,23 @@ export function AddGameForm() {
               type="text"
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              placeholder="7:00 PM"
+              placeholder="7:30 PM"
+              required
               className={inputClass}
             />
           </div>
           <div>
             <label className={labelClass}>Location</label>
-            <input
-              type="text"
+            <select
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              required
               className={inputClass}
-            />
+            >
+              <option value="">Select a location</option>
+              <option value="vs">Home</option>
+              <option value="@">Away</option>
+            </select>
           </div>
         </div>
 
