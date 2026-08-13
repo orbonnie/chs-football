@@ -1,13 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { appendSheetRow, findRowIndex, updateSheetRow } from "@/lib/sheets";
+import { capWords } from "@/lib/formatData";
 
 function formatDisplayDate(iso: string) {
   const [year, month, day] = iso.split("-").map(Number);
   return new Date(year, month - 1, day).toLocaleDateString("en-US", {
-    month: "long",
+    month: "short",
     day: "numeric",
   });
+}
+
+function formatGameTime(time: string) {
+  if (!time?.trim()) return "";
+
+  const normalized = time.trim().toUpperCase();
+
+  // Add PM if AM/PM wasn't provided
+  const withPeriod = /\b(AM|PM)\b/.test(normalized)
+    ? normalized
+    : `${normalized} PM`;
+
+  // Normalize to H:MM AM/PM
+  const match = withPeriod.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/);
+
+  if (!match) return withPeriod;
+
+  const [, hour, minutes = "00", period] = match;
+
+  return `${hour}:${minutes} ${period}`;
 }
 
 export async function POST(req: NextRequest) {
@@ -28,8 +49,8 @@ export async function POST(req: NextRequest) {
     team,
     formatDisplayDate(isoDate),
     isoDate,
-    opponent,
-    time || "",
+    capWords(opponent),
+    formatGameTime(time) || "",
     note || "",
     location || "",
     result || "",
