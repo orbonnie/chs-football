@@ -29,7 +29,6 @@ export default function AdminPage() {
           <Link
             key={`${link.label}-${i}`}
             href={link.href}
-            target='_blank'
             className="group flex items-start gap-4 py-5 hover:bg-silver-400 hover:text-royal-600 hover:font-semibold transition-colors px-2 -mx-2 rounded"
           >
             <span className="text-silver-600 font-mono text-sm pt-0.5">

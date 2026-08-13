@@ -120,7 +120,7 @@ export default function Navbar() {
         </Link> */}
 
         {/* Mobile logo + hamburger */}
-        <div className="lg:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center gap-3 w-full pr-4">
           <Link href="/">
             <img src="/logo.png" alt="Centennial Knights" className="h-12 w-auto" />
           </Link>
@@ -134,10 +134,18 @@ export default function Navbar() {
             <span className={`block w-6 h-0.5 bg-white transition-opacity ${open ? "opacity-0" : ""}`} />
             <span className={`block w-6 h-0.5 bg-white transition-transform ${open ? "-rotate-45 -translate-y-2" : ""}`} />
           </button>
+
+          {/* Admin */}
+          <Link
+            href="/admin"
+            className="ml-auto text-white/70 hover:text-white/60 text-xs tracking-widest uppercase transition-colors"
+          >
+            Admin
+          </Link>
         </div>
 
         {/* Sponsors Dropdown */}
-        <nav className="hidden lg:flex items-center gap-8 w-full pr-4">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-8 w-full pr-4">
           {navLinks.map((link) => {
             if ("children" in link) {
               return (
@@ -237,10 +245,10 @@ export default function Navbar() {
           </div>
 
           {/* Junior Knights */}
-          <div ref={jrkRef} className="ml-auto relative">
+          <div ref={jrkRef} className="relative">
             <button
               onClick={(e) => { e.stopPropagation(); window.open(jrk.href) }}
-              className="bg-white text-royal-600 text-xs font-bold tracking-wider uppercase px-3 py-2 hover:bg-royal-600 hover:text-white transition-colors rounded-md flex items-center gap-2"
+              className="bg-white text-royal-600 text-xs font-bold tracking-wider uppercase px-3 py-2 hover:bg-royal-600 hover:text-white transition-colors rounded-md flex items-center gap-2 whitespace-nowrap"
             >
               {jrk.label}
 
@@ -263,6 +271,14 @@ export default function Navbar() {
               </div>
             )} */}
           </div>
+
+          {/* Admin */}
+          <Link
+            href="/admin"
+            className="ml-auto text-white/70 hover:text-white/60 text-xs tracking-widest uppercase transition-colors"
+          >
+            Admin
+          </Link>
         </nav>
       </div>
 
