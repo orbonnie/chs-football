@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { isHudlUrl } from "@/lib/formData";
 
 const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
@@ -105,7 +106,7 @@ export function AddPlayerForm()  {
 
       setNumber(num ?? "");
       setClassYear(clsYear ?? "");
-      setSelectedPositions(pos ?? []);
+      setSelectedPositions(pos ? pos.split("|") : []);
       setExistingPhoto(photo ?? "");
       setHeight(ht ?? "");
       setWeight(wt ?? "");
@@ -166,7 +167,7 @@ export function AddPlayerForm()  {
           firstName,
           lastName,
           classYear,
-          selectedPositions,
+          position: selectedPositions,
           photo: publicId,
           height,
           weight,
@@ -191,11 +192,20 @@ export function AddPlayerForm()  {
         setStatus("error");
         return;
       }
-      if (!res.ok) throw new Error("Failed to save player");
+      if (!res.ok) {
+        const data = await res.json();
+        console.error("API error:", data);
+        throw new Error(data.error || `Request failed (${res.status})`);
+      }
 
       setStatus("done");
-    } catch {
-      setErrorMsg("Something went wrong. Please try again.");
+    } catch(error) {
+      console.error("Submit error:", error);
+      setErrorMsg(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
       setStatus("error");
     }
   };
@@ -275,6 +285,7 @@ export function AddPlayerForm()  {
                   checked={selectedPositions.includes(position)}
                   onChange={(e) => {
                     if (e.target.checked) {
+                      if (selectedPositions.length >= 2) return;
                       setSelectedPositions([
                         ...selectedPositions,
                         position,
@@ -303,9 +314,9 @@ export function AddPlayerForm()  {
           >
             <option value="">Select a class</option>
             <option value="2027">2027</option>
-            <option value="2027">2028</option>
-            <option value="2027">2029</option>
-            <option value="2027">2030</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
           </select>
         </div>
 
@@ -451,6 +462,12 @@ export function AddPlayerForm()  {
             type="text"
             value={hudlUrl}
             onChange={(e) => setHudlUrl(e.target.value)}
+            onBlur={() => {
+              if (hudlUrl && !isHudlUrl(hudlUrl)) {
+                alert("Please enter a valid Hudl URL.");
+                setHudlUrl("");
+              }
+            }}
             placeholder="https://hudl.com/..."
             className={inputClass}
           />

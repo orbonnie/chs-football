@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { appendSheetRow, findRowIndex, updateSheetRow } from "@/lib/sheets";
-import { capWords } from "@/lib/formatData";
+import { capWords } from "@/lib/formData";
 
 function formatDisplayDate(iso: string) {
   const [year, month, day] = iso.split("-").map(Number);
