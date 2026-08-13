@@ -175,7 +175,19 @@ export function AddPlayerForm()  {
         ADD / UPDATE PLAYER
       </h1>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form
+        onSubmit={handleSubmit}
+        onKeyDown={(e) => {
+          if (
+            e.key === "Enter" &&
+            (e.target as HTMLElement).tagName !== "TEXTAREA" &&
+            (e.target as HTMLElement).getAttribute("type") !== "submit"
+          ){
+            e.preventDefault();
+          }
+        }}
+        className="space-y-5"
+      >
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>First Name</label>

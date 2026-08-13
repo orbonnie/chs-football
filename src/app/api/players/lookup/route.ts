@@ -4,7 +4,7 @@ import { findRowIndex, getRowValues } from "@/lib/sheets";
 
 
 function createSlug(fname: string, lname: string) {
-  return `${fname.toLowerCase()}-${lname.toLowerCase()}`;
+  return `${fname.trim().toLowerCase()}-${lname.trim().toLowerCase()}`;
 }
 
 export async function GET(req: Request) {
