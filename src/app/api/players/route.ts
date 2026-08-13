@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { appendSheetRow, findRowIndex, updateSheetRow } from "@/lib/sheets";
-import { capWords } from "@/lib/formatData";
+import { capWords, isHudlUrl } from "@/lib/formData";
 
 
 function createSlug(fname: string, lname: string) {
@@ -40,6 +40,22 @@ export async function POST(req: NextRequest) {
     hudlUrl,
     offers,
   } = body;
+
+  console.log({
+    number,
+    firstName,
+    lastName,
+    classYear,
+    position,
+    positionIsArray: Array.isArray(position),
+  });
+
+  if (hudlUrl && !isHudlUrl(hudlUrl)) {
+    return NextResponse.json(
+      { error: "Hudl URL must be a valid https://hudl.com URL" },
+      { status: 400 }
+    );
+  }
 
   if ( !number || !firstName || !lastName || !classYear || !Array.isArray(position) || position.length === 0) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
