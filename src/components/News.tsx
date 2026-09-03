@@ -38,7 +38,7 @@ export default function News({
     fn();
     setTimeout(() => {
       throttleRef.current = false;
-    }, 750); // matches transition duration
+    }, 700); // matches transition duration
   };
 
   const next = () => {
@@ -67,7 +67,7 @@ export default function News({
 
     const interval = setInterval(() => {
       next();
-    }, 6000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [paused]);
