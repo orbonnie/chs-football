@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Player } from '@/types';
-import { cloudinaryImage } from '@/lib/cloudinary';
+import { cloudinaryPlayerLoader } from '@/lib/cloudinary';
 
 
 export default function PlayerCard({ player, priority = false }: { player: Player; priority?: boolean }) {
@@ -19,10 +19,11 @@ export default function PlayerCard({ player, priority = false }: { player: Playe
           </div>
         ) : (
           <Image
-            src={cloudinaryImage(player.photo, 800)}
+            src={player.photo}
+            loader={cloudinaryPlayerLoader}
             alt={`${player.firstName} ${player.lastName}`}
             fill
-            sizes="(min-width: 512px) 512px, 100vw"
+            sizes="(min-width: 640px) 290px, 50vw"
             priority={priority}
             className="object-cover object-top"
             onError={(e) => {
