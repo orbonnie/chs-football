@@ -39,6 +39,7 @@ function ColumnHeaders() {
 
 function VarsityRow({ game }: { game: HsGame }) {
   const isBye = game.location === "BYE";
+  const isCanceled = game.result === "canceled";
   const textColor = gameTextColor(game.location);
   return (
     <div className="px-6 py-4 border-b border-gray-400 last:border-0">
@@ -73,7 +74,7 @@ function VarsityRow({ game }: { game: HsGame }) {
               {game.result ? game.result : game.time}
             </span>
           )}
-          {!isBye && (
+          {(!isBye && !isCanceled) && (
             <a
               href={game.recording || undefined}
               target="_blank"
@@ -123,7 +124,7 @@ function VarsityRow({ game }: { game: HsGame }) {
           </span>
         )}
 
-        {!isBye && (
+        {(!isBye && !isCanceled) && (
           <a
             href={game.recording || undefined}
             target="_blank"
@@ -148,6 +149,7 @@ const jvColGrid =
 
 function JVRow({ game }: { game: HsGame }) {
   const isBye = game.location === "BYE";
+  const isCanceled = game.result === "canceled";
   const textColor = gameTextColor(game.location);
   return (
     <div className="px-4 py-3 border-b border-black-500/50 last:border-0">
@@ -174,6 +176,10 @@ function JVRow({ game }: { game: HsGame }) {
             >
               {game.result ? game.result : game.time}
             </span>
+          </div>
+        )}
+        {(!isBye && !isCanceled) && (
+          <div className="flex flex-col items-center gap-1">
             <a
               href={game.recording || undefined}
               target="_blank"
@@ -211,7 +217,7 @@ function JVRow({ game }: { game: HsGame }) {
             {game.result || "—"}
           </span>
         )}
-        {!isBye && (
+        {(!isBye && !isCanceled) && (
           <a
             href={game.recording || undefined}
             target="_blank"
