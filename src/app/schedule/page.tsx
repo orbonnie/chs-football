@@ -29,7 +29,7 @@ function ColumnHeaders() {
         Date
       </span>
       <span>Opponent</span>
-      <span className="text-center">Notes</span>
+      <span>Notes</span>
       <span className="text-center">Time</span>
       <span className="text-center">Score</span>
       <span className="text-center">Watch</span>
@@ -60,7 +60,7 @@ function VarsityRow({ game }: { game: HsGame }) {
                 : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
           </span>
           {game.note && (
-            <span className="text-xs tracking-widest uppercase text-royal-600 mt-0.5 block">
+            <span className="text-xs text-left tracking-widest uppercase text-royal-600 mt-0.5 block">
               {game.note}
             </span>
           )}
@@ -106,9 +106,11 @@ function VarsityRow({ game }: { game: HsGame }) {
               : `${game.location.toUpperCase()} ${game.opponent.toUpperCase()}`}
         </span>
         <span
-          className={`text-xs tracking-widest uppercase text-royal-600 bg-royal-600/10 px-2 py-1 rounded text-center truncate w-fit whitespace-pre-line ${!game.note ? "invisible" : ""}`}
+          className={`text-left text-balance ${!game.note ? "invisible" : ""}`}
         >
-          {game.note || ""}
+          <span className="box-decoration-clone text-xs tracking-widest uppercase text-royal-600 bg-royal-600/10 px-2 py-1 rounded leading-loose">
+            {game.note || ""}
+          </span>
         </span>
         <span
           className={`text-sm tracking-wider text-center ${isBye ? "invisible" : textColor}`}
