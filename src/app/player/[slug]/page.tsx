@@ -67,6 +67,7 @@ export default async function PlayerPage({ params }: Props) {
             {player.photo && (
               <Image
                 src={cloudinaryImage(player.photo, 800)}
+                unoptimized
                 alt={`${player.firstName} ${player.lastName}`}
                 fill
                 sizes="(min-width: 512px) 512px, 100vw"

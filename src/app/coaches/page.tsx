@@ -25,7 +25,7 @@ const headCoach = {
         for their unwavering love, support, and sacrifices. Their encouragement allows him \
         to do what he loves and continues to inspire his commitment to the Centennial football family.",
   email: 'millera7@fultonschools.org',
-  photo: '/miller.png',
+  photo: '/a-miller.png',
 }
 
 const staff = [

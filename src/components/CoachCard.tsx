@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { cloudinaryLoader } from '@/lib/cloudinary';
 
 const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
@@ -20,9 +21,11 @@ export default function CoachCard({ coach, aspect }: { coach: Coach, aspect: str
     }`}>
       {coach.photo && (
         <Image
-          src={cloudinaryUrl(coach.photo)}
+          src={coach.photo}
+          loader={cloudinaryLoader}
           alt={coach.name}
           fill
+          sizes="160px"
           className="object-cover object-top"
         />
       )}

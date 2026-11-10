@@ -14,7 +14,8 @@ export default function Intro() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/fortress-live.png"
+          src="/fortress-live.webp"
+          unoptimized
           alt="The Fortress"
           fill
           className="object-cover object-center"
